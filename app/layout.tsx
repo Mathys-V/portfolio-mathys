@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -19,7 +20,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      {/* Ajout de suppressHydrationWarning ici */}
       <body
         suppressHydrationWarning
         className={`${inter.className} min-h-screen flex flex-col bg-white text-gray-900`}
@@ -27,6 +27,9 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow flex flex-col">{children}</main>
         <Footer />
+
+        {/* Le composant Analytics est placé ici pour suivre l'activité du site */}
+        <Analytics />
       </body>
     </html>
   );
