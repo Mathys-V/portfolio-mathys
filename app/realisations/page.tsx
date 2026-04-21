@@ -249,21 +249,30 @@ export default function Realisations() {
             </div>
 
             {/* Image container */}
-            <div className="lg:w-2/5 flex flex-col gap-6">
-              <div className="relative aspect-[4/3] bg-gray-100 rounded-3xl overflow-hidden border border-gray-200 shadow-inner group">
-                <Image
-                  src="/img/realisations/moncovoitJV.png"
-                  alt="Page d'accueil monCovoitJV"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent flex items-end p-6">
-                  <p className="text-white text-sm font-bold uppercase tracking-widest">
-                    Dashboard Utilisateur
-                  </p>
-                </div>
-              </div>
-            </div>
+<div className="lg:w-1/2 flex flex-col gap-6 relative z-10">
+  {/* On passe en format 16:9 (aspect-video) parfait pour les screenshots desktop */}
+  <div className="relative aspect-video bg-gray-100 rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group">
+    <Image
+      src="/img/realisations/moncovoitJV.png"
+      alt="Page d'accueil de la plateforme monCovoitJV"
+      fill
+      /* Ajout de object-top pour être sûr de voir le haut du site */
+      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+    />
+    
+    {/* Effet d'assombrissement amélioré au survol */}
+    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/10 to-transparent flex items-end p-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+        <p className="text-purple-300 text-xs font-black uppercase tracking-[0.2em] mb-2">
+          Interface Web
+        </p>
+        <p className="text-white text-xl font-bold tracking-wide">
+          Page d'Accueil
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
           </div>
         </section>
       </div>

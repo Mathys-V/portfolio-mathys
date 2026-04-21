@@ -125,10 +125,10 @@ export default function Competences() {
                 Langues
               </h3>
               <div className="flex flex-wrap gap-3">
-                <span className="px-5 py-3 bg-white border border-purple-100 rounded-2xl shadow-sm font-bold text-gray-700 italic">
-                  Anglais : B1+ (Usage technique & scientifique)
-                </span>
-              </div>
+  <span className="px-5 py-3 bg-white border border-purple-100 rounded-2xl shadow-sm font-bold text-gray-700">
+    Anglais : B1+ (Usage technique & scientifique)
+  </span>
+</div>
             </div>
           </div>
         </div>
