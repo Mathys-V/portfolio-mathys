@@ -46,21 +46,20 @@ export default function Contact() {
       {/* ================= SECTION 2 : COORDONNÉES & RÉFÉRENT ================= */}
       <section className="py-20 bg-gray-50/50 px-6 sm:px-12 border-y border-gray-100">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
           {/* Mes informations de contact */}
           <div className="space-y-8">
             <h2 className="text-3xl font-black text-gray-900">
               Mes coordonnées
             </h2>
-            <div className="space-y-4">
-              
+            <div className="flex flex-col gap-4">
               {/* Email */}
-              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-purple-50 rounded-[2rem] shadow-sm hover:border-purple-200 transition-all group">
+              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-gray-100 rounded-full shadow-sm hover:border-purple-100 transition-all group">
+                {/* La partie gauche (Icône + Texte) est redevenue un lien cliquable */}
                 <a
                   href="mailto:mathys.vanheulle@gmail.com"
-                  className="flex items-center gap-4 sm:gap-6 flex-grow"
+                  className="flex items-center gap-4 flex-grow overflow-hidden"
                 >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl sm:text-2xl group-hover:scale-110 transition-transform flex-shrink-0">
+                  <div className="w-12 h-12 bg-gray-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
                     📧
                   </div>
                   <div className="overflow-hidden">
@@ -72,24 +71,28 @@ export default function Contact() {
                     </p>
                   </div>
                 </a>
+                {/* Le bouton copier reste à droite, indépendant du lien */}
                 <button
-                  onClick={() => handleCopy("mathys.vanheulle@gmail.com", "email")}
+                  onClick={() =>
+                    handleCopy("mathys.vanheulle@gmail.com", "email")
+                  }
                   title="Copier l'adresse"
-                  className="ml-4 p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600"
+                  className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
                 >
                   {copiedItem === "email" ? "✅" : "📋"}
                 </button>
               </div>
 
               {/* LinkedIn */}
-              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-purple-50 rounded-[2rem] shadow-sm hover:border-purple-200 transition-all group">
+              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-gray-100 rounded-full shadow-sm hover:border-purple-100 transition-all group">
+                {/* La partie gauche (Icône + Texte) est redevenue un lien cliquable */}
                 <a
                   href="https://linkedin.com/in/mathys-vanheulle"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 sm:gap-6 flex-grow"
+                  className="flex items-center gap-4 flex-grow overflow-hidden"
                 >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl sm:text-2xl group-hover:scale-110 transition-transform flex-shrink-0">
+                  <div className="w-12 h-12 bg-gray-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
                     🔗
                   </div>
                   <div className="overflow-hidden">
@@ -101,24 +104,31 @@ export default function Contact() {
                     </p>
                   </div>
                 </a>
+                {/* Le bouton copier reste à droite, indépendant du lien */}
                 <button
-                  onClick={() => handleCopy("https://linkedin.com/in/mathys-vanheulle", "linkedin")}
+                  onClick={() =>
+                    handleCopy(
+                      "https://linkedin.com/in/mathys-vanheulle",
+                      "linkedin",
+                    )
+                  }
                   title="Copier le lien"
-                  className="ml-4 p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600"
+                  className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
                 >
                   {copiedItem === "linkedin" ? "✅" : "📋"}
                 </button>
               </div>
 
               {/* GitHub */}
-              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-purple-50 rounded-[2rem] shadow-sm hover:border-purple-200 transition-all group">
+              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-gray-100 rounded-full shadow-sm hover:border-purple-100 transition-all group">
+                {/* La partie gauche (Icône + Texte) est redevenue un lien cliquable */}
                 <a
                   href="https://github.com/Mathys-V"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 sm:gap-6 flex-grow"
+                  className="flex items-center gap-4 flex-grow overflow-hidden"
                 >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl sm:text-2xl group-hover:scale-110 transition-transform flex-shrink-0">
+                  <div className="w-12 h-12 bg-gray-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
                     💻
                   </div>
                   <div className="overflow-hidden">
@@ -130,24 +140,24 @@ export default function Contact() {
                     </p>
                   </div>
                 </a>
+                {/* Le bouton copier reste à droite, indépendant du lien */}
                 <button
-                  onClick={() => handleCopy("https://github.com/Mathys-V", "github")}
+                  onClick={() =>
+                    handleCopy("https://github.com/Mathys-V", "github")
+                  }
                   title="Copier le lien"
-                  className="ml-4 p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600"
+                  className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
                 >
                   {copiedItem === "github" ? "✅" : "📋"}
                 </button>
               </div>
-
             </div>
           </div>
 
-          {/* Mon référent */}
+          {/* Mon référent  */}
           <div className="space-y-8">
             <h2 className="text-3xl font-black text-gray-900">Référent</h2>
-            {/* Design de carte adouci et plus clair */}
             <div className="p-8 bg-white border border-purple-100 rounded-[2.5rem] shadow-sm relative overflow-hidden h-full flex flex-col justify-between">
-              
               <div className="relative z-10 space-y-6">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900">
@@ -167,13 +177,13 @@ export default function Contact() {
                 </p>
 
                 <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
-                  <div>
+                  <div className="flex-grow overflow-hidden">
                     <p className="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1">
                       Contact professionnel
                     </p>
                     <a
                       href="mailto:fyd@u-picardie.fr"
-                      className="text-lg font-bold text-gray-900 hover:text-purple-600 transition-colors underline decoration-2 underline-offset-4"
+                      className="text-lg font-bold text-gray-900 hover:text-purple-600 transition-colors underline decoration-2 underline-offset-4 truncate block"
                     >
                       fyd@u-picardie.fr
                     </a>
@@ -181,7 +191,7 @@ export default function Contact() {
                   <button
                     onClick={() => handleCopy("fyd@u-picardie.fr", "referent")}
                     title="Copier l'adresse"
-                    className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600"
+                    className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
                   >
                     {copiedItem === "referent" ? "✅" : "📋"}
                   </button>
@@ -189,7 +199,6 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          
         </div>
       </section>
 
