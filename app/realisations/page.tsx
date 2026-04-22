@@ -5,11 +5,12 @@ export default function Realisations() {
   return (
     <div className="flex flex-col bg-white overflow-hidden text-gray-800 min-h-screen">
       {/* ================= HEADER DE LA PAGE ================= */}
-      <section className="relative pt-24 pb-16 px-6 sm:px-12 text-center lg:text-left border-b border-gray-50 overflow-hidden">
+      <section className="relative pt-24 pb-16 px-6 sm:px-12 overflow-hidden">
         {/* Orbe de fond pour la cohérence avec le reste du site */}
         <div className="absolute top-[-5%] right-[-5%] w-[400px] h-[400px] bg-purple-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 pointer-events-none"></div>
 
-        <div className="relative max-w-6xl mx-auto z-10">
+        {/* Conteneur principal forcé au centre avec "text-center" */}
+        <div className="relative max-w-4xl mx-auto z-10 text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-tight tracking-tight">
             Mes <br />
             <span className="text-purple-600 relative inline-block">
@@ -18,7 +19,8 @@ export default function Realisations() {
               <span className="absolute bottom-2 left-0 w-full h-3 bg-purple-200/50 -z-10 -rotate-1"></span>
             </span>
           </h1>
-          <p className="text-xl text-gray-500 max-w-3xl leading-relaxed mt-6">
+          {/* Ajout de mx-auto pour centrer le bloc de texte lui-même */}
+          <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed mt-6">
             Une immersion dans mes projets les plus marquants, de l'optimisation
             algorithmique pour la recherche internationale au développement
             collaboratif d'outils de mobilité durable.
@@ -249,30 +251,30 @@ export default function Realisations() {
             </div>
 
             {/* Image container */}
-<div className="lg:w-1/2 flex flex-col gap-6 relative z-10">
-  {/* On passe en format 16:9 (aspect-video) parfait pour les screenshots desktop */}
-  <div className="relative aspect-video bg-gray-100 rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group">
-    <Image
-      src="/img/realisations/moncovoitJV.png"
-      alt="Page d'accueil de la plateforme monCovoitJV"
-      fill
-      /* Ajout de object-top pour être sûr de voir le haut du site */
-      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-    />
-    
-    {/* Effet d'assombrissement amélioré au survol */}
-    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/10 to-transparent flex items-end p-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-      <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-        <p className="text-purple-300 text-xs font-black uppercase tracking-[0.2em] mb-2">
-          Interface Web
-        </p>
-        <p className="text-white text-xl font-bold tracking-wide">
-          Page d'Accueil
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+            <div className="lg:w-1/2 flex flex-col gap-6 relative z-10">
+              {/* On passe en format 16:9 (aspect-video) parfait pour les screenshots desktop */}
+              <div className="relative aspect-video bg-gray-100 rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group">
+                <Image
+                  src="/img/realisations/moncovoitJV.png"
+                  alt="Page d'accueil de la plateforme monCovoitJV"
+                  fill
+                  /* Ajout de object-top pour être sûr de voir le haut du site */
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Effet d'assombrissement amélioré au survol */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/10 to-transparent flex items-end p-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <p className="text-purple-300 text-xs font-black uppercase tracking-[0.2em] mb-2">
+                      Interface Web
+                    </p>
+                    <p className="text-white text-xl font-bold tracking-wide">
+                      Page d'Accueil
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

@@ -8,7 +8,7 @@ export default function Competences() {
         <div className="absolute top-[-5%] right-[-5%] w-[400px] h-[400px] bg-purple-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 pointer-events-none"></div>
 
         <div className="relative max-w-4xl mx-auto z-10 space-y-10">
-          <div className="text-center lg:text-left">
+          <div className="flex flex-col items-center text-center w-full">
             <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-tight tracking-tight">
               Mes <br />
               <span className="text-purple-600 relative inline-block">
@@ -18,6 +18,7 @@ export default function Competences() {
             </h1>
           </div>
 
+          {/* La carte de texte reste alignée normalement pour une bonne lisibilité */}
           <div className="p-8 sm:p-10 bg-white/60 backdrop-blur-xl border border-purple-100 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <span className="text-2xl">🎓</span> Réflexion sur mes acquis
@@ -125,10 +126,10 @@ export default function Competences() {
                 Langues
               </h3>
               <div className="flex flex-wrap gap-3">
-  <span className="px-5 py-3 bg-white border border-purple-100 rounded-2xl shadow-sm font-bold text-gray-700">
-    Anglais : B1+ (Usage technique & scientifique)
-  </span>
-</div>
+                <span className="px-5 py-3 bg-white border border-purple-100 rounded-2xl shadow-sm font-bold text-gray-700">
+                  Anglais : B1+ (Usage technique & scientifique)
+                </span>
+              </div>
             </div>
           </div>
         </div>
