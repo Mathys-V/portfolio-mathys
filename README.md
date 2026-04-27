@@ -7,7 +7,7 @@ Bienvenue sur le code source de mon portfolio interactif.
 
 ## 🛠️ Stack Technique
 
-- **Framework :** Next.js 14 (React) / TypeScript
+- **Framework :** Next.js 16, React 19, TypeScript
 - **Design :** Tailwind CSS (Interface Responsive)
 - **Déploiement & Stats :** Vercel & Vercel Analytics
 
