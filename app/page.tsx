@@ -9,7 +9,25 @@ export default function Home() {
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-300 rounded-full mix-blend-multiply filter blur-[120px] opacity-30 animate-pulse pointer-events-none"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-indigo-200 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 pointer-events-none"></div>
 
-        <div className="relative max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24 w-full z-10">
+        {/* CORRECTION : flex-col (photo en haut sur mobile) et lg:flex-row (photo à gauche sur bureau) */}
+        <div className="relative max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24 w-full z-10">
+          {/* ================= 1. LA PHOTO (Désormais à gauche) ================= */}
+          {/* Légèrement agrandie sur desktop (lg:w-[420px]) pour assumer le côté "Visage humain d'abord" */}
+          <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] flex-shrink-0 group">
+            {/* L'inclinaison passe à -rotate-3 pour pointer visuellement vers le texte à droite */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-purple-200 to-indigo-100 rounded-[2.5rem] -rotate-3 group-hover:-rotate-6 transition-transform duration-500 shadow-inner"></div>
+            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border-[6px] border-white/50 backdrop-blur-sm shadow-2xl group-hover:-translate-y-2 transition-all duration-500">
+              <Image
+                src="/img/accueil/profile.jpg"
+                alt="Mathys Vanheulle"
+                fill
+                className="object-cover transition-all duration-700 scale-105 group-hover:scale-100"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* ================= 2. LE TEXTE (Désormais à droite) ================= */}
           <div className="flex-1 space-y-8 text-center lg:text-left">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-purple-100 text-purple-600 text-sm font-bold tracking-wide shadow-sm">
@@ -24,7 +42,7 @@ export default function Home() {
                 Inventer <br />
                 <span className="text-purple-600 relative inline-block">
                   l'Avenir.
-                  {/* Effet surligneur identique aux autres pages */}
+                  {/* Effet surligneur */}
                   <span className="absolute bottom-2 left-0 w-full h-3 bg-purple-200/50 -z-10 -rotate-1"></span>
                 </span>
               </h1>
@@ -66,20 +84,6 @@ export default function Home() {
                 <div className="absolute inset-0 w-0 bg-gradient-to-r from-purple-600 to-indigo-500 transition-all duration-[400ms] ease-out group-hover:w-full"></div>
                 <span className="relative">Découvrir mon profil</span>
               </Link>
-            </div>
-          </div>
-
-          {/* Photo */}
-          <div className="relative w-72 h-72 md:w-96 md:h-96 flex-shrink-0 group">
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-200 to-indigo-100 rounded-[2.5rem] rotate-3 group-hover:rotate-6 transition-transform duration-500 shadow-inner"></div>
-            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border-[6px] border-white/50 backdrop-blur-sm shadow-2xl group-hover:-translate-y-2 transition-all duration-500">
-              <Image
-                src="/img/accueil/profile.jpg"
-                alt="Mathys Vanheulle"
-                fill
-                className="object-cover transition-all duration-700 scale-105 group-hover:scale-100"
-                priority
-              />
             </div>
           </div>
         </div>
