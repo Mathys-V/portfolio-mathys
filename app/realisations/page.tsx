@@ -1,56 +1,188 @@
+// ============================================================
+// PAGE RÉALISATIONS — Thème Astronomie (Contraste Amélioré & Layout Rééquilibré)
+// ============================================================
+
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Realisations() {
   return (
-    <div className="flex flex-col bg-white overflow-hidden text-gray-800 min-h-screen">
-      {/* ================= HEADER DE LA PAGE ================= */}
-      <section className="relative pt-24 pb-16 px-6 sm:px-12 overflow-hidden">
-        {/* Orbe de fond pour la cohérence avec le reste du site */}
-        <div className="absolute top-[-5%] right-[-5%] w-[400px] h-[400px] bg-purple-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 pointer-events-none"></div>
+    <div
+      className="flex flex-col overflow-hidden min-h-screen"
+      style={{ background: "#020817", color: "#e2e8f0" }}
+    >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-        {/* Conteneur principal forcé au centre avec "text-center" */}
-        <div className="relative max-w-4xl mx-auto z-10 text-center space-y-8">
-          <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-tight tracking-tight">
-            Mes <br />
-            <span className="text-purple-600 relative inline-block">
-              Réalisations.
-              {/* Le trait de soulignement stylisé */}
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-purple-200/50 -z-10 -rotate-1"></span>
+        /* ── Étoiles générées en CSS pur ── */
+        .stars-sm, .stars-md, .stars-lg {
+          position: absolute;
+          top: 0; left: 0;
+          width: 1px; height: 1px;
+          border-radius: 50%;
+          background: transparent;
+          pointer-events: none;
+        }
+        .stars-sm {
+          box-shadow: 120px 45px #fff, 340px 200px #fff, 580px 80px #fff, 820px 310px #fff, 950px 420px #fff, 150px 150px #fff, 1100px 60px #fff, 1300px 300px #fff, 30px 320px #fff, 900px 140px #fff, 60px 570px #fff, 760px 390px #fff, 280px 30px #fff, 1000px 270px #fff, 860px 70px #fff, 480px 700px #fff, 110px 750px #fff, 330px 760px #fff, 1080px 730px #fff, 550px 800px #fff, 410px 870px #fff, 1190px 860px #fff, 650px 910px #fff, 290px 950px #fff, 740px 880px #fff;
+          animation: starDrift 150s linear infinite;
+        }
+        @keyframes starDrift {
+          from { transform: translateY(0); }
+          to   { transform: translateY(-100vh); }
+        }
+
+        /* ── Animations d'entrée (Fade Up) ── */
+        .fade-up {
+          opacity: 0;
+          transform: translateY(24px);
+          animation: fadeUpAnim 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .d1 { animation-delay: 0.1s; }
+        .d2 { animation-delay: 0.25s; }
+        .d3 { animation-delay: 0.4s; }
+        .d4 { animation-delay: 0.55s; }
+        .d5 { animation-delay: 0.7s; }
+
+        @keyframes fadeUpAnim {
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cinzel { font-family: 'Cinzel', serif; }
+        .dm-sans { font-family: 'DM Sans', sans-serif; }
+
+        /* ── Cartes & Éléments UI ── */
+        .project-card {
+          background: rgba(226, 232, 240, 0.05);
+          border: 1px solid rgba(201, 184, 130, 0.25);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          transition: all 0.4s ease;
+        }
+        .project-card:hover {
+          border-color: rgba(201, 184, 130, 0.45);
+          background: rgba(226, 232, 240, 0.08);
+          box-shadow: 0 0 30px rgba(201, 184, 130, 0.15);
+        }
+
+        .nebula-purple {
+          background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+        }
+        .nebula-gold {
+          background: radial-gradient(circle, rgba(201, 184, 130, 0.12) 0%, transparent 70%);
+        }
+
+        /* ── Séparateur doré animé ── */
+        .gold-sep {
+          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.7), transparent);
+          animation: gSep 3s ease-in-out infinite;
+          height: 1px;
+          flex: 1;
+        }
+        @keyframes gSep {
+          0%, 100% { opacity: 0.5; }
+          50%       { opacity: 1; }
+        }
+
+        /* ── CTA final ── */
+        .cta-link {
+          transition: all 0.3s ease;
+          color: rgba(226,232,240,0.85);
+          letter-spacing: 0.18em;
+        }
+        .cta-link:hover {
+          color: #c9b882;
+          text-shadow: 0 0 16px rgba(201,184,130,0.5);
+          letter-spacing: 0.24em;
+        }
+      `}</style>
+
+      {/* ── CIEL ÉTOILÉ DE FOND ── */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="stars-sm" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 nebula-purple blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nebula-gold blur-3xl" />
+      </div>
+
+      {/* ================= HEADER DE LA PAGE ================= */}
+      <section className="relative pt-32 pb-20 px-6 sm:px-12 z-10">
+        <div className="relative max-w-4xl mx-auto text-center space-y-8 fade-up d1">
+          <p
+            className="cinzel tracking-[0.4em] text-xs uppercase font-bold"
+            style={{ color: "rgba(201,184,130,0.85)" }}
+          >
+            ✦ &nbsp; Portfolio Technique &nbsp; ✦
+          </p>
+          <h1 className="text-5xl md:text-7xl font-black cinzel leading-tight tracking-tight">
+            <span style={{ color: "#ffffff" }}>Mes</span> <br />
+            <span
+              className="relative inline-block"
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #c9b882 0%, #ffffff 50%, #c9b882 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Réalisations
+            </span>
+            <span
+              style={{
+                color: "#c9b882",
+                fontSize: "0.45em",
+                marginLeft: "0.12em",
+              }}
+            >
+              ✦
             </span>
           </h1>
-          {/* Ajout de mx-auto pour centrer le bloc de texte lui-même */}
-          <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed mt-6">
+          <p
+            className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed dm-sans font-normal"
+            style={{ color: "rgba(226,232,240,0.95)" }}
+          >
             Une immersion dans mes projets les plus marquants, de l'optimisation
             algorithmique pour la recherche internationale au développement
             collaboratif d'outils de mobilité durable.
           </p>
+          <div className="w-24 h-px mx-auto bg-gradient-to-r from-transparent via-[#c9b882] to-transparent opacity-70" />
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto py-20 px-6 sm:px-12 space-y-32">
-        {/* ================= SECTION 1 : PyRED  ================= */}
-        <section className="space-y-12">
-          <div className="flex flex-col lg:flex-row gap-16">
+      <div className="relative max-w-6xl mx-auto py-12 px-6 sm:px-12 space-y-32 z-10">
+        {/* ================= SECTION 1 : PyRED ================= */}
+        <section className="relative fade-up d2">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            {/* ── COLONNE GAUCHE : LE TEXTE (La narration) ── */}
             <div className="flex-1 space-y-8">
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold uppercase tracking-widest rounded-lg">
+                <div className="flex items-center gap-3 flex-wrap cinzel">
+                  <span className="px-4 py-1.5 border border-[#c9b882]/50 text-[#c9b882] text-[10px] font-bold uppercase tracking-widest rounded-full bg-[#c9b882]/10">
+                    Janv. - Mars 2026
+                  </span>
+                  <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
                     R&D Scientifique
                   </span>
-                  <span className="text-gray-400 text-sm font-semibold">
+                  <span className="text-slate-300 text-[11px] font-bold uppercase tracking-wider">
                     Stage • Labo AGIR (UPJV)
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
-                  Adapter PyRED aux enjeux de la <br />
-                  <span className="text-purple-600">
-                    recherche moléculaire mondiale.
+
+                <h2 className="text-3xl md:text-4xl font-bold cinzel leading-tight">
+                  <span className="text-[#c9b882]">
+                    PyRED : Développement Python pour la
+                  </span>{" "}
+                  <br />
+                  <span className="text-[#ffffff]">
+                    recherche pharmaceutique mondiale.
                   </span>
                 </h2>
               </div>
 
-              <div className="prose prose-purple text-gray-600 max-w-none space-y-6 text-lg leading-relaxed">
+              <div
+                className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
+                style={{ color: "rgba(226,232,240,0.9)" }}
+              >
                 <p>
                   Le logiciel PyRED est une référence dans la génération
                   automatique de champs de forces pour la modélisation
@@ -60,7 +192,7 @@ export default function Realisations() {
                     href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-purple-600 hover:underline font-semibold italic"
+                    className="text-[#c9b882] hover:text-white hover:underline font-bold transition-colors"
                   >
                     R.E.D. Server Development
                   </a>
@@ -70,17 +202,14 @@ export default function Realisations() {
                   une extension spécifique afin de permettre la modélisation
                   autonome de ces nouvelles topologies moléculaires complexes.
                 </p>
-
                 <p>
                   Ma mission ne consistait pas à refondre l'outil, mais à
                   étendre ses capacités pour répondre à ce besoin scientifique
                   spécifique. J'ai conçu et implémenté un algorithme de
                   raffinement capable de scanner les fragments générés,
-                  d'identifier les anomalies topologiques (atomes "volants" ou
-                  liaisons rompues) et de restaurer l'intégrité chimique de la
-                  molécule de manière autonome.
+                  d'identifier les anomalies topologiques et de restaurer
+                  l'intégrité chimique de la molécule de manière autonome.
                 </p>
-
                 <p>
                   Ce travail, réalisé dans un environnement Linux sous Python
                   2.7, permet aujourd'hui d'automatiser la modélisation de ces
@@ -88,83 +217,146 @@ export default function Realisations() {
                   manuelles chronophages pour les chercheurs.
                 </p>
               </div>
+            </div>
 
-              {/* Blocs d'impact et de validation */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                <div className="p-6 bg-purple-50 rounded-2xl border border-purple-100">
-                  <h4 className="font-bold text-purple-900 mb-2 flex items-center gap-2">
-                    <span>🌍</span> Impact
+            {/* ── COLONNE DROITE : LES VISUELS ET LES CARTES TECHNIQUES ── */}
+            <div className="lg:w-[45%] flex flex-col gap-6 relative z-10">
+              <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60">
+                <Image
+                  src="/img/realisations/pyred-accueil.png"
+                  alt="Accueil de la plateforme R.E.D. Server Development"
+                  fill
+                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/20 to-transparent opacity-80" />
+
+                <div className="absolute bottom-6 left-6 cinzel">
+                  <p className="text-[#c9b882] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
+                    Interface Web
+                  </p>
+                  <p className="text-white text-xl font-bold tracking-wide">
+                    R.E.D. Server Development
+                  </p>
+                </div>
+              </div>
+              <div
+                className="p-5 bg-white/10 rounded-2xl border border-[#c9b882]/20 text-[13px] dm-sans leading-relaxed font-medium"
+                style={{ color: "rgba(226,232,240,0.95)" }}
+              >
+                Interface d'accueil du serveur mondial R.E.D. Server
+                Development, la plateforme hébergeant les outils de génération
+                de champs de forces, accessible à l'adresse :
+                <a
+                  href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#c9b882] hover:text-white hover:underline block mt-2 transition-colors font-bold"
+                >
+                  upjv.q4md-forcefieldtools.org/REDServer-Development
+                </a>
+              </div>
+
+              {/* Cartes d'Impact et de Validation */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-6 project-card rounded-2xl">
+                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                    🌍 Impact
                   </h4>
-                  <p className="text-sm text-purple-700">
+                  <p
+                    className="text-sm dm-sans font-medium leading-relaxed"
+                    style={{ color: "rgba(226,232,240,0.9)" }}
+                  >
                     Algorithme intégré au serveur mondial et co-auteur d'une
                     future publication internationale avec l'University of
                     Lethbridge au Canada.
                   </p>
                 </div>
-                <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-                    <span>✅</span> Validation & Intégration
+                <div className="p-6 project-card rounded-2xl">
+                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                    ✅ Validation
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p
+                    className="text-sm dm-sans font-medium leading-relaxed"
+                    style={{ color: "rgba(226,232,240,0.9)" }}
+                  >
                     La solution est désormais pleinement intégrée au code source
                     de PyRED, garantissant la viabilité chimique des fragments
                     générés de manière autonome.
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Colonne Image avec description en dessous */}
-            <div className="lg:w-2/5 flex flex-col gap-4">
-              <div className="relative aspect-square bg-gray-100 rounded-3xl overflow-hidden border border-gray-200 shadow-inner group">
-                <Image
-                  src="/img/realisations/pyred-schema.png"
-                  alt="Schéma topologique PyRED"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              {/* Description déplacée sous l'image pour la clarté visuelle */}
-              <div className="p-4 bg-gray-50 rounded-xl text-xs font-medium text-gray-500 leading-relaxed border border-gray-100">
-                Représentation du processus de génération des 6 fragments. Image
-                adaptée du tutoriel PyRED (travaux de Fan Wang), accessible à
-                l'adresse :
-                <a
-                  href="https://upjv.q4md-forcefieldtools.org/Tutorial/Tutorial-4.php"
-                  className="text-purple-600 hover:underline block mt-1"
-                >
-                  upjv.q4md-forcefieldtools.org/Tutorial/Tutorial-4.php
-                </a>
+              {/* Bloc Compétences Mobilisées */}
+              <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
+                <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
+                  🧠 Compétences mobilisées
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Python",
+                    "Rigueur Algorithmique",
+                    "Linux Ubuntu",
+                    "Communication interdisciplinaire",
+                  ].map((sk) => (
+                    <span
+                      key={sk}
+                      className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-100"
+                    >
+                      {sk}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ================= SECTION 2 : MONCOVOITJV (SAE) ================= */}
-        <section className="space-y-12">
-          <div className="flex flex-col lg:flex-row-reverse gap-16">
-            {/* On reste en text-left simple, sans modificateur lg: */}
-            <div className="flex-1 space-y-8 text-left">
+        {/* ================= SÉPARATEUR ================= */}
+        <div className="relative flex justify-center items-center py-8 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
+          <div className="gold-sep" />
+          <span
+            className="mx-6 text-xl"
+            style={{
+              color: "#c9b882",
+              textShadow: "0 0 12px rgba(201,184,130,0.6)",
+            }}
+          >
+            ✦
+          </span>
+          <div className="gold-sep" />
+        </div>
+
+        {/* ================= SECTION 2 : MONCOVOITJV ================= */}
+        <section className="relative fade-up d4">
+          <div className="flex flex-col lg:flex-row-reverse gap-12 lg:gap-16 items-start">
+            {/* ── COLONNE TEXTE (Droite) ── */}
+            <div className="flex-1 space-y-8">
               <div className="space-y-4">
-                {/* On aligne les badges au début (gauche) systématiquement */}
-                <div className="flex items-center justify-start gap-3">
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold uppercase tracking-widest rounded-lg">
+                <div className="flex items-center justify-start gap-3 flex-wrap cinzel">
+                  <span className="px-4 py-1.5 border border-[#c9b882]/50 text-[#c9b882] text-[10px] font-bold uppercase tracking-widest rounded-full bg-[#c9b882]/10">
+                    Décembre 2025
+                  </span>
+                  <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
                     SAE • Développement Full Stack
                   </span>
-                  <span className="text-gray-400 text-sm font-semibold">
+                  <span className="text-slate-300 text-[11px] font-bold uppercase tracking-wider">
                     Équipe W • IUT d'Amiens
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
-                  monCovoitJV : Répondre aux défis de la <br />
-                  <span className="text-purple-600 font-extrabold italic">
-                    mobilité inter-campus.
-                  </span>
+
+                <h2 className="text-3xl md:text-4xl font-bold cinzel leading-tight">
+                  <span className="text-[#c9b882]">
+                    monCovoitJV : Répondre aux défis de la
+                  </span>{" "}
+                  <br />
+                  <span className="text-[#ffffff]">mobilité inter-campus.</span>
                 </h2>
               </div>
 
-              {/* prose est déjà text-left par défaut, on s'assure qu'aucun lg:text-right ne traîne */}
-              <div className="prose prose-purple text-gray-600 max-w-none space-y-6 text-lg leading-relaxed">
+              <div
+                className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
+                style={{ color: "rgba(226,232,240,0.9)" }}
+              >
                 <p>
                   Dans le cadre de la SAE (Situation d'Apprentissage Évaluée)
                   3.01, mon équipe et moi-même avons développé{" "}
@@ -184,94 +376,110 @@ export default function Realisations() {
                   réel.
                 </p>
                 <p>
-                  Malgré des délais serrés, notre organisation via <i>Trello</i>{" "}
-                  et l'adoption d'une méthode agile adaptée (sprint reviews
-                  hebdomadaires) nous a permis de livrer un produit complet,
-                  incluant un guide utilisateur détaillé et une documentation
-                  technique rigoureuse pour l'administration et la modération du
-                  site.
+                  L'adoption d'une <strong>méthodologie agile</strong> (sprint
+                  reviews hebdomadaires) et une organisation rigoureuse via{" "}
+                  <i>Trello</i> nous ont permis d'optimiser notre cycle de
+                  développement. Nous avons ainsi pu livrer un produit complet
+                  et abouti, incluant un guide utilisateur détaillé ainsi qu'une
+                  documentation technique exhaustive pour l'administration et la
+                  modération du site.
                 </p>
               </div>
+            </div>
 
-              {/* Preuves monCovoitJV */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-left">
-                <div className="p-6 bg-purple-50 rounded-2xl border border-purple-100">
-                  <h4 className="font-bold text-purple-900 mb-2 flex items-center gap-2">
-                    <span>🛠️</span> Stack Technique
+            {/* ── COLONNE VISUELS ET CARTES (Gauche) ── */}
+            <div className="lg:w-[45%] flex flex-col gap-6 relative z-10">
+              <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_30px_rgba(201,184,130,0.15)] group cursor-pointer">
+                <Image
+                  src="/img/realisations/moncovoitJV.png"
+                  alt="Plateforme monCovoitJV"
+                  fill
+                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/20 to-transparent opacity-80" />
+
+                <div className="absolute bottom-6 left-6 cinzel">
+                  <p className="text-[#c9b882] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
+                    Interface Web
+                  </p>
+                  <p className="text-white text-xl font-bold tracking-wide">
+                    Page d'Accueil
+                  </p>
+                </div>
+              </div>
+
+              {/* Cartes Techniques */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-6 project-card rounded-2xl">
+                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                    🛠️ Stack Technique
                   </h4>
-                  <p className="text-sm text-purple-700">
+                  <p
+                    className="text-sm dm-sans leading-relaxed font-medium"
+                    style={{ color: "rgba(226,232,240,0.9)" }}
+                  >
                     Architecture MVC (PHP), PDO, MySQL. Gestion de projet via
                     Trello et{" "}
                     <a
                       href="https://github.com/Mathys-V/sae-covoiturage"
                       target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-purple-900 font-bold"
+                      className="text-[#c9b882] hover:text-white underline font-bold transition-colors"
                     >
                       Git
                     </a>
                     .
                   </p>
                 </div>
-                <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-                    <span>📄</span> Documents
+                <div className="p-6 project-card rounded-2xl">
+                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                    📄 Documents
                   </h4>
-                  <div className="text-sm text-gray-600 space-y-2">
-                    <p>
-                      Code sur{" "}
-                      <a
-                        href="https://github.com/Mathys-V/sae-covoiturage"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-purple-600 hover:underline font-semibold"
-                      >
-                        GitHub
-                      </a>
-                    </p>
-                    <div className="flex flex-col gap-1">
-                      <a
-                        href="/docs/Documentation-Technique-Equipe-W.pdf"
-                        target="_blank"
-                        className="text-[11px] hover:text-purple-600 underline decoration-purple-200"
-                      >
-                        • Documentation technique (PDF)
-                      </a>
-                      <a
-                        href="/docs/Guide-utilisateur-Equipe-W.pdf"
-                        target="_blank"
-                        className="text-[11px] hover:text-purple-600 underline decoration-purple-200"
-                      >
-                        • Guide utilisateur (PDF)
-                      </a>
-                    </div>
+                  <div className="flex flex-col gap-3 mt-2 font-medium">
+                    <a
+                      href="https://github.com/Mathys-V/sae-covoiturage"
+                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                    >
+                      <span className="text-[#c9b882]">◈</span> Code sur GitHub
+                    </a>
+                    <a
+                      href="/docs/Documentation-Technique-Equipe-W.pdf"
+                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                    >
+                      <span className="text-[#c9b882]">◈</span> Documentation
+                      technique (PDF)
+                    </a>
+                    <a
+                      href="/docs/Guide-utilisateur-Equipe-W.pdf"
+                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                    >
+                      <span className="text-[#c9b882]">◈</span> Guide
+                      utilisateur (PDF)
+                    </a>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Image container */}
-            <div className="lg:w-1/2 flex flex-col gap-6 relative z-10">
-              {/* On passe en format 16:9 (aspect-video) parfait pour les screenshots desktop */}
-              <div className="relative aspect-video bg-gray-100 rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group">
-                <Image
-                  src="/img/realisations/moncovoitJV.png"
-                  alt="Page d'accueil de la plateforme monCovoitJV"
-                  fill
-                  /* Ajout de object-top pour être sûr de voir le haut du site */
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-
-                {/* Effet d'assombrissement amélioré au survol */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/10 to-transparent flex items-end p-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-purple-300 text-xs font-black uppercase tracking-[0.2em] mb-2">
-                      Interface Web
-                    </p>
-                    <p className="text-white text-xl font-bold tracking-wide">
-                      Page d'Accueil
-                    </p>
-                  </div>
+              {/* Bloc Compétences Mobilisées */}
+              <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
+                <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
+                  🧠 Compétences mobilisées
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "PHP (MVC)",
+                    "MySQL",
+                    "HTML/CSS",
+                    "Bootstrap",
+                    "Méthodologies Agiles",
+                    "Git / Trello",
+                  ].map((sk) => (
+                    <span
+                      key={sk}
+                      className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-100"
+                    >
+                      {sk}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -279,16 +487,56 @@ export default function Realisations() {
         </section>
       </div>
 
-      {/* CTA FINAL - Vers la page Compétences */}
-      <section className="py-20 text-center bg-purple-50/50 border-t border-purple-100">
+      {/* ================= CTA FINAL ================= */}
+      <section
+        className="py-20 text-center relative z-10 fade-up d5"
+        style={{ borderTop: "1px solid rgba(201,184,130,0.2)" }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "400px",
+            height: "1px",
+            background:
+              "linear-gradient(90deg, transparent, rgba(201,184,130,0.6), transparent)",
+            boxShadow: "0 0 30px 8px rgba(201,184,130,0.1)",
+            pointerEvents: "none",
+          }}
+        />
+        <p
+          className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
+          style={{
+            color: "rgba(201,184,130,0.8)",
+            fontFamily: "'Cinzel', serif",
+          }}
+        >
+          ✦ &nbsp; Section Suivante &nbsp; ✦
+        </p>
         <Link
           href="/competences"
-          className="group text-gray-900 font-black text-xl hover:text-purple-600 transition-colors"
+          className="cta-link inline-flex items-center gap-4 font-bold"
+          style={{ fontFamily: "'Cinzel', serif", fontSize: "14px" }}
         >
-          Consulter mes compétences et acquis techniques{" "}
-          <span className="inline-block group-hover:translate-x-2 transition-transform">
-            →
-          </span>
+          <span
+            style={{
+              display: "inline-block",
+              width: "32px",
+              height: "1px",
+              background: "rgba(201,184,130,0.6)",
+            }}
+          />
+          Consulter mes compétences et acquis techniques
+          <span
+            style={{
+              display: "inline-block",
+              width: "32px",
+              height: "1px",
+              background: "rgba(201,184,130,0.6)",
+            }}
+          />
         </Link>
       </section>
     </div>

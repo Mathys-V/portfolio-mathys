@@ -2,9 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+// ============================================================
+// HEADER — Thème Astronomie (Haute Lisibilité)
+// Fond : bleu nuit semi-transparent + backdrop blur
+// Logo : effet lueur dorée subtile
+// Nav  : soulignement animé façon orbite (pseudo-élément CSS)
+// ============================================================
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -18,66 +27,237 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between relative">
-        
-        {/* Logo */}
-        <Link
-          href="/"
-          onClick={closeMenu}
-          className="text-2xl font-black tracking-tighter text-gray-900"
-        >
-          Mathys Vanheulle<span className="text-purple-600">.</span>
-        </Link>
+    <>
+      {/* ── Styles injectés pour les animations non-couvertes par Tailwind ── */}
+      <style>{`
+        /* Orbite animée sous les liens de nav actifs / hover */
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #c9b882, transparent);
+          transition: width 0.4s ease;
+        }
 
-        {/* Navigation Bureau (Desktop) */}
-        <nav className="hidden md:flex gap-8 text-sm font-bold text-gray-500 tracking-wide">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-purple-600 transition-colors"
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+
+        /* Point lumineux (étoile) qui se déplace le long du soulignement */
+        .nav-link::before {
+          content: '✦';
+          position: absolute;
+          bottom: -11px;
+          left: -8px;
+          font-size: 9px;
+          color: #c9b882;
+          opacity: 0;
+          transition: opacity 0.3s ease, left 0.4s ease;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+          opacity: 1;
+          left: calc(50% - 4px);
+        }
+
+        /* Lueur dorée sur le logo au hover */
+        .logo-glow:hover {
+          text-shadow:
+            0 0 20px rgba(201, 184, 130, 0.6),
+            0 0 40px rgba(201, 184, 130, 0.3);
+        }
+
+        /* Animation d'ouverture du menu mobile */
+        .mobile-menu-enter {
+          animation: menuOpen 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes menuOpen {
+          from {
+            opacity: 0;
+            transform: scale(0.9) translateY(-8px);
+          }
+
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+      `}</style>
+
+      <header
+        className="sticky top-0 z-50 w-full"
+        style={{
+          background: "rgba(2, 8, 23, 0.85)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: "1px solid rgba(201, 184, 130, 0.15)",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between relative">
+          {/* ── Logo ── */}
+          <Link
+            href="/"
+            onClick={closeMenu}
+            className="logo-glow transition-all duration-300 flex items-center gap-2"
+            style={{ fontFamily: "'Cinzel', serif" }}
+          >
+            {/* Petite étoile décorative */}
+            <span style={{ color: "#c9b882", fontSize: "10px" }}>✦</span>
+
+            <span
+              className="text-xl font-bold tracking-widest uppercase"
+              style={{
+                color: "#ffffff",
+                letterSpacing: "0.15em",
+              }}
             >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+              Mathys Vanheulle
+            </span>
 
-        {/* Bouton Hamburger (Mobile) */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden p-2 text-gray-900 focus:outline-none flex items-center justify-center"
-          aria-label="Toggle Menu"
-        >
-          <div className="w-6 h-5 relative flex flex-col justify-between">
-            <span className={`w-full h-0.5 bg-current transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-full h-0.5 bg-current transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-full h-0.5 bg-current transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-          </div>
-        </button>
+            {/* Point doré final */}
+            <span
+              style={{
+                color: "#c9b882",
+                fontSize: "24px",
+                lineHeight: 1,
+              }}
+            >
+              .
+            </span>
+          </Link>
 
-        {/* Menu Déroulant Mobile (Haut à droite) */}
-        <div
-          className={`absolute top-full right-6 mt-2 w-64 bg-white border border-gray-100 rounded-3xl shadow-2xl p-8 z-50 transition-all duration-300 origin-top-right md:hidden ${
-            isOpen 
-              ? "opacity-100 scale-100 translate-y-0" 
-              : "opacity-0 scale-95 -translate-y-4 pointer-events-none"
-          }`}
-        >
-          <nav className="flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={closeMenu}
-                className="text-lg font-black text-gray-900 hover:text-purple-600 transition-colors tracking-tighter"
-              >
-                {link.label}
-              </Link>
-            ))}
+          {/* ── Navigation Bureau ── */}
+          <nav className="hidden md:flex gap-10 font-bold tracking-widest">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`nav-link relative transition-colors duration-300 ${
+                    isActive ? "active" : ""
+                  }`}
+                  style={{
+                    color: isActive ? "#c9b882" : "rgba(226, 232, 240, 0.85)",
+                    fontFamily: "'Cinzel', serif",
+
+                    /* légèrement plus gros */
+                    fontSize: "11.5px",
+
+                    /* un peu moins espacé pour éviter que ça colle au logo */
+                    letterSpacing: "0.16em",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      (e.target as HTMLElement).style.color = "#ffffff";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      (e.target as HTMLElement).style.color =
+                        "rgba(226, 232, 240, 0.85)";
+                    }
+                  }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
+
+          {/* ── Bouton Hamburger Mobile ── */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden p-2 focus:outline-none flex items-center justify-center"
+            aria-label="Toggle Menu"
+          >
+            <div className="w-6 h-5 relative flex flex-col justify-between">
+              {[
+                isOpen ? "rotate-45 translate-y-2" : "",
+                isOpen ? "opacity-0" : "",
+                isOpen ? "-rotate-45 -translate-y-2" : "",
+              ].map((cls, i) => (
+                <span
+                  key={i}
+                  className={`w-full h-0.5 transition-all duration-300 ${cls}`}
+                  style={{ background: "#c9b882" }}
+                />
+              ))}
+            </div>
+          </button>
+
+          {/* ── Menu Mobile ── */}
+          {isOpen && (
+            <div
+              className="mobile-menu-enter absolute top-full right-6 mt-3 w-64 rounded-2xl p-8 z-50 md:hidden"
+              style={{
+                background: "rgba(2, 8, 23, 0.97)",
+                border: "1px solid rgba(201, 184, 130, 0.2)",
+                boxShadow:
+                  "0 20px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(201,184,130,0.1)",
+              }}
+            >
+              {/* Étoiles décoratives dans le menu */}
+              <div
+                className="absolute top-3 right-4 text-xs"
+                style={{
+                  color: "#c9b882",
+                  opacity: 0.6,
+                }}
+              >
+                ✦ ✧ ✦
+              </div>
+
+              <nav className="flex flex-col gap-6">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="flex items-center gap-3 transition-all duration-300 group hover:text-[#ffffff]"
+                      style={{
+                        color: isActive
+                          ? "#c9b882"
+                          : "rgba(226, 232, 240, 0.85)",
+                        fontFamily: "'Cinzel', serif",
+
+                        /* légèrement plus gros aussi sur mobile */
+                        fontSize: "12px",
+
+                        letterSpacing: "0.18em",
+                      }}
+                    >
+                      {/* Tiret doré animé */}
+                      <span
+                        className="transition-all duration-300 group-hover:w-4"
+                        style={{
+                          display: "inline-block",
+                          width: isActive ? "16px" : "8px",
+                          height: "1px",
+                          background: "#c9b882",
+                          flexShrink: 0,
+                        }}
+                      />
+
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+            </div>
+          )}
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

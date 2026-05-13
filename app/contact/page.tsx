@@ -3,108 +3,279 @@
 import { useState } from "react";
 import Link from "next/link";
 
+// ============================================================
+// PAGE CONTACT — Thème Astronomie (Contraste Amélioré & UI Harmonisée)
+// ============================================================
+
 export default function Contact() {
-  // État pour savoir quel élément vient d'être copié (pour l'animation)
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
-  // Fonction pour copier dans le presse-papier
+  // Copier dans le presse-papier
   const handleCopy = (text: string, item: string) => {
     navigator.clipboard.writeText(text);
     setCopiedItem(item);
-    // Réinitialiser après 2 secondes
-    setTimeout(() => setCopiedItem(null), 2000);
+    setTimeout(() => {
+      setCopiedItem(null);
+    }, 2000);
   };
 
   return (
-    <div className="flex flex-col bg-white overflow-hidden text-gray-800 min-h-screen">
-      {/* ================= SECTION 1 : HEADER ================= */}
-      <section className="relative pt-24 pb-16 px-6 sm:px-12 overflow-hidden">
-        <div className="absolute top-[-5%] right-[-5%] w-[400px] h-[400px] bg-purple-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 pointer-events-none"></div>
+    <div
+      className="flex flex-col overflow-hidden min-h-screen relative"
+      style={{
+        background: "#020817",
+        color: "#e2e8f0",
+      }}
+    >
+      {/* ══════════════════════════════════════════════════
+          STYLES GLOBAUX
+      ══════════════════════════════════════════════════ */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-        <div className="relative max-w-4xl mx-auto z-10 text-center space-y-10">
-          <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-tight tracking-tight">
-              Me <br />
-              <span className="text-purple-600 relative inline-block">
-                Contacter.
-                <span className="absolute bottom-2 left-0 w-full h-3 bg-purple-200/50 -z-10 -rotate-1"></span>
+        /* ── Étoiles générées en CSS pur ── */
+        .stars-sm, .stars-md, .stars-lg {
+          position: absolute;
+          top: 0; left: 0;
+          width: 1px; height: 1px;
+          border-radius: 50%;
+          background: transparent;
+          pointer-events: none;
+        }
+        .stars-sm {
+          box-shadow: 120px 45px #fff, 340px 200px #fff, 580px 80px #fff, 820px 310px #fff, 950px 420px #fff, 150px 150px #fff, 1100px 60px #fff, 1300px 300px #fff, 30px 320px #fff, 900px 140px #fff, 60px 570px #fff, 760px 390px #fff, 280px 30px #fff, 1000px 270px #fff, 860px 70px #fff, 480px 700px #fff, 110px 750px #fff, 330px 760px #fff, 1080px 730px #fff, 550px 800px #fff, 410px 870px #fff, 1190px 860px #fff, 650px 910px #fff, 290px 950px #fff, 740px 880px #fff;
+          animation: starDrift 150s linear infinite;
+        }
+        @keyframes starDrift {
+          from { transform: translateY(0); }
+          to   { transform: translateY(-100vh); }
+        }
+
+        /* ── Animations d'entrée (Fade Up) ── */
+        .fade-up {
+          opacity: 0;
+          transform: translateY(24px);
+          animation: fadeUpAnim 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .d1 { animation-delay: 0.1s; }
+        .d2 { animation-delay: 0.25s; }
+        .d3 { animation-delay: 0.4s; }
+        .d4 { animation-delay: 0.55s; }
+        .d5 { animation-delay: 0.7s; }
+
+        @keyframes fadeUpAnim {
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cinzel { font-family: 'Cinzel', serif; }
+        .dm-sans { font-family: 'DM Sans', sans-serif; }
+
+        /* ── Cartes & Éléments UI ── */
+        .cosmic-card {
+          background: rgba(226, 232, 240, 0.05); /* Opacité augmentée */
+          border: 1px solid rgba(201, 184, 130, 0.25); /* Bordure plus visible */
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cosmic-card:hover {
+          background: rgba(226, 232, 240, 0.09);
+          border-color: rgba(201, 184, 130, 0.4);
+          transform: translateY(-2px);
+          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.1);
+        }
+
+        .icon-badge {
+          background: rgba(201,184,130,0.15);
+          border: 1px solid rgba(201,184,130,0.3);
+        }
+
+        .nebula-purple {
+          background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+        }
+        .nebula-gold {
+          background: radial-gradient(circle, rgba(201, 184, 130, 0.1) 0%, transparent 70%);
+        }
+
+        /* ── Séparateur doré ── */
+        .gold-sep {
+          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.7), transparent); /* Opacité augmentée */
+          height: 1px;
+          flex: 1;
+        }
+
+        /* ── Boutons Copy ── */
+        .copy-btn {
+          transition: all 0.3s ease;
+          border: 1px solid rgba(201,184,130,0.25); /* Contraste augmenté */
+        }
+        .copy-btn:hover {
+          transform: scale(1.08);
+          background: rgba(201,184,130,0.15);
+          border-color: rgba(201,184,130,0.5);
+        }
+
+        /* ── CTA final ── */
+        .cta-link {
+          transition: all 0.3s ease;
+          color: rgba(226,232,240,0.85); /* Opacité augmentée */
+          letter-spacing: 0.18em;
+        }
+        .cta-link:hover {
+          color: #c9b882;
+          text-shadow: 0 0 16px rgba(201,184,130,0.5);
+          letter-spacing: 0.24em;
+        }
+      `}</style>
+
+      {/* ── CIEL ÉTOILÉ DE FOND ── */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="stars-sm" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 nebula-purple blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nebula-gold blur-3xl" />
+      </div>
+
+      {/* ================= SECTION 1 : HEADER ================= */}
+      <section className="relative pt-32 pb-16 px-6 sm:px-12 z-10">
+        <div className="relative max-w-4xl mx-auto text-center space-y-10">
+          <div className="fade-up d1 space-y-6">
+            <p
+              className="cinzel tracking-[0.4em] text-xs uppercase font-bold"
+              style={{
+                color: "rgba(201,184,130,0.85)",
+              }} /* Contraste augmenté */
+            >
+              ✦ &nbsp; Communication &nbsp; ✦
+            </p>
+            {/* Taille de titre harmonisée avec les autres pages */}
+            <h1 className="text-5xl md:text-7xl font-black cinzel leading-tight tracking-tight">
+              <span style={{ color: "#ffffff" }}>Me</span> <br />
+              <span
+                className="relative inline-block"
+                style={{
+                  /* CORRECTION REACT APPLIQUÉE ICI */
+                  backgroundImage:
+                    "linear-gradient(135deg, #c9b882 0%, #ffffff 50%, #c9b882 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Contacter
+              </span>
+              {/* Ajout de l'étoile dans le titre */}
+              <span
+                style={{
+                  color: "#c9b882",
+                  fontSize: "0.45em",
+                  marginLeft: "0.12em",
+                }}
+              >
+                ✦
               </span>
             </h1>
           </div>
 
-          <div className="p-8 sm:p-10 bg-white/60 backdrop-blur-xl border border-purple-100 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-left">
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
+          {/* Intro encapsulée dans une cosmic-card pour la cohérence */}
+          <div className="fade-up d2 cosmic-card p-8 sm:p-14 rounded-[2.5rem] flex flex-col items-center text-center">
+            <p
+              className="text-lg md:text-xl leading-relaxed dm-sans font-normal max-w-3xl"
+              style={{
+                color: "rgba(226,232,240,0.95)",
+              }} /* Contraste augmenté */
+            >
               Actuellement à la recherche d'un stage en développement logiciel
-              de 14 semaines de Mars à Juin 2027, je suis ouvert à toute
-              proposition ou échange sur mes projets. N'hésitez pas à me
-              solliciter via mes réseaux professionnels ou par courriel.
+              de{" "}
+              <strong className="text-[#c9b882] font-semibold">
+                14 semaines de Mars à Juin 2027
+              </strong>
+              , je suis ouvert à toute proposition ou échange sur mes projets.
+              N'hésitez pas à me solliciter via mes réseaux professionnels ou
+              par courriel.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ================= SECTION 2 : COORDONNÉES & RÉFÉRENT ================= */}
-      <section className="py-20 bg-gray-50/50 px-6 sm:px-12 border-y border-gray-100">
+      {/* ================= SÉPARATEUR ================= */}
+      <div className="relative flex justify-center items-center py-8 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
+        <div className="gold-sep" />
+        <span
+          className="mx-6 text-xl"
+          style={{
+            color: "#c9b882",
+            textShadow: "0 0 12px rgba(201,184,130,0.6)",
+          }}
+        >
+          ✦
+        </span>
+        <div className="gold-sep" />
+      </div>
+
+      {/* ================= SECTION 2 : CONTACT & RÉFÉRENT ================= */}
+      <section className="py-8 px-6 sm:px-12 relative z-10 fade-up d4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Mes informations de contact */}
-          <div className="space-y-8">
-            <h2 className="text-3xl font-black text-gray-900">
+          {/* ── Colonne 1 : Mes Coordonnées ── */}
+          <div className="space-y-6">
+            <h2 className="text-3xl font-black text-[#ffffff] tracking-tight cinzel text-center lg:text-left mb-8">
               Mes coordonnées
             </h2>
             <div className="flex flex-col gap-4">
               {/* Email */}
-              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-gray-100 rounded-full shadow-sm hover:border-purple-100 transition-all group">
-                {/* La partie gauche (Icône + Texte) est redevenue un lien cliquable */}
+              <div className="cosmic-card rounded-[2rem] p-5 flex items-center justify-between gap-4">
                 <a
                   href="mailto:mathys.vanheulle@gmail.com"
-                  className="flex items-center gap-4 flex-grow overflow-hidden"
+                  className="flex items-center gap-5 flex-1 overflow-hidden group"
                 >
-                  <div className="w-12 h-12 bg-gray-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl icon-badge flex-shrink-0 group-hover:scale-110 transition-transform">
                     📧
                   </div>
                   <div className="overflow-hidden">
-                    <p className="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1">
+                    <p
+                      className="uppercase text-[10px] tracking-[0.25em] mb-1 font-bold cinzel"
+                      style={{ color: "rgba(201,184,130,0.85)" }}
+                    >
                       Email
                     </p>
-                    <p className="text-sm sm:text-lg font-bold text-gray-900 truncate">
+                    <p className="font-bold truncate text-sm sm:text-base text-white dm-sans">
                       mathys.vanheulle@gmail.com
                     </p>
                   </div>
                 </a>
-                {/* Le bouton copier reste à droite, indépendant du lien */}
                 <button
                   onClick={() =>
                     handleCopy("mathys.vanheulle@gmail.com", "email")
                   }
+                  className="copy-btn w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
                   title="Copier l'adresse"
-                  className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
                 >
                   {copiedItem === "email" ? "✅" : "📋"}
                 </button>
               </div>
 
               {/* LinkedIn */}
-              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-gray-100 rounded-full shadow-sm hover:border-purple-100 transition-all group">
-                {/* La partie gauche (Icône + Texte) est redevenue un lien cliquable */}
+              <div className="cosmic-card rounded-[2rem] p-5 flex items-center justify-between gap-4">
                 <a
                   href="https://linkedin.com/in/mathys-vanheulle"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 flex-grow overflow-hidden"
+                  className="flex items-center gap-5 flex-1 overflow-hidden group"
                 >
-                  <div className="w-12 h-12 bg-gray-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl icon-badge flex-shrink-0 group-hover:scale-110 transition-transform">
                     🔗
                   </div>
                   <div className="overflow-hidden">
-                    <p className="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1">
+                    <p
+                      className="uppercase text-[10px] tracking-[0.25em] mb-1 font-bold cinzel"
+                      style={{ color: "rgba(201,184,130,0.85)" }}
+                    >
                       LinkedIn
                     </p>
-                    <p className="text-sm sm:text-lg font-bold text-gray-900 truncate">
+                    <p className="font-bold truncate text-sm sm:text-base text-white dm-sans">
                       linkedin.com/in/mathys-vanheulle
                     </p>
                   </div>
                 </a>
-                {/* Le bouton copier reste à droite, indépendant du lien */}
                 <button
                   onClick={() =>
                     handleCopy(
@@ -112,41 +283,42 @@ export default function Contact() {
                       "linkedin",
                     )
                   }
+                  className="copy-btn w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
                   title="Copier le lien"
-                  className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
                 >
                   {copiedItem === "linkedin" ? "✅" : "📋"}
                 </button>
               </div>
 
               {/* GitHub */}
-              <div className="flex items-center justify-between p-4 sm:p-6 bg-white border border-gray-100 rounded-full shadow-sm hover:border-purple-100 transition-all group">
-                {/* La partie gauche (Icône + Texte) est redevenue un lien cliquable */}
+              <div className="cosmic-card rounded-[2rem] p-5 flex items-center justify-between gap-4">
                 <a
                   href="https://github.com/Mathys-V"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 flex-grow overflow-hidden"
+                  className="flex items-center gap-5 flex-1 overflow-hidden group"
                 >
-                  <div className="w-12 h-12 bg-gray-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl icon-badge flex-shrink-0 group-hover:scale-110 transition-transform">
                     💻
                   </div>
                   <div className="overflow-hidden">
-                    <p className="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1">
+                    <p
+                      className="uppercase text-[10px] tracking-[0.25em] mb-1 font-bold cinzel"
+                      style={{ color: "rgba(201,184,130,0.85)" }}
+                    >
                       GitHub
                     </p>
-                    <p className="text-sm sm:text-lg font-bold text-gray-900 truncate">
+                    <p className="font-bold truncate text-sm sm:text-base text-white dm-sans">
                       github.com/Mathys-V
                     </p>
                   </div>
                 </a>
-                {/* Le bouton copier reste à droite, indépendant du lien */}
                 <button
                   onClick={() =>
                     handleCopy("https://github.com/Mathys-V", "github")
                   }
+                  className="copy-btn w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
                   title="Copier le lien"
-                  className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
                 >
                   {copiedItem === "github" ? "✅" : "📋"}
                 </button>
@@ -154,64 +326,112 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Mon référent  */}
-          <div className="space-y-8">
-            <h2 className="text-3xl font-black text-gray-900">Référent</h2>
-            <div className="p-8 bg-white border border-purple-100 rounded-[2.5rem] shadow-sm relative overflow-hidden h-full flex flex-col justify-between">
-              <div className="relative z-10 space-y-6">
+          {/* ── Colonne 2 : Référent ── */}
+          <div className="space-y-6 flex flex-col">
+            <h2 className="text-3xl font-black text-[#ffffff] tracking-tight cinzel text-center lg:text-left mb-8">
+              Référent
+            </h2>
+            <div className="cosmic-card rounded-[2.5rem] p-8 sm:p-10 h-full flex flex-col justify-between">
+              <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-2xl font-bold leading-tight cinzel text-[#ffffff]">
                     M. François-Yves DUPRADEAU
                   </h3>
-                  <p className="text-purple-600 font-medium mt-1 italic">
+                  <p className="mt-2 text-[15px] italic text-[#c9b882] dm-sans font-medium">
                     Enseignant-chercheur en chimie organique-modélisation
                     moléculaire au laboratoire AGIR de l'UPJV.
                   </p>
                 </div>
-
-                <p className="text-gray-600 leading-relaxed font-medium">
+                <p
+                  className="text-[15px] leading-relaxed dm-sans font-normal"
+                  style={{ color: "rgba(226,232,240,0.85)" }}
+                >
                   Monsieur Dupradeau a supervisé mon stage de recherche et
                   développement au sein de l'équipe AGIR de l'UPJV. Son
                   expertise a été déterminante dans ma montée en compétences sur
                   le projet PyRED.
                 </p>
+              </div>
 
-                <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
-                  <div className="flex-grow overflow-hidden">
-                    <p className="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1">
-                      Contact professionnel
-                    </p>
-                    <a
-                      href="mailto:fyd@u-picardie.fr"
-                      className="text-lg font-bold text-gray-900 hover:text-purple-600 transition-colors underline decoration-2 underline-offset-4 truncate block"
-                    >
-                      fyd@u-picardie.fr
-                    </a>
-                  </div>
-                  <button
-                    onClick={() => handleCopy("fyd@u-picardie.fr", "referent")}
-                    title="Copier l'adresse"
-                    className="p-3 rounded-xl hover:bg-gray-50 transition-colors flex-shrink-0 text-gray-400 hover:text-purple-600 ml-2"
+              {/* Bouton de contact du référent */}
+              <div className="mt-8 pt-8 flex items-center justify-between gap-4 border-t border-[rgba(201,184,130,0.25)]">
+                <div className="overflow-hidden">
+                  <p
+                    className="uppercase text-[10px] tracking-[0.25em] mb-2 font-bold cinzel"
+                    style={{ color: "rgba(201,184,130,0.85)" }}
                   >
-                    {copiedItem === "referent" ? "✅" : "📋"}
-                  </button>
+                    Contact professionnel
+                  </p>
+                  <a
+                    href="mailto:fyd@u-picardie.fr"
+                    className="text-lg font-bold text-white dm-sans hover:text-[#c9b882] transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-[#c9b882]/60 truncate block"
+                  >
+                    fyd@u-picardie.fr
+                  </a>
                 </div>
+                <button
+                  onClick={() => handleCopy("fyd@u-picardie.fr", "referent")}
+                  className="copy-btn w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                  title="Copier l'adresse"
+                >
+                  {copiedItem === "referent" ? "✅" : "📋"}
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA FINAL - Retour à l'accueil */}
-      <section className="py-20 text-center bg-purple-50/50 border-t border-purple-100">
+      {/* ================= CTA FINAL ================= */}
+      <section
+        className="py-20 text-center relative z-10 fade-up d5"
+        style={{ borderTop: "1px solid rgba(201,184,130,0.2)" }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "400px",
+            height: "1px",
+            background:
+              "linear-gradient(90deg, transparent, rgba(201,184,130,0.6), transparent)",
+            boxShadow: "0 0 30px 8px rgba(201,184,130,0.1)",
+            pointerEvents: "none",
+          }}
+        />
+        <p
+          className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
+          style={{
+            color: "rgba(201,184,130,0.8)",
+            fontFamily: "'Cinzel', serif",
+          }}
+        >
+          ✦ &nbsp; Fin de l'exploration &nbsp; ✦
+        </p>
         <Link
           href="/"
-          className="group text-gray-900 font-black text-xl hover:text-purple-600 transition-colors"
+          className="cta-link inline-flex items-center gap-4 font-bold"
+          style={{ fontFamily: "'Cinzel', serif", fontSize: "14px" }}
         >
-          Retourner à l'accueil{" "}
-          <span className="inline-block group-hover:translate-x-2 transition-transform">
-            ←
-          </span>
+          <span
+            style={{
+              display: "inline-block",
+              width: "32px",
+              height: "1px",
+              background: "rgba(201,184,130,0.6)",
+            }}
+          />
+          Retourner à l'accueil
+          <span
+            style={{
+              display: "inline-block",
+              width: "32px",
+              height: "1px",
+              background: "rgba(201,184,130,0.6)",
+            }}
+          />
         </Link>
       </section>
     </div>
