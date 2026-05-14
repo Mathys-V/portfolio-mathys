@@ -408,7 +408,7 @@ export default function Contact() {
             fontFamily: "'Cinzel', serif",
           }}
         >
-          ✦ &nbsp; Fin de l'exploration &nbsp; ✦
+          ✦ &nbsp; Merci de votre visite &nbsp; ✦
         </p>
         <Link
           href="/"

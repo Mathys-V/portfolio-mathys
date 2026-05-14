@@ -485,7 +485,7 @@ export default function Competences() {
               background: "rgba(201,184,130,0.6)",
             }}
           />
-          Me contacter ou consulter mes références
+          Me contacter
           <span
             style={{
               display: "inline-block",
