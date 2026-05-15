@@ -255,6 +255,7 @@ export default function Competences() {
                   "Python",
                   "PHP",
                   "Architecture MVC",
+                  "Windows Forms",
                   "JSON",
                   "C",
                   "C++",
@@ -391,14 +392,16 @@ export default function Competences() {
                   <span className="text-xl">🎨</span> Design & Bureautique
                 </h4>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-2">
-                  {["Figma", "Suite Office", "Canva"].map((tool) => (
-                    <span
-                      key={tool}
-                      className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-sm font-medium text-slate-100 dm-sans"
-                    >
-                      {tool}
-                    </span>
-                  ))}
+                  {["Figma", "Canva", "Balsamiq", "Suite Office"].map(
+                    (tool) => (
+                      <span
+                        key={tool}
+                        className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-sm font-medium text-slate-100 dm-sans"
+                      >
+                        {tool}
+                      </span>
+                    ),
+                  )}
                 </div>
               </div>
             </div>
@@ -422,6 +425,10 @@ export default function Competences() {
                 {
                   title: "Rigueur Algorithmique",
                   desc: "Production d'un code propre, testé et optimisé pour des environnements exigeants.",
+                },
+                {
+                  title: "Esprit d'équipe & Collaboration",
+                  desc: "Capacité à se coordonner et à répartir efficacement les tâches au sein d'un groupe de développeurs.",
                 },
               ].map((skill) => (
                 <div

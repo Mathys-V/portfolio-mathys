@@ -240,7 +240,7 @@ export default function Realisations() {
                 </div>
               </div>
 
-              {/* Cartes d'Impact et de Validation (Espacement augmenté à gap-6) */}
+              {/* Cartes d'Impact et de Validation */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 project-card rounded-2xl">
                   <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
@@ -392,7 +392,7 @@ export default function Realisations() {
                 </div>
               </div>
 
-              {/* Cartes Techniques (Espacement augmenté à gap-6) */}
+              {/* Cartes Techniques */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 project-card rounded-2xl">
                   <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
@@ -421,12 +421,14 @@ export default function Realisations() {
                   <div className="flex flex-col gap-3 mt-2 font-medium">
                     <a
                       href="https://github.com/Mathys-V/sae-covoiturage"
+                      target="_blank"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Code sur GitHub
                     </a>
                     <a
                       href="/docs/Documentation-Technique-Equipe-W.pdf"
+                      target="_blank"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Documentation
@@ -434,6 +436,7 @@ export default function Realisations() {
                     </a>
                     <a
                       href="/docs/Guide-utilisateur-Equipe-W.pdf"
+                      target="_blank"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Guide
@@ -455,7 +458,179 @@ export default function Realisations() {
                     "HTML/CSS",
                     "Bootstrap",
                     "Méthodologies Agiles",
-                    "Git / Trello",
+                    "Git",
+                    "Trello",
+                  ].map((sk) => (
+                    <span
+                      key={sk}
+                      className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-100"
+                    >
+                      {sk}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= SÉPARATEUR ================= */}
+        <div className="relative flex justify-center items-center py-8 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
+          <div className="gold-sep" />
+          <span
+            className="mx-6 text-xl"
+            style={{
+              color: "#c9b882",
+              textShadow: "0 0 12px rgba(201,184,130,0.6)",
+            }}
+          >
+            ✦
+          </span>
+          <div className="gold-sep" />
+        </div>
+
+        {/* ================= SECTION 3 : SAE 2.01 (NOUVEAU PROJET) ================= */}
+        <section className="relative fade-up d2">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            {/* ── COLONNE GAUCHE : LE TEXTE (La narration) ── */}
+            <div className="flex-1 space-y-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 flex-wrap cinzel">
+                  <span className="px-4 py-1.5 border border-[#c9b882]/50 text-[#c9b882] text-[10px] font-bold uppercase tracking-widest rounded-full bg-[#c9b882]/10">
+                    Mai 2025
+                  </span>
+                  <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
+                    SAE 2.01 • C# / WinForms
+                  </span>
+                  <span className="text-slate-300 text-[11px] font-bold uppercase tracking-wider">
+                    Équipe E4 • IUT d'Amiens
+                  </span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold cinzel leading-tight">
+                  <span className="text-[#c9b882]">
+                    Application de Gestion de Transport :
+                  </span>{" "}
+                  <br />
+                  <span className="text-[#ffffff]">
+                    Conception et Modélisation Orientée Objet.
+                  </span>
+                </h2>
+              </div>
+
+              <div
+                className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
+                style={{ color: "rgba(226,232,240,0.9)" }}
+              >
+                <p>
+                  Dans le cadre de la SAE 2.01 clôturant ma première année de
+                  BUT, j'ai participé au développement d'une application de
+                  gestion de transport en commun basée sur le réseau de bus de
+                  Calais. Réalisé en équipe de six personnes, ce projet visait à
+                  fournir une solution complète : consultation des horaires,
+                  carte interactive, recherche d'itinéraires et administration
+                  du réseau.
+                </p>
+                <p>
+                  Développée en <strong>C# via Windows Forms</strong>, cette
+                  application repose sur une conception stricte orientée objet
+                  (POO) avec une séparation entre l'interface, la logique
+                  système et la base de données MySQL. L'approche a été
+                  méthodique, débutant par la conception d'un arbre de tâches et
+                  d'une maquette UI/UX sur Balsamiq.
+                </p>
+                <p>
+                  Le développement s'est organisé en sous-groupes de deux ou
+                  trois personnes, coordonné via Trello. En étroite
+                  collaboration avec mes coéquipiers, j'ai notamment
+                  co-développé le module de connexion sécurisé, la carte
+                  interactive, ainsi que le moteur de recherche d'itinéraires
+                  intégrant l'algorithme de Dijkstra pour l'optimisation des
+                  trajets.
+                </p>
+              </div>
+            </div>
+
+            {/* ── COLONNE DROITE : LES VISUELS ET LES CARTES TECHNIQUES ── */}
+            <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
+              <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60">
+                <Image
+                  src="/img/realisations/bus-calais.jpg"
+                  alt="Carte du réseau de bus de Calais servant de base à l'application de transport"
+                  fill
+                  className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/20 to-transparent opacity-80" />
+
+                <div className="absolute bottom-6 left-6 cinzel">
+                  <p className="text-[#c9b882] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
+                    Réseau de Transport
+                  </p>
+                  <p className="text-white text-xl font-bold tracking-wide">
+                    Bus de Calais
+                  </p>
+                </div>
+              </div>
+
+              {/* Cartes d'Impact et de Validation */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="p-6 project-card rounded-2xl">
+                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                    ⚙️ Stack Technique
+                  </h4>
+                  <p
+                    className="text-sm dm-sans font-medium leading-relaxed"
+                    style={{ color: "rgba(226,232,240,0.9)" }}
+                  >
+                    C# (.NET), Windows Forms, MySQL. Implémentation de
+                    structures de graphes et requêtes SQL complexes.
+                  </p>
+                </div>
+                <div className="p-6 project-card rounded-2xl">
+                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                    📄 Documents
+                  </h4>
+                  <div className="flex flex-col gap-3 mt-2 font-medium">
+                    <a
+                      href="https://github.com/Mathys-V/SAE_E4"
+                      target="_blank"
+                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                    >
+                      <span className="text-[#c9b882]">◈</span> Code sur GitHub
+                    </a>
+                    <a
+                      href="/docs/SAE-IHM-ARBRE-DE-TACHES.pdf"
+                      target="_blank"
+                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                    >
+                      <span className="text-[#c9b882]">◈</span> Arbre des tâches
+                      (PDF)
+                    </a>
+                    <a
+                      href="/docs/SAE-IHM-MAQUETTE.pdf"
+                      target="_blank"
+                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                    >
+                      <span className="text-[#c9b882]">◈</span> Maquette UI
+                      (PDF)
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bloc Compétences Mobilisées */}
+              <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
+                <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
+                  🧠 Compétences mobilisées
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "C#",
+                    "Windows Forms",
+                    "MySQL",
+                    "Balsamiq",
+                    "Git",
+                    "Trello",
                   ].map((sk) => (
                     <span
                       key={sk}

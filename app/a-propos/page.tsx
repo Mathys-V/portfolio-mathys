@@ -743,9 +743,65 @@ export default function About() {
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
-                  Conception et développement d'une plateforme web de
+                  Conception et développement en équipe d'une plateforme web de
                   covoiturage inter-campus. Architecture PHP MVC, base de
                   données MySQL et gestion de projet via méthodes Agiles.
+                </p>
+              </div>
+            </div>
+
+            {/* ── Projet SAE 2.01 Transport ── */}
+            <div className="relative flex flex-col md:flex-row items-center group">
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node items-center justify-center text-xl">
+                🚌
+              </div>
+              <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
+                🚌
+              </div>
+
+              <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+                <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                  <div
+                    className="font-bold"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "#ffffff",
+                      fontSize: "15px",
+                    }}
+                  >
+                    SAE 2.01 : Gestion de Transport
+                  </div>
+                  <time
+                    className="text-xs font-bold uppercase"
+                    style={{
+                      color: "rgba(226,232,240,0.7)",
+                      fontFamily: "'Cinzel', serif",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    Mai 2025
+                  </time>
+                </div>
+                <div
+                  className="text-sm mb-3 font-medium"
+                  style={{
+                    color: "rgba(201,184,130,0.85)",
+                    fontFamily: "'DM Sans', sans-serif",
+                  }}
+                >
+                  Application C# / WinForms — IUT d'Amiens
+                </div>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{
+                    color: "rgba(226,232,240,0.85)",
+                    fontFamily: "'DM Sans', sans-serif",
+                  }}
+                >
+                  Conception et développement en équipe d'une application de
+                  gestion du réseau de bus de Calais. Modélisation POO, création
+                  d'une maquette (Balsamiq) et implémentation de l'algorithme de
+                  Dijkstra.
                 </p>
               </div>
             </div>
