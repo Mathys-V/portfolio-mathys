@@ -265,32 +265,35 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 2. BADGE DISPONIBILITÉ */}
+          {/* 2. BADGE DISPONIBILITÉ (Agrandi et plus lisible) */}
           <div
-            className="fade-up delay-200 inline-flex items-center gap-3 px-5 py-2.5 rounded-full"
+            className="fade-up delay-200 inline-flex items-center gap-3 px-6 py-3 rounded-full"
             style={{
               background: "rgba(201,184,130,0.08)",
-              border: "1px solid rgba(201,184,130,0.25)",
+              border: "1px solid rgba(201,184,130,0.35)",
               backdropFilter: "blur(8px)",
             }}
           >
-            {/* Point pulsant */}
-            <span className="relative flex h-2 w-2">
+            {/* Point pulsant légèrement agrandi */}
+            <span className="relative flex h-2.5 w-2.5">
               <span
                 className="pulse-ring absolute inline-flex h-full w-full rounded-full"
                 style={{ background: "#c9b882" }}
               />
               <span
-                className="relative inline-flex rounded-full h-2 w-2"
+                className="relative inline-flex rounded-full h-2.5 w-2.5"
                 style={{ background: "#c9b882" }}
               />
             </span>
             <span
+              className="font-bold"
               style={{
                 fontFamily: "'Cinzel', serif",
-                fontSize: "10px",
-                letterSpacing: "0.2em",
+                fontSize: "13px" /* Taille augmentée */,
+                letterSpacing: "0.15em",
                 color: "#c9b882",
+                textShadow:
+                  "0 0 10px rgba(201,184,130,0.3)" /* Lueur pour contraster */,
               }}
             >
               DÉVELOPPEUR FULL STACK · ORIENTÉ BACK-END

@@ -220,7 +220,7 @@ export default function Realisations() {
             </div>
 
             {/* ── COLONNE DROITE : LES VISUELS ET LES CARTES TECHNIQUES ── */}
-            <div className="lg:w-[45%] flex flex-col gap-6 relative z-10">
+            <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
               <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60">
                 <Image
                   src="/img/realisations/pyred-accueil.png"
@@ -239,25 +239,9 @@ export default function Realisations() {
                   </p>
                 </div>
               </div>
-              <div
-                className="p-5 bg-white/10 rounded-2xl border border-[#c9b882]/20 text-[13px] dm-sans leading-relaxed font-medium"
-                style={{ color: "rgba(226,232,240,0.95)" }}
-              >
-                Interface d'accueil du serveur mondial R.E.D. Server
-                Development, la plateforme hébergeant les outils de génération
-                de champs de forces, accessible à l'adresse :
-                <a
-                  href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#c9b882] hover:text-white hover:underline block mt-2 transition-colors font-bold"
-                >
-                  upjv.q4md-forcefieldtools.org/REDServer-Development
-                </a>
-              </div>
 
-              {/* Cartes d'Impact et de Validation */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Cartes d'Impact et de Validation (Espacement augmenté à gap-6) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 project-card rounded-2xl">
                   <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
                     🌍 Impact
@@ -388,7 +372,7 @@ export default function Realisations() {
             </div>
 
             {/* ── COLONNE VISUELS ET CARTES (Gauche) ── */}
-            <div className="lg:w-[45%] flex flex-col gap-6 relative z-10">
+            <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
               <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_30px_rgba(201,184,130,0.15)] group cursor-pointer">
                 <Image
                   src="/img/realisations/moncovoitJV.png"
@@ -408,8 +392,8 @@ export default function Realisations() {
                 </div>
               </div>
 
-              {/* Cartes Techniques */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Cartes Techniques (Espacement augmenté à gap-6) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 project-card rounded-2xl">
                   <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
                     🛠️ Stack Technique
