@@ -233,14 +233,16 @@ export default function Competences() {
                 Niveau Avancé
               </h3>
               <div className="flex flex-wrap justify-center gap-3">
-                {["HTML/CSS", "Bootstrap"].map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-5 py-2.5 bg-[#c9b882]/10 border border-[#c9b882]/40 rounded-xl font-bold text-[#c9b882] dm-sans tracking-wide"
-                  >
-                    {skill}
-                  </span>
-                ))}
+                {["HTML/CSS", "Bootstrap", "PHP", "Architecture MVC"].map(
+                  (skill) => (
+                    <span
+                      key={skill}
+                      className="px-5 py-2.5 bg-[#c9b882]/10 border border-[#c9b882]/40 rounded-xl font-bold text-[#c9b882] dm-sans tracking-wide"
+                    >
+                      {skill}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
 
@@ -253,14 +255,13 @@ export default function Competences() {
               <div className="flex flex-wrap justify-center gap-3">
                 {[
                   "Python",
-                  "PHP",
-                  "Architecture MVC",
                   "Windows Forms",
                   "JSON",
                   "C",
                   "C++",
                   "C#",
                   "MySQL",
+                  "Java",
                 ].map((skill) => (
                   <span
                     key={skill}
@@ -283,7 +284,7 @@ export default function Competences() {
                   "JavaScript",
                   "TypeScript",
                   "Oracle",
-                  "Java",
+
                   "React",
                   "Next.js",
                   "Tailwind CSS",

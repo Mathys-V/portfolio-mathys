@@ -153,7 +153,6 @@ export default function Realisations() {
         {/* ================= SECTION 1 : PyRED ================= */}
         <section className="relative fade-up d2">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-            {/* ── COLONNE GAUCHE : LE TEXTE (La narration) ── */}
             <div className="flex-1 space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center gap-3 flex-wrap cinzel">
@@ -203,25 +202,38 @@ export default function Realisations() {
                   autonome de ces nouvelles topologies moléculaires complexes.
                 </p>
                 <p>
-                  Ma mission ne consistait pas à refondre l'outil, mais à
-                  étendre ses capacités pour répondre à ce besoin scientifique
-                  spécifique. J'ai conçu et implémenté un algorithme de
-                  raffinement capable de scanner les fragments générés,
-                  d'identifier les anomalies topologiques et de restaurer
-                  l'intégrité chimique de la molécule de manière autonome.
+                  Pour répondre à ce besoin scientifique, j'ai concentré mon
+                  travail sur{" "}
+                  <strong>l'extension des fonctionnalités existantes</strong> du
+                  logiciel. J'ai développé un module capable de{" "}
+                  <strong>vérifier automatiquement</strong> les structures
+                  moléculaires générées. Si celui-ci détecte une erreur de
+                  construction ou un défaut dans la structure, le code
+                  intervient immédiatement pour{" "}
+                  <strong>corriger la molécule</strong> et garantir sa{" "}
+                  <strong>cohérence chimique</strong>.
                 </p>
                 <p>
-                  Ce travail, réalisé dans un environnement Linux sous Python
-                  2.7, permet aujourd'hui d'automatiser la modélisation de ces
-                  nouveaux candidats-médicaments, évitant ainsi des corrections
-                  manuelles chronophages pour les chercheurs.
+                  Ce travail, réalisé sous Linux avec Python, a permis d'
+                  <strong>automatiser cette étape de contrôle</strong>.
+                  Concrètement, cela permet aux chercheurs d'
+                  <strong>éviter des corrections manuelles</strong> longues et
+                  fastidieuses, leur offrant ainsi un{" "}
+                  <strong>gain de temps précieux</strong> qu'ils peuvent
+                  désormais consacrer entièrement à l'analyse de leurs résultats
+                  de recherche.
                 </p>
               </div>
             </div>
 
-            {/* ── COLONNE DROITE : LES VISUELS ET LES CARTES TECHNIQUES ── */}
+            {/* ── COLONNE DROITE : LIEN VERS SITE ── */}
             <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
-              <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60">
+              <a
+                href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60"
+              >
                 <Image
                   src="/img/realisations/pyred-accueil.png"
                   alt="Accueil de la plateforme R.E.D. Server Development"
@@ -238,9 +250,8 @@ export default function Realisations() {
                     R.E.D. Server Development
                   </p>
                 </div>
-              </div>
+              </a>
 
-              {/* Cartes d'Impact et de Validation */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 project-card rounded-2xl">
                   <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
@@ -270,7 +281,6 @@ export default function Realisations() {
                 </div>
               </div>
 
-              {/* Bloc Compétences Mobilisées */}
               <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
                 <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
                   🧠 Compétences mobilisées
@@ -313,7 +323,6 @@ export default function Realisations() {
         {/* ================= SECTION 2 : MONCOVOITJV ================= */}
         <section className="relative fade-up d4">
           <div className="flex flex-col lg:flex-row-reverse gap-12 lg:gap-16 items-start">
-            {/* ── COLONNE TEXTE (Droite) ── */}
             <div className="flex-1 space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center justify-start gap-3 flex-wrap cinzel">
@@ -373,7 +382,12 @@ export default function Realisations() {
 
             {/* ── COLONNE VISUELS ET CARTES (Gauche) ── */}
             <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
-              <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_30px_rgba(201,184,130,0.15)] group cursor-pointer">
+              <a
+                href="https://github.com/Mathys-V/sae-covoiturage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_30px_rgba(201,184,130,0.15)] group cursor-pointer"
+              >
                 <Image
                   src="/img/realisations/moncovoitJV.png"
                   alt="Plateforme monCovoitJV"
@@ -390,9 +404,8 @@ export default function Realisations() {
                     Page d'Accueil
                   </p>
                 </div>
-              </div>
+              </a>
 
-              {/* Cartes Techniques */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 project-card rounded-2xl">
                   <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
@@ -407,6 +420,7 @@ export default function Realisations() {
                     <a
                       href="https://github.com/Mathys-V/sae-covoiturage"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-[#c9b882] hover:text-white underline font-bold transition-colors"
                     >
                       Git
@@ -422,6 +436,7 @@ export default function Realisations() {
                     <a
                       href="https://github.com/Mathys-V/sae-covoiturage"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Code sur GitHub
@@ -429,6 +444,7 @@ export default function Realisations() {
                     <a
                       href="/docs/Documentation-Technique-Equipe-W.pdf"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Documentation
@@ -437,6 +453,7 @@ export default function Realisations() {
                     <a
                       href="/docs/Guide-utilisateur-Equipe-W.pdf"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Guide
@@ -446,7 +463,6 @@ export default function Realisations() {
                 </div>
               </div>
 
-              {/* Bloc Compétences Mobilisées */}
               <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
                 <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
                   🧠 Compétences mobilisées
@@ -492,7 +508,6 @@ export default function Realisations() {
         {/* ================= SECTION 3 : SAE 2.01 (NOUVEAU PROJET) ================= */}
         <section className="relative fade-up d2">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-            {/* ── COLONNE GAUCHE : LE TEXTE (La narration) ── */}
             <div className="flex-1 space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center gap-3 flex-wrap cinzel">
@@ -551,9 +566,13 @@ export default function Realisations() {
               </div>
             </div>
 
-            {/* ── COLONNE DROITE : LES VISUELS ET LES CARTES TECHNIQUES ── */}
             <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
-              <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60">
+              <a
+                href="https://github.com/Mathys-V/SAE_E4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60"
+              >
                 <Image
                   src="/img/realisations/bus-calais.jpg"
                   alt="Carte du réseau de bus de Calais servant de base à l'application de transport"
@@ -570,9 +589,8 @@ export default function Realisations() {
                     Bus de Calais
                   </p>
                 </div>
-              </div>
+              </a>
 
-              {/* Cartes d'Impact et de Validation */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="p-6 project-card rounded-2xl">
                   <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
@@ -594,6 +612,7 @@ export default function Realisations() {
                     <a
                       href="https://github.com/Mathys-V/SAE_E4"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Code sur GitHub
@@ -601,6 +620,7 @@ export default function Realisations() {
                     <a
                       href="/docs/SAE-IHM-ARBRE-DE-TACHES.pdf"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Arbre des tâches
@@ -609,6 +629,7 @@ export default function Realisations() {
                     <a
                       href="/docs/SAE-IHM-MAQUETTE.pdf"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
                     >
                       <span className="text-[#c9b882]">◈</span> Maquette UI
@@ -618,7 +639,6 @@ export default function Realisations() {
                 </div>
               </div>
 
-              {/* Bloc Compétences Mobilisées */}
               <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
                 <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
                   🧠 Compétences mobilisées

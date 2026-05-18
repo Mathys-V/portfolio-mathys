@@ -30,39 +30,42 @@ export default function Header() {
     <>
       {/* ── Styles injectés pour les animations non-couvertes par Tailwind ── */}
       <style>{`
-        /* Orbite animée sous les liens de nav actifs / hover */
+        /* Orbite animée sous les liens de nav (Expansion depuis le centre) */
         .nav-link::after {
           content: '';
           position: absolute;
           bottom: -4px;
           left: 0;
-          width: 0;
+          width: 100%;
           height: 1px;
           background: linear-gradient(90deg, transparent, #c9b882, transparent);
-          transition: width 0.4s ease;
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: transform 0.4s ease;
         }
 
         .nav-link:hover::after,
         .nav-link.active::after {
-          width: 100%;
+          transform: scaleX(1);
         }
 
-        /* Point lumineux (étoile) qui se déplace le long du soulignement */
+        /* Point lumineux (étoile) qui apparaît au centre */
         .nav-link::before {
           content: '✦';
           position: absolute;
           bottom: -11px;
-          left: -8px;
+          left: calc(50% - 4.5px);
           font-size: 9px;
           color: #c9b882;
           opacity: 0;
-          transition: opacity 0.3s ease, left 0.4s ease;
+          transform: scale(0.5);
+          transition: opacity 0.3s ease, transform 0.4s ease;
         }
 
         .nav-link:hover::before,
         .nav-link.active::before {
           opacity: 1;
-          left: calc(50% - 4px);
+          transform: scale(1);
         }
 
         /* Lueur dorée sur le logo au hover */
@@ -82,7 +85,6 @@ export default function Header() {
             opacity: 0;
             transform: scale(0.9) translateY(-8px);
           }
-
           to {
             opacity: 1;
             transform: scale(1) translateY(0);
@@ -147,11 +149,7 @@ export default function Header() {
                   style={{
                     color: isActive ? "#c9b882" : "rgba(226, 232, 240, 0.85)",
                     fontFamily: "'Cinzel', serif",
-
-                    /* légèrement plus gros */
                     fontSize: "11.5px",
-
-                    /* un peu moins espacé pour éviter que ça colle au logo */
                     letterSpacing: "0.16em",
                   }}
                   onMouseEnter={(e) => {
@@ -172,24 +170,31 @@ export default function Header() {
             })}
           </nav>
 
-          {/* ── Bouton Hamburger Mobile ── */}
+          {/* ── Bouton Hamburger Mobile (Symétrie mathématique) ── */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 focus:outline-none flex items-center justify-center"
+            className="md:hidden p-2 focus:outline-none flex items-center justify-center relative z-50"
             aria-label="Toggle Menu"
           >
-            <div className="w-6 h-5 relative flex flex-col justify-between">
-              {[
-                isOpen ? "rotate-45 translate-y-2" : "",
-                isOpen ? "opacity-0" : "",
-                isOpen ? "-rotate-45 -translate-y-2" : "",
-              ].map((cls, i) => (
-                <span
-                  key={i}
-                  className={`w-full h-0.5 transition-all duration-300 ${cls}`}
-                  style={{ background: "#c9b882" }}
-                />
-              ))}
+            <div className="w-6 h-5 relative">
+              <span
+                className={`absolute left-0 w-full h-0.5 transition-all duration-300 ease-out rounded-full ${
+                  isOpen ? "top-2 rotate-45" : "top-0"
+                }`}
+                style={{ background: "#c9b882" }}
+              />
+              <span
+                className={`absolute left-0 top-2 w-full h-0.5 transition-all duration-300 ease-out rounded-full ${
+                  isOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+                }`}
+                style={{ background: "#c9b882" }}
+              />
+              <span
+                className={`absolute left-0 w-full h-0.5 transition-all duration-300 ease-out rounded-full ${
+                  isOpen ? "top-2 -rotate-45" : "top-4"
+                }`}
+                style={{ background: "#c9b882" }}
+              />
             </div>
           </button>
 
@@ -230,10 +235,7 @@ export default function Header() {
                           ? "#c9b882"
                           : "rgba(226, 232, 240, 0.85)",
                         fontFamily: "'Cinzel', serif",
-
-                        /* légèrement plus gros aussi sur mobile */
                         fontSize: "12px",
-
                         letterSpacing: "0.18em",
                       }}
                     >
@@ -248,7 +250,6 @@ export default function Header() {
                           flexShrink: 0,
                         }}
                       />
-
                       {link.label}
                     </Link>
                   );
