@@ -343,22 +343,52 @@ export default function Competences() {
               Outils & Systèmes
             </h2>
             <div className="grid grid-cols-1 gap-6">
-              {/* Dev & Gestion */}
+              {/* 1. Gestion & Méthodes */}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
-                  <span className="text-xl">🛠️</span> Dev & Gestion
+                  <span className="text-xl">📋</span> Méthodes & Gestion
+                </h4>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+                  {["Trello", "Méthodologies Agiles / Scrum"].map((tool) => (
+                    <span
+                      key={tool}
+                      className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-sm font-medium text-slate-100 dm-sans"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* 2. Version Control & DevOps */}
+              <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
+                <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
+                  <span className="text-xl">🚀</span> Version Control & DevOps
+                </h4>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+                  {["Git", "GitHub", "Docker"].map((tool) => (
+                    <span
+                      key={tool}
+                      className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-sm font-medium text-slate-100 dm-sans"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* 3. Environnements (IDE) & Tests */}
+              <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
+                <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
+                  <span className="text-xl">💻</span> IDE & Testing
                 </h4>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                   {[
-                    "Git",
-                    "GitHub",
-                    "Docker",
-                    "Trello",
-                    "Méthodologies Agiles / Scrum",
-                    "Postman",
                     "VS Code",
                     "IntelliJ",
                     "Visual Studio",
+                    "Android Studio",
+                    "Postman",
                   ].map((tool) => (
                     <span
                       key={tool}
@@ -370,10 +400,10 @@ export default function Competences() {
                 </div>
               </div>
 
-              {/* Systèmes d'exploitation */}
+              {/* Systèmes d'exploitation*/}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
-                  <span className="text-xl">💻</span> Systèmes d'exploitation
+                  <span className="text-xl">🖥️</span> Systèmes d'exploitation
                 </h4>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                   {["Linux Ubuntu", "Windows"].map((tool) => (
@@ -387,7 +417,7 @@ export default function Competences() {
                 </div>
               </div>
 
-              {/* Design & Bureautique */}
+              {/* Design & Bureautique  */}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
                   <span className="text-xl">🎨</span> Design & Bureautique
