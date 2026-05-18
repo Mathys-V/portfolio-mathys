@@ -451,7 +451,7 @@ export default function Competences() {
                 },
                 {
                   title: "Adaptabilité & Autonomie",
-                  desc: "Apprentissage rapide de nouveaux langages et outils en fonction des besoins.",
+                  desc: "Apprentissage de nouveaux langages et outils en fonction des besoins.",
                 },
                 {
                   title: "Rigueur Algorithmique",
