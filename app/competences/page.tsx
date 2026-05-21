@@ -507,7 +507,7 @@ export default function Competences() {
                   <span className="text-xl">🖥️</span> Systèmes d'exploitation
                 </h4>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-2">
-                  {["Linux Ubuntu", "Windows"].map((tool) => (
+                  {["Linux Ubuntu", "Windows", "VirtualBox"].map((tool) => (
                     <span
                       key={tool}
                       className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-sm font-medium text-slate-100 dm-sans"
