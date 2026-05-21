@@ -31,7 +31,7 @@ export default function Competences() {
           to   { transform: translateY(-100vh); }
         }
 
-        /* ── Animations d'entrée (Fade Up) ── */
+        /* ── Animations d'entrée ── */
         .fade-up {
           opacity: 0;
           transform: translateY(24px);
@@ -52,70 +52,78 @@ export default function Competences() {
 
         /* ── Cartes & Éléments UI ── */
         .cosmic-card {
-          background: rgba(226, 232, 240, 0.05); /* Opacité augmentée */
-          border: 1px solid rgba(201, 184, 130, 0.25); /* Bordure plus visible */
+          background: rgba(226, 232, 240, 0.08);
+          border: 1px solid rgba(201, 184, 130, 0.4);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          transition: all 0.3s ease;
         }
         .cosmic-card:hover {
-          background: rgba(226, 232, 240, 0.09);
-          border-color: rgba(201, 184, 130, 0.4);
+          background: rgba(226, 232, 240, 0.12);
+          border-color: rgba(201, 184, 130, 0.6);
           transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.1);
+          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.2);
         }
 
         .icon-badge {
-          background: rgba(201,184,130,0.15);
-          border: 1px solid rgba(201,184,130,0.3);
-        }
-
-        .nebula-purple {
-          background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
-        }
-        .nebula-gold {
-          background: radial-gradient(circle, rgba(201, 184, 130, 0.1) 0%, transparent 70%);
+          background: rgba(201,184,130,0.2);
+          border: 1px solid rgba(201,184,130,0.4);
         }
 
         /* ── Séparateur doré ── */
         .gold-sep {
-          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.7), transparent);
+          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent);
           animation: gSep 3s ease-in-out infinite;
           height: 1px;
           flex: 1;
         }
         @keyframes gSep {
           0%, 100% { opacity: 0.5; }
-          50%       { opacity: 1; }
+          50%      { opacity: 1; }
         }
 
-        /* ── CTA final ── */
         .cta-link {
           transition: all 0.3s ease;
-          color: rgba(226,232,240,0.85);
+          color: rgba(255,255,255,0.95);
           letter-spacing: 0.18em;
         }
         .cta-link:hover {
           color: #c9b882;
-          text-shadow: 0 0 16px rgba(201,184,130,0.5);
+          text-shadow: 0 0 16px rgba(201,184,130,0.6);
           letter-spacing: 0.24em;
         }
       `}</style>
 
-      {/* ── CIEL ÉTOILÉ DE FOND ── */}
+      {/* ── CIEL ÉTOILÉ & NÉBULEUSES ── */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="stars-sm" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 nebula-purple blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nebula-gold blur-3xl" />
+        <div
+          className="absolute blur-[80px]"
+          style={{
+            top: "5%",
+            left: "-5%",
+            width: "500px",
+            height: "500px",
+            background:
+              "radial-gradient(circle, rgba(192, 38, 211, 0.25) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-10 right-0 w-[600px] h-[600px] blur-[80px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
-      {/* ================= SECTION 1 : INTRODUCTION & RÉFLEXION ================= */}
+      {/* ================= SECTION 1 : INTRODUCTION ================= */}
       <section className="relative pt-32 pb-16 px-6 sm:px-12 z-10">
         <div className="relative max-w-4xl mx-auto text-center space-y-10">
           <div className="fade-up d1 space-y-6">
             <p
               className="cinzel tracking-[0.4em] text-xs uppercase font-bold"
-              style={{ color: "rgba(201,184,130,0.85)" }}
+              style={{ color: "rgba(201,184,130,1)" }}
             >
               ✦ &nbsp; Expertise &nbsp; ✦
             </p>
@@ -154,7 +162,7 @@ export default function Competences() {
             </h2>
             <div
               className="space-y-6 dm-sans text-lg leading-relaxed max-w-3xl font-normal"
-              style={{ color: "rgba(226,232,240,0.95)" }}
+              style={{ color: "rgba(255,255,255,0.95)" }}
             >
               <p>
                 Mon parcours en BUT Informatique (parcours RACA), couplé à mon
@@ -169,16 +177,12 @@ export default function Competences() {
                   rigueur algorithmique
                 </strong>{" "}
                 sur le code scientifique exigeant de PyRED. Une compétence
-                élargie lors de la ressource
-                <i> Architecture Logicielle</i>, à travers la conception d'une
-                plateforme E-commerce robuste exploitant le modèle MVC et la
-                création d'API REST.
+                élargie lors de la ressource <i>Architecture Logicielle</i>, à
+                travers la conception d'une plateforme E-commerce robuste
+                exploitant le modèle MVC et la création d'API REST.
               </p>
               <p>
-                J'ai également cultivé ma capacité d'
-                <strong className="text-[#c9b882] font-semibold">
-                  adaptation
-                </strong>{" "}
+                J'ai également cultivé ma capacité d'<strong>adaptation</strong>{" "}
                 en m'auto-formant à Python. Enfin, la{" "}
                 <strong className="text-[#c9b882] font-semibold">
                   communication interdisciplinaire
@@ -186,6 +190,113 @@ export default function Competences() {
                 s'est avérée essentielle, tant pour traduire les besoins des
                 chercheurs (Laboratoire AGIR) que pour collaborer efficacement
                 en méthode Agile sur <i>monCovoitJV</i>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SECTION : AXES DU PROGRAMME NATIONAL ================= */}
+      <section className="relative pb-16 px-6 sm:px-12 z-10 fade-up d3">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <div className="text-center space-y-3 mb-12">
+            <h2 className="text-3xl font-black text-[#ffffff] tracking-tight cinzel">
+              Compétences du{" "}
+              <span className="text-[#c9b882]">Programme National</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="cosmic-card p-8 rounded-[2rem] flex flex-col h-full">
+              <h3 className="text-xl font-black text-[#c9b882] uppercase tracking-widest cinzel mb-1">
+                Réaliser
+              </h3>
+              <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-widest cinzel mb-4">
+                Développer des applications
+              </h4>
+              <p
+                className="text-[14px] leading-relaxed dm-sans font-normal"
+                style={{ color: "rgba(255,255,255,0.9)" }}
+              >
+                Mon parcours en BUT m'a permis de concrétiser des architectures
+                logicielles et web robustes à travers mes différentes SAE.
+              </p>
+            </div>
+            <div className="cosmic-card p-8 rounded-[2rem] flex flex-col h-full">
+              <h3 className="text-xl font-black text-[#c9b882] uppercase tracking-widest cinzel mb-1">
+                Optimiser
+              </h3>
+              <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-widest cinzel mb-4">
+                Améliorer les performances
+              </h4>
+              <p
+                className="text-[14px] leading-relaxed dm-sans font-normal"
+                style={{ color: "rgba(255,255,255,0.9)" }}
+              >
+                J'ai appris à optimiser des algorithmes complexes, tant lors de
+                mon stage au laboratoire AGIR qu'en concevant des solutions
+                logicielles performantes en BUT.
+              </p>
+            </div>
+            <div className="cosmic-card p-8 rounded-[2rem] flex flex-col h-full">
+              <h3 className="text-xl font-black text-[#c9b882] uppercase tracking-widest cinzel mb-1">
+                Administrer
+              </h3>
+              <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-widest cinzel mb-4">
+                Systèmes complexes
+              </h4>
+              <p
+                className="text-[14px] leading-relaxed dm-sans font-normal"
+                style={{ color: "rgba(255,255,255,0.9)" }}
+              >
+                Mon stage en recherche a consolidé ma capacité à administrer des
+                environnements de développement sous Linux Ubuntu.
+              </p>
+            </div>
+            <div className="cosmic-card p-8 rounded-[2rem] flex flex-col h-full">
+              <h3 className="text-xl font-black text-[#c9b882] uppercase tracking-widest cinzel mb-1">
+                Gérer
+              </h3>
+              <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-widest cinzel mb-4">
+                Données & Information
+              </h4>
+              <p
+                className="text-[14px] leading-relaxed dm-sans font-normal"
+                style={{ color: "rgba(255,255,255,0.9)" }}
+              >
+                Mes projets en BUT m'ont formé à la modélisation de bases de
+                données relationnelles rigoureuses pour sécuriser l'information.
+              </p>
+            </div>
+            <div className="cosmic-card p-8 rounded-[2rem] flex flex-col h-full">
+              <h3 className="text-xl font-black text-[#c9b882] uppercase tracking-widest cinzel mb-1">
+                Conduire
+              </h3>
+              <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-widest cinzel mb-4">
+                Piloter un projet
+              </h4>
+              <p
+                className="text-[14px] leading-relaxed dm-sans font-normal"
+                style={{ color: "rgba(255,255,255,0.9)" }}
+              >
+                La méthodologie Agile apprise en BUT m'a permis de piloter des
+                projets de la phase de maquettage au suivi technique.
+              </p>
+            </div>
+            <div className="cosmic-card p-8 rounded-[2rem] flex flex-col h-full">
+              <h3 className="text-xl font-black text-[#c9b882] uppercase tracking-widest cinzel mb-1">
+                Collaborer
+              </h3>
+              <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-widest cinzel mb-4">
+                Travailler en équipe
+              </h4>
+              <p
+                className="text-[14px] leading-relaxed dm-sans font-normal"
+                style={{ color: "rgba(255,255,255,0.9)" }}
+              >
+                J'ai forgé mon esprit d'équipe sur des projets à six
+                développeurs en BUT et par mes échanges avec les chercheurs en
+                stage.
               </p>
             </div>
           </div>
@@ -210,7 +321,6 @@ export default function Competences() {
       {/* ================= SECTION 2 : HARD SKILLS (TECH) ================= */}
       <section className="py-8 px-6 sm:px-12 relative z-10 fade-up d4">
         <div className="max-w-6xl mx-auto space-y-12">
-          {/* Titre de transition et rappel */}
           <div className="text-center space-y-3">
             <h2 className="text-3xl font-black text-[#ffffff] tracking-tight cinzel">
               Langages, <span className="text-[#c9b882]">Frameworks</span> &
@@ -218,7 +328,7 @@ export default function Competences() {
             </h2>
             <p
               className="dm-sans font-normal"
-              style={{ color: "rgba(226,232,240,0.85)" }}
+              style={{ color: "rgba(255,255,255,0.85)" }}
             >
               Panorama de mes expertises techniques classées par niveau de
               maîtrise.
@@ -273,7 +383,7 @@ export default function Competences() {
               </div>
             </div>
 
-            {/* Niveau Débutant / En cours */}
+            {/* Niveau Débutant */}
             <div className="cosmic-card p-8 rounded-[2rem] flex flex-col items-center text-center">
               <h3 className="text-[12px] font-bold text-slate-300 uppercase tracking-widest flex items-center gap-3 cinzel mb-8">
                 <span className="w-2 h-2 bg-slate-500 rounded-full"></span>{" "}
@@ -284,7 +394,6 @@ export default function Competences() {
                   "JavaScript",
                   "TypeScript",
                   "Oracle",
-
                   "React",
                   "Next.js",
                   "Tailwind CSS",
@@ -337,13 +446,11 @@ export default function Competences() {
       {/* ================= SECTION 3 : OUTILS & SOFT SKILLS ================= */}
       <section className="pb-24 px-6 sm:px-12 relative z-10 fade-up d5">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* ── Outils & Systèmes ── */}
           <div className="space-y-8">
             <h2 className="text-3xl font-black text-[#ffffff] cinzel tracking-tight text-center lg:text-left">
               Outils & Systèmes
             </h2>
             <div className="grid grid-cols-1 gap-6">
-              {/* 1. Gestion & Méthodes */}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
                   <span className="text-xl">📋</span> Méthodes & Gestion
@@ -359,8 +466,6 @@ export default function Competences() {
                   ))}
                 </div>
               </div>
-
-              {/* 2. Version Control & DevOps */}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
                   <span className="text-xl">🚀</span> Version Control & DevOps
@@ -376,8 +481,6 @@ export default function Competences() {
                   ))}
                 </div>
               </div>
-
-              {/* 3. Environnements (IDE) & Tests */}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
                   <span className="text-xl">💻</span> IDE & Testing
@@ -399,8 +502,6 @@ export default function Competences() {
                   ))}
                 </div>
               </div>
-
-              {/* Systèmes d'exploitation*/}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
                   <span className="text-xl">🖥️</span> Systèmes d'exploitation
@@ -416,8 +517,6 @@ export default function Competences() {
                   ))}
                 </div>
               </div>
-
-              {/* Design & Bureautique  */}
               <div className="p-8 cosmic-card rounded-[2rem] flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h4 className="font-bold text-[#c9b882] mb-6 flex items-center gap-3 cinzel tracking-widest text-xs uppercase">
                   <span className="text-xl">🎨</span> Design & Bureautique
@@ -437,8 +536,6 @@ export default function Competences() {
               </div>
             </div>
           </div>
-
-          {/* ── Soft Skills ── */}
           <div className="space-y-8">
             <h2 className="text-3xl font-black text-[#ffffff] cinzel tracking-tight text-center lg:text-left">
               Soft Skills
@@ -471,7 +568,7 @@ export default function Competences() {
                   </h4>
                   <p
                     className="text-[15px] leading-relaxed dm-sans font-normal"
-                    style={{ color: "rgba(226,232,240,0.85)" }}
+                    style={{ color: "rgba(255,255,255,0.85)" }}
                   >
                     {skill.desc}
                   </p>
@@ -484,8 +581,8 @@ export default function Competences() {
 
       {/* ================= CTA FINAL ================= */}
       <section
-        className="py-20 text-center relative z-10 fade-up d5"
-        style={{ borderTop: "1px solid rgba(201,184,130,0.2)" }}
+        className="py-20 text-center relative z-10"
+        style={{ borderTop: "1px solid rgba(201,184,130,0.3)" }}
       >
         <div
           style={{
@@ -497,14 +594,13 @@ export default function Competences() {
             height: "1px",
             background:
               "linear-gradient(90deg, transparent, rgba(201,184,130,0.6), transparent)",
-            boxShadow: "0 0 30px 8px rgba(201,184,130,0.1)",
             pointerEvents: "none",
           }}
         />
         <p
           className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
           style={{
-            color: "rgba(201,184,130,0.8)",
+            color: "rgba(201,184,130,1)",
             fontFamily: "'Cinzel', serif",
           }}
         >
@@ -520,7 +616,7 @@ export default function Competences() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
           Me contacter
@@ -529,7 +625,7 @@ export default function Competences() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
         </Link>

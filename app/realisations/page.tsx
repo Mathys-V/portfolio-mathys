@@ -51,48 +51,41 @@ export default function Realisations() {
         .cinzel { font-family: 'Cinzel', serif; }
         .dm-sans { font-family: 'DM Sans', sans-serif; }
 
-        /* ── Cartes & Éléments UI ── */
+        /* ── Cartes & Éléments UI (Visibilité accrue) ── */
         .project-card {
-          background: rgba(226, 232, 240, 0.05);
-          border: 1px solid rgba(201, 184, 130, 0.25);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          background: rgba(226, 232, 240, 0.08);
+          border: 1px solid rgba(201, 184, 130, 0.4);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           transition: all 0.4s ease;
         }
         .project-card:hover {
-          border-color: rgba(201, 184, 130, 0.45);
-          background: rgba(226, 232, 240, 0.08);
-          box-shadow: 0 0 30px rgba(201, 184, 130, 0.15);
-        }
-
-        .nebula-purple {
-          background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
-        }
-        .nebula-gold {
-          background: radial-gradient(circle, rgba(201, 184, 130, 0.12) 0%, transparent 70%);
+          border-color: rgba(201, 184, 130, 0.6);
+          background: rgba(226, 232, 240, 0.12);
+          box-shadow: 0 0 30px rgba(201, 184, 130, 0.2);
         }
 
         /* ── Séparateur doré animé ── */
         .gold-sep {
-          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.7), transparent);
+          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent);
           animation: gSep 3s ease-in-out infinite;
           height: 1px;
           flex: 1;
         }
         @keyframes gSep {
           0%, 100% { opacity: 0.5; }
-          50%       { opacity: 1; }
+          50%      { opacity: 1; }
         }
 
         /* ── CTA final ── */
         .cta-link {
           transition: all 0.3s ease;
-          color: rgba(226,232,240,0.85);
+          color: rgba(255, 255, 255, 0.95);
           letter-spacing: 0.18em;
         }
         .cta-link:hover {
           color: #c9b882;
-          text-shadow: 0 0 16px rgba(201,184,130,0.5);
+          text-shadow: 0 0 16px rgba(201,184,130,0.6);
           letter-spacing: 0.24em;
         }
       `}</style>
@@ -100,8 +93,26 @@ export default function Realisations() {
       {/* ── CIEL ÉTOILÉ DE FOND ── */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="stars-sm" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 nebula-purple blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nebula-gold blur-3xl" />
+        {/* Nébuleuse Magenta */}
+        <div
+          className="absolute blur-[80px]"
+          style={{
+            top: "10%",
+            left: "5%",
+            width: "500px",
+            height: "500px",
+            background:
+              "radial-gradient(circle, rgba(192, 38, 211, 0.25) 0%, transparent 70%)",
+          }}
+        />
+        {/* Nébuleuse Cyan */}
+        <div
+          className="absolute bottom-10 right-5 w-[600px] h-[600px] blur-[80px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
       {/* ================= HEADER DE LA PAGE ================= */}
@@ -109,7 +120,7 @@ export default function Realisations() {
         <div className="relative max-w-4xl mx-auto text-center space-y-8 fade-up d1">
           <p
             className="cinzel tracking-[0.4em] text-xs uppercase font-bold"
-            style={{ color: "rgba(201,184,130,0.85)" }}
+            style={{ color: "rgba(201,184,130,1)" }}
           >
             ✦ &nbsp; Portfolio Technique &nbsp; ✦
           </p>
@@ -139,7 +150,7 @@ export default function Realisations() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed dm-sans font-normal"
-            style={{ color: "rgba(226,232,240,0.95)" }}
+            style={{ color: "rgba(255,255,255,0.9)" }}
           >
             Une immersion dans mes projets les plus marquants, de l'optimisation
             algorithmique pour la recherche internationale au développement
@@ -162,7 +173,7 @@ export default function Realisations() {
                   <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
                     R&D Scientifique
                   </span>
-                  <span className="text-slate-300 text-[11px] font-bold uppercase tracking-wider">
+                  <span className="text-slate-100 text-[11px] font-bold uppercase tracking-wider">
                     Stage • Labo AGIR (UPJV)
                   </span>
                 </div>
@@ -180,7 +191,7 @@ export default function Realisations() {
 
               <div
                 className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
-                style={{ color: "rgba(226,232,240,0.9)" }}
+                style={{ color: "rgba(255,255,255,0.9)" }}
               >
                 <p>
                   Le logiciel PyRED est une référence dans la génération
@@ -217,8 +228,8 @@ export default function Realisations() {
                   Ce travail, réalisé sous Linux avec Python, a permis d'
                   <strong>automatiser cette étape de contrôle</strong>.
                   Concrètement, cela permet aux chercheurs d'
-                  <strong>éviter des corrections manuelles</strong> longues et
-                  fastidieuses, leur offrant ainsi un{" "}
+                  <strong>éviter des corrections manuelles </strong>
+                  longues et fastidieuses, leur offrant ainsi un{" "}
                   <strong>gain de temps précieux</strong> qu'ils peuvent
                   désormais consacrer entièrement à l'analyse de leurs résultats
                   de recherche.
@@ -259,7 +270,7 @@ export default function Realisations() {
                   </h4>
                   <p
                     className="text-sm dm-sans font-medium leading-relaxed"
-                    style={{ color: "rgba(226,232,240,0.9)" }}
+                    style={{ color: "rgba(255,255,255,0.9)" }}
                   >
                     Algorithme intégré au serveur mondial et co-auteur d'une
                     future publication internationale avec l'University of
@@ -272,7 +283,7 @@ export default function Realisations() {
                   </h4>
                   <p
                     className="text-sm dm-sans font-medium leading-relaxed"
-                    style={{ color: "rgba(226,232,240,0.9)" }}
+                    style={{ color: "rgba(255,255,255,0.9)" }}
                   >
                     La solution est désormais pleinement intégrée au code source
                     de PyRED, garantissant la viabilité chimique des fragments
@@ -332,7 +343,7 @@ export default function Realisations() {
                   <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
                     SAE • Développement Full Stack
                   </span>
-                  <span className="text-slate-300 text-[11px] font-bold uppercase tracking-wider">
+                  <span className="text-slate-100 text-[11px] font-bold uppercase tracking-wider">
                     Équipe W • IUT d'Amiens
                   </span>
                 </div>
@@ -348,7 +359,7 @@ export default function Realisations() {
 
               <div
                 className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
-                style={{ color: "rgba(226,232,240,0.9)" }}
+                style={{ color: "rgba(255,255,255,0.9)" }}
               >
                 <p>
                   Dans le cadre de la SAE (Situation d'Apprentissage Évaluée)
@@ -413,7 +424,7 @@ export default function Realisations() {
                   </h4>
                   <p
                     className="text-sm dm-sans leading-relaxed font-medium"
-                    style={{ color: "rgba(226,232,240,0.9)" }}
+                    style={{ color: "rgba(255,255,255,0.9)" }}
                   >
                     Architecture MVC (PHP), PDO, MySQL. Gestion de projet via
                     Trello et{" "}
@@ -517,7 +528,7 @@ export default function Realisations() {
                   <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
                     SAE 2.01 • C# / WinForms
                   </span>
-                  <span className="text-slate-300 text-[11px] font-bold uppercase tracking-wider">
+                  <span className="text-slate-100 text-[11px] font-bold uppercase tracking-wider">
                     Équipe E4 • IUT d'Amiens
                   </span>
                 </div>
@@ -535,7 +546,7 @@ export default function Realisations() {
 
               <div
                 className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
-                style={{ color: "rgba(226,232,240,0.9)" }}
+                style={{ color: "rgba(255,255,255,0.9)" }}
               >
                 <p>
                   Dans le cadre de la SAE 2.01 clôturant ma première année de
@@ -598,7 +609,7 @@ export default function Realisations() {
                   </h4>
                   <p
                     className="text-sm dm-sans font-medium leading-relaxed"
-                    style={{ color: "rgba(226,232,240,0.9)" }}
+                    style={{ color: "rgba(255,255,255,0.9)" }}
                   >
                     C# (.NET), Windows Forms, MySQL. Implémentation de
                     structures de graphes et requêtes SQL complexes.
@@ -669,7 +680,7 @@ export default function Realisations() {
       {/* ================= CTA FINAL ================= */}
       <section
         className="py-20 text-center relative z-10 fade-up d5"
-        style={{ borderTop: "1px solid rgba(201,184,130,0.2)" }}
+        style={{ borderTop: "1px solid rgba(201,184,130,0.3)" }}
       >
         <div
           style={{
@@ -680,15 +691,14 @@ export default function Realisations() {
             width: "400px",
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent, rgba(201,184,130,0.6), transparent)",
-            boxShadow: "0 0 30px 8px rgba(201,184,130,0.1)",
+              "linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent)",
             pointerEvents: "none",
           }}
         />
         <p
           className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
           style={{
-            color: "rgba(201,184,130,0.8)",
+            color: "rgba(201,184,130,1)",
             fontFamily: "'Cinzel', serif",
           }}
         >
@@ -704,7 +714,7 @@ export default function Realisations() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
           Consulter mes compétences et acquis techniques
@@ -713,7 +723,7 @@ export default function Realisations() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
         </Link>

@@ -1,8 +1,5 @@
 // ============================================================
-// FOOTER — Thème Astronomie / Astrologie
-// Motif de constellation SVG inline
-// Liens sociaux avec hover glow
-// Citation astronomique stylisée + copyright
+// FOOTER — Thème Astronomie
 // ============================================================
 
 export default function Footer() {
@@ -12,8 +9,9 @@ export default function Footer() {
     <footer
       className="w-full mt-auto relative overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #020817 0%, #050d1f 100%)",
-        borderTop: "1px solid rgba(201, 184, 130, 0.15)",
+        background: "linear-gradient(180deg, #03091a 0%, #020817 100%)",
+        borderTop: "1px solid rgba(201, 184, 130, 0.4)",
+        boxShadow: "0 -4px 20px rgba(0,0,0,0.4)",
       }}
     >
       {/* ── Styles pour les animations du footer ── */}
@@ -22,7 +20,7 @@ export default function Footer() {
         .social-link {
           position: relative;
           transition: all 0.3s ease;
-          color: rgba(226, 232, 240, 0.85); /* Opacité augmentée pour la lisibilité */
+          color: rgba(226, 232, 240, 0.9);
         }
         .social-link:hover {
           color: #c9b882;
@@ -39,13 +37,13 @@ export default function Footer() {
         .star-twinkle:nth-child(5) { animation-delay: 0.4s; }
 
         @keyframes twinkle {
-          0%, 100% { opacity: 0.4; r: 2; }
-          50%       { opacity: 1;   r: 3; }
+          0%, 100% { opacity: 0.6; r: 2; }
+          50%      { opacity: 1;   r: 3; }
         }
 
         /* Lueur centrale de la constellation */
         .constellation-glow {
-          filter: drop-shadow(0 0 6px rgba(201, 184, 130, 0.5));
+          filter: drop-shadow(0 0 8px rgba(201, 184, 130, 0.6));
         }
       `}</style>
 
@@ -58,13 +56,13 @@ export default function Footer() {
           className="w-full h-full constellation-glow"
           aria-hidden="true"
         >
-          {/* Liaisons discrètes */}
+          {/* Liaisons */}
           <line
             x1="170"
             y1="28"
             x2="205"
             y2="20"
-            stroke="rgba(201,184,130,0.18)"
+            stroke="rgba(201,184,130,0.3)"
             strokeWidth="0.5"
           />
           <line
@@ -72,7 +70,7 @@ export default function Footer() {
             y1="20"
             x2="235"
             y2="35"
-            stroke="rgba(201,184,130,0.18)"
+            stroke="rgba(201,184,130,0.3)"
             strokeWidth="0.5"
           />
           <line
@@ -80,7 +78,7 @@ export default function Footer() {
             y1="35"
             x2="215"
             y2="55"
-            stroke="rgba(201,184,130,0.18)"
+            stroke="rgba(201,184,130,0.3)"
             strokeWidth="0.5"
           />
           <line
@@ -88,7 +86,7 @@ export default function Footer() {
             y1="55"
             x2="180"
             y2="52"
-            stroke="rgba(201,184,130,0.18)"
+            stroke="rgba(201,184,130,0.3)"
             strokeWidth="0.5"
           />
           <line
@@ -96,7 +94,7 @@ export default function Footer() {
             y1="52"
             x2="170"
             y2="28"
-            stroke="rgba(201,184,130,0.18)"
+            stroke="rgba(201,184,130,0.3)"
             strokeWidth="0.5"
           />
           <line
@@ -104,7 +102,7 @@ export default function Footer() {
             y1="20"
             x2="255"
             y2="18"
-            stroke="rgba(201,184,130,0.12)"
+            stroke="rgba(201,184,130,0.2)"
             strokeWidth="0.5"
           />
 
@@ -153,20 +151,20 @@ export default function Footer() {
           />
 
           {/* Petites étoiles secondaires */}
-          <circle cx="150" cy="42" r="1" fill="#e2e8f0" opacity="0.5" />
-          <circle cx="245" cy="60" r="1" fill="#e2e8f0" opacity="0.4" />
-          <circle cx="275" cy="40" r="1" fill="#c9b882" opacity="0.5" />
+          <circle cx="150" cy="42" r="1" fill="#e2e8f0" opacity="0.6" />
+          <circle cx="245" cy="60" r="1" fill="#e2e8f0" opacity="0.5" />
+          <circle cx="275" cy="40" r="1" fill="#c9b882" opacity="0.6" />
         </svg>
       </div>
 
       {/* ── Contenu principal du footer ── */}
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-10">
-        {/* Citation inspirée des Pléiades */}
+        {/* Citation */}
         <div className="text-center mb-10">
           <p
             className="text-xs tracking-[0.3em] uppercase mb-2 font-bold"
             style={{
-              color: "rgba(201,184,130,0.85)",
+              color: "rgba(201,184,130,0.9)",
               fontFamily: "'Cinzel', serif",
             }}
           >
@@ -176,7 +174,7 @@ export default function Footer() {
           <p
             className="text-xs font-medium"
             style={{
-              color: "rgba(226,232,240,0.7)",
+              color: "rgba(226,232,240,0.85)",
               fontFamily: "'DM Sans', sans-serif",
               letterSpacing: "0.05em",
             }}
@@ -193,20 +191,17 @@ export default function Footer() {
             width: "120px",
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent)",
+              "linear-gradient(90deg, transparent, rgba(201,184,130,0.9), transparent)",
           }}
         />
 
-        {/* ── SECTION D'ALIGNEMENT CORRIGÉE ── */}
-        {/* En forçant chaque bloc à prendre 1/3 de l'espace (md:w-1/3), l'élément central (les réseaux) 
-            sera parfaitement et mathématiquement aligné avec l'axe central de la page. */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 w-full">
           {/* Bloc de Gauche : Copyright */}
           <div className="md:w-1/3 flex justify-center md:justify-start">
             <p
               className="text-xs tracking-widest font-bold text-center md:text-left"
               style={{
-                color: "rgba(226,232,240,0.65)",
+                color: "rgba(226,232,240,0.8)",
                 fontFamily: "'Cinzel', serif",
                 fontSize: "10px",
                 letterSpacing: "0.15em",
@@ -216,9 +211,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Bloc Central : Liens sociaux avec icônes SVG */}
+          {/* Bloc Central : Liens sociaux */}
           <div className="md:w-1/3 flex justify-center items-center gap-8">
-            {/* LinkedIn */}
             <a
               href="https://linkedin.com/in/mathys-vanheulle"
               target="_blank"
@@ -246,12 +240,10 @@ export default function Footer() {
               </span>
             </a>
 
-            {/* Séparateur étoile (Parfaitement centré) */}
-            <span style={{ color: "rgba(201,184,130,0.6)", fontSize: "8px" }}>
+            <span style={{ color: "rgba(201,184,130,0.7)", fontSize: "8px" }}>
               ✦
             </span>
 
-            {/* GitHub */}
             <a
               href="https://github.com/Mathys-V"
               target="_blank"
@@ -286,12 +278,12 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Bloc de Droite : Mention de fait à la main */}
+          {/* Bloc de Droite : Mention */}
           <div className="md:w-1/3 flex justify-center md:justify-end">
             <p
               className="text-xs font-medium text-center md:text-right"
               style={{
-                color: "rgba(226,232,240,0.6)",
+                color: "rgba(226,232,240,0.75)",
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "11px",
               }}
@@ -301,18 +293,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* ── Lueur de fond subtile en bas de page ── */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none"
-        style={{
-          width: "600px",
-          height: "1px",
-          background:
-            "linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent)",
-          boxShadow: "0 0 40px 10px rgba(59,130,246,0.15)",
-        }}
-      />
     </footer>
   );
 }

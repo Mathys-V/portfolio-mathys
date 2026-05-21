@@ -34,7 +34,7 @@ export default function About() {
             140px 900px #fff, 580px 940px #fff, 980px 880px #fff,
             1420px 200px #fff, 350px 300px #fff, 870px 370px #fff,
             1160px 480px #fff, 30px 410px #fff, 1460px 540px #fff;
-          opacity: 0.5;
+          opacity: 0.6;
           animation: starDrift 150s linear infinite;
         }
         .ab-stars-md {
@@ -44,7 +44,7 @@ export default function About() {
             360px 520px 1px #fff, 740px 620px 1px #c9b882,
             1080px 700px 1px #e2e8f0, 100px 750px 1px #fff,
             1380px 650px 1px #c9b882, 620px 830px 1px #e2e8f0;
-          opacity: 0.35;
+          opacity: 0.5;
           animation: starDrift 100s linear infinite;
         }
 
@@ -68,129 +68,115 @@ export default function About() {
 
         /* ── Carte cosmique ── */
         .cosmic-card {
-          background: rgba(226, 232, 240, 0.05);
-          border: 1px solid rgba(201, 184, 130, 0.25);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          background: rgba(226, 232, 240, 0.08);
+          border: 1px solid rgba(201, 184, 130, 0.4);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          transition: all 0.3s ease;
         }
         .cosmic-card:hover {
-          background: rgba(226, 232, 240, 0.09);
-          border-color: rgba(201, 184, 130, 0.4);
+          background: rgba(226, 232, 240, 0.12);
+          border-color: rgba(201, 184, 130, 0.6);
           transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.1);
+          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.2);
         }
 
-        /* ── Bloc exemple interne ── */
         .example-block {
-          background: rgba(201, 184, 130, 0.08);
-          border: 1px solid rgba(201, 184, 130, 0.2);
+          background: rgba(201, 184, 130, 0.12);
+          border: 1px solid rgba(201, 184, 130, 0.3);
           border-radius: 1rem;
           padding: 1.25rem;
         }
 
-        /* ── Carte sombre piège autonomie ── */
         .dark-card {
-          background: rgba(226,232,240,0.06);
-          border: 1px solid rgba(201,184,130,0.25);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          background: rgba(226,232,240,0.08);
+          border: 1px solid rgba(201,184,130,0.4);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
         }
         .dark-card-inner {
-          background: rgba(201,184,130,0.1);
-          border: 1px solid rgba(201,184,130,0.2);
-        }
-
-        /* ── Badge icône ── */
-        .icon-badge {
-          background: rgba(201,184,130,0.15);
+          background: rgba(201,184,130,0.2);
           border: 1px solid rgba(201,184,130,0.3);
         }
 
-        /* ── Timeline ── */
+        .icon-badge {
+          background: rgba(201,184,130,0.2);
+          border: 1px solid rgba(201,184,130,0.4);
+        }
+
         .tl-line {
           position: absolute;
-          left: 24px; /* Centré exactement sous l'icône de 48px de large (w-12) sur mobile */
+          left: 24px;
           top: 0; bottom: 0;
           width: 2px;
-          background: linear-gradient(180deg, transparent, rgba(201,184,130,0.5), transparent);
+          background: linear-gradient(180deg, transparent, rgba(201,184,130,0.6), transparent);
           z-index: 0;
         }
         @media (min-width: 768px) {
-          .tl-line {
-            left: 50%;
-            transform: translateX(-50%);
-          }
+          .tl-line { left: 50%; transform: translateX(-50%); }
         }
         .tl-node-gold {
           background: linear-gradient(135deg, #c9b882, #a89060);
-          box-shadow: 0 0 14px rgba(201,184,130,0.6), 0 0 28px rgba(201,184,130,0.3);
+          box-shadow: 0 0 14px rgba(201,184,130,0.8);
           color: #020817;
         }
         .tl-node {
-          background: rgba(226,232,240,0.1);
-          border: 1px solid rgba(201,184,130,0.4);
-          color: rgba(226,232,240,0.9);
+          background: rgba(226,232,240,0.15);
+          border: 1px solid rgba(201,184,130,0.5);
+          color: rgba(226,232,240,0.95);
         }
 
-        /* ── Séparateur doré animé ── */
         .gold-sep {
-          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.7), transparent);
-          animation: gSep 3s ease-in-out infinite;
+          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent);
           height: 1px;
           flex: 1;
         }
-        @keyframes gSep {
-          0%, 100% { opacity: 0.5; }
-          50%       { opacity: 1; }
-        }
-
-        /* ── Section title underline ── */
         .sec-line {
-          background: linear-gradient(90deg, rgba(201,184,130,0.7), transparent);
+          background: linear-gradient(90deg, rgba(201,184,130,0.8), transparent);
           height: 1px;
           flex: 1;
         }
-
-        /* ── CTA final ── */
         .cta-link {
           transition: all 0.3s ease;
-          color: rgba(226,232,240,0.85);
+          color: rgba(255,255,255,0.95);
           letter-spacing: 0.18em;
         }
         .cta-link:hover {
           color: #c9b882;
-          text-shadow: 0 0 16px rgba(201,184,130,0.5);
-          letter-spacing: 0.24em;
+          text-shadow: 0 0 16px rgba(201,184,130,0.6);
         }
       `}</style>
 
-      {/* ── Fond étoilé ── */}
+      {/* ── Fond étoilé et Nébuleuses vives ── */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="ab-stars-sm" />
         <div className="ab-stars-md" />
+        {/* Nébuleuse Magenta */}
         <div
           style={{
             position: "absolute",
-            top: "15%",
-            right: "-8%",
-            width: "500px",
-            height: "500px",
+            top: "5%",
+            right: "-10%",
+            width: "600px",
+            height: "600px",
             background:
-              "radial-gradient(circle, rgba(30,58,138,0.2) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(192, 38, 211, 0.3) 0%, transparent 70%)",
             borderRadius: "50%",
+            filter: "blur(60px)",
           }}
         />
+        {/* Nébuleuse Cyan */}
         <div
           style={{
             position: "absolute",
-            bottom: "15%",
-            left: "-8%",
-            width: "400px",
-            height: "400px",
+            bottom: "5%",
+            left: "-10%",
+            width: "700px",
+            height: "700px",
             background:
-              "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%)",
             borderRadius: "50%",
+            filter: "blur(60px)",
           }}
         />
       </div>
@@ -203,7 +189,7 @@ export default function About() {
           <p
             className="fade-up d1 tracking-[0.3em] uppercase text-xs font-bold"
             style={{
-              color: "rgba(201,184,130,0.85)",
+              color: "rgba(201,184,130,1)",
               fontFamily: "'Cinzel', serif",
             }}
           >
@@ -243,7 +229,7 @@ export default function About() {
             <p
               className="text-lg md:text-xl leading-relaxed"
               style={{
-                color: "rgba(226,232,240,0.95)",
+                color: "rgba(255,255,255,0.95)",
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 400,
               }}
@@ -285,7 +271,7 @@ export default function About() {
             <p
               className="text-lg"
               style={{
-                color: "rgba(226,232,240,0.85)",
+                color: "rgba(255,255,255,0.9)",
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
@@ -335,7 +321,7 @@ export default function About() {
                 <p
                   className="leading-relaxed mb-8 flex-1"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -344,7 +330,7 @@ export default function About() {
                   m'attache à comprendre l'architecture globale d'un projet
                   avant de modifier la moindre instruction.
                 </p>
-                <div className="example-block">
+                <div className="dark-card-inner p-5 rounded-2xl">
                   <p
                     className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2"
                     style={{ color: "#c9b882", fontFamily: "'Cinzel', serif" }}
@@ -354,7 +340,7 @@ export default function About() {
                   <p
                     className="text-sm leading-relaxed"
                     style={{
-                      color: "rgba(226,232,240,0.9)",
+                      color: "rgba(255,255,255,0.9)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -389,7 +375,7 @@ export default function About() {
                 <p
                   className="leading-relaxed mb-8 flex-1"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -398,7 +384,7 @@ export default function About() {
                   m'assurer que le code répond exactement à la réalité du
                   terrain et aux besoins des utilisateurs.
                 </p>
-                <div className="example-block">
+                <div className="dark-card-inner p-5 rounded-2xl">
                   <p
                     className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2"
                     style={{ color: "#c9b882", fontFamily: "'Cinzel', serif" }}
@@ -408,7 +394,7 @@ export default function About() {
                   <p
                     className="text-sm leading-relaxed"
                     style={{
-                      color: "rgba(226,232,240,0.9)",
+                      color: "rgba(255,255,255,0.9)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -474,7 +460,7 @@ export default function About() {
                   <p
                     className="leading-relaxed"
                     style={{
-                      color: "rgba(226,232,240,0.85)",
+                      color: "rgba(255,255,255,0.9)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -494,7 +480,7 @@ export default function About() {
                   <p
                     className="text-sm leading-relaxed"
                     style={{
-                      color: "rgba(226,232,240,0.9)",
+                      color: "rgba(255,255,255,0.9)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -526,7 +512,7 @@ export default function About() {
                 <p
                   className="leading-relaxed"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -562,7 +548,7 @@ export default function About() {
                 <p
                   className="leading-relaxed"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -583,9 +569,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          SÉPARATEUR
-      ══════════════════════════════════════════ */}
+      {/* ================= SÉPARATEUR  ================= */}
       <div className="relative flex justify-center items-center py-12 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
         <div className="gold-sep" />
         <span
@@ -609,7 +593,7 @@ export default function About() {
             <p
               className="tracking-[0.3em] uppercase text-xs mb-4 font-bold"
               style={{
-                color: "rgba(201,184,130,0.85)",
+                color: "rgba(201,184,130,1)",
                 fontFamily: "'Cinzel', serif",
               }}
             >
@@ -624,7 +608,7 @@ export default function About() {
             <p
               className="mt-2 text-lg"
               style={{
-                color: "rgba(226,232,240,0.85)",
+                color: "rgba(255,255,255,0.9)",
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
@@ -638,16 +622,12 @@ export default function About() {
 
             {/* ── Stage Python ── */}
             <div className="relative flex flex-col md:flex-row items-center group">
-              {/* Bulle Centrée (Bureau) */}
               <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node-gold items-center justify-center text-xl shadow-lg shadow-[#c9b882]/20">
                 🚀
               </div>
-              {/* Bulle Gauche (Mobile) */}
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node-gold flex items-center justify-center text-xl shadow-lg shadow-[#c9b882]/20">
                 🚀
               </div>
-
-              {/* Carte */}
               <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
@@ -674,7 +654,7 @@ export default function About() {
                 <div
                   className="text-sm mb-3 italic font-medium"
                   style={{
-                    color: "rgba(201,184,130,0.85)",
+                    color: "rgba(201,184,130,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -683,7 +663,7 @@ export default function About() {
                 <p
                   className="text-sm leading-relaxed"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -703,7 +683,6 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 🚗
               </div>
-
               <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
@@ -719,7 +698,7 @@ export default function About() {
                   <time
                     className="text-xs font-bold uppercase"
                     style={{
-                      color: "rgba(226,232,240,0.7)",
+                      color: "rgba(201,184,130,0.9)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -730,7 +709,7 @@ export default function About() {
                 <div
                   className="text-sm mb-3 font-medium"
                   style={{
-                    color: "rgba(201,184,130,0.85)",
+                    color: "rgba(201,184,130,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -739,7 +718,7 @@ export default function About() {
                 <p
                   className="text-sm leading-relaxed"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -758,7 +737,6 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 🚌
               </div>
-
               <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
@@ -774,7 +752,7 @@ export default function About() {
                   <time
                     className="text-xs font-bold uppercase"
                     style={{
-                      color: "rgba(226,232,240,0.7)",
+                      color: "rgba(201,184,130,0.9)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -785,7 +763,7 @@ export default function About() {
                 <div
                   className="text-sm mb-3 font-medium"
                   style={{
-                    color: "rgba(201,184,130,0.85)",
+                    color: "rgba(201,184,130,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -794,7 +772,7 @@ export default function About() {
                 <p
                   className="text-sm leading-relaxed"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -814,7 +792,6 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 🎓
               </div>
-
               <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
@@ -830,7 +807,7 @@ export default function About() {
                   <time
                     className="text-xs font-bold uppercase"
                     style={{
-                      color: "rgba(226,232,240,0.7)",
+                      color: "rgba(201,184,130,0.9)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -841,7 +818,7 @@ export default function About() {
                 <div
                   className="text-sm mb-3 font-medium"
                   style={{
-                    color: "rgba(201,184,130,0.85)",
+                    color: "rgba(201,184,130,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -850,7 +827,7 @@ export default function About() {
                 <p
                   className="text-sm leading-relaxed"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -868,7 +845,6 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 📜
               </div>
-
               <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
@@ -884,7 +860,7 @@ export default function About() {
                   <time
                     className="text-xs font-bold uppercase"
                     style={{
-                      color: "rgba(226,232,240,0.7)",
+                      color: "rgba(201,184,130,0.9)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -895,7 +871,7 @@ export default function About() {
                 <div
                   className="text-sm mb-3 font-medium"
                   style={{
-                    color: "rgba(201,184,130,0.85)",
+                    color: "rgba(201,184,130,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -904,7 +880,7 @@ export default function About() {
                 <p
                   className="text-sm leading-relaxed"
                   style={{
-                    color: "rgba(226,232,240,0.85)",
+                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -921,7 +897,7 @@ export default function About() {
       ══════════════════════════════════════════ */}
       <section
         className="py-20 text-center relative z-10"
-        style={{ borderTop: "1px solid rgba(201,184,130,0.2)" }}
+        style={{ borderTop: "1px solid rgba(201,184,130,0.3)" }}
       >
         <div
           style={{
@@ -932,15 +908,14 @@ export default function About() {
             width: "400px",
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent, rgba(201,184,130,0.6), transparent)",
-            boxShadow: "0 0 30px 8px rgba(201,184,130,0.1)",
+              "linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent)",
             pointerEvents: "none",
           }}
         />
         <p
           className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
           style={{
-            color: "rgba(201,184,130,0.8)",
+            color: "rgba(201,184,130,1)",
             fontFamily: "'Cinzel', serif",
           }}
         >
@@ -956,7 +931,7 @@ export default function About() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
           Découvrir mes réalisations techniques
@@ -965,7 +940,7 @@ export default function About() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
         </Link>

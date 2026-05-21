@@ -70,36 +70,29 @@ export default function Contact() {
         .cinzel { font-family: 'Cinzel', serif; }
         .dm-sans { font-family: 'DM Sans', sans-serif; }
 
-        /* ── Cartes & Éléments UI ── */
+        /* ── Cartes & Éléments UI (Visibilité accrue) ── */
         .cosmic-card {
-          background: rgba(226, 232, 240, 0.05); /* Opacité augmentée */
-          border: 1px solid rgba(201, 184, 130, 0.25); /* Bordure plus visible */
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          background: rgba(226, 232, 240, 0.08);
+          border: 1px solid rgba(201, 184, 130, 0.4);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          transition: all 0.3s ease;
         }
         .cosmic-card:hover {
-          background: rgba(226, 232, 240, 0.09);
-          border-color: rgba(201, 184, 130, 0.4);
+          background: rgba(226, 232, 240, 0.12);
+          border-color: rgba(201, 184, 130, 0.6);
           transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.1);
+          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.2);
         }
 
         .icon-badge {
-          background: rgba(201,184,130,0.15);
-          border: 1px solid rgba(201,184,130,0.3);
-        }
-
-        .nebula-purple {
-          background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
-        }
-        .nebula-gold {
-          background: radial-gradient(circle, rgba(201, 184, 130, 0.1) 0%, transparent 70%);
+          background: rgba(201,184,130,0.2);
+          border: 1px solid rgba(201,184,130,0.4);
         }
 
         /* ── Séparateur doré ── */
         .gold-sep {
-          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.7), transparent); /* Opacité augmentée */
+          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent);
           height: 1px;
           flex: 1;
         }
@@ -107,32 +100,50 @@ export default function Contact() {
         /* ── Boutons Copy ── */
         .copy-btn {
           transition: all 0.3s ease;
-          border: 1px solid rgba(201,184,130,0.25); /* Contraste augmenté */
+          border: 1px solid rgba(201,184,130,0.4);
         }
         .copy-btn:hover {
           transform: scale(1.08);
-          background: rgba(201,184,130,0.15);
-          border-color: rgba(201,184,130,0.5);
+          background: rgba(201,184,130,0.2);
+          border-color: rgba(201,184,130,0.6);
         }
 
         /* ── CTA final ── */
         .cta-link {
           transition: all 0.3s ease;
-          color: rgba(226,232,240,0.85); /* Opacité augmentée */
+          color: rgba(255, 255, 255, 0.95);
           letter-spacing: 0.18em;
         }
         .cta-link:hover {
           color: #c9b882;
-          text-shadow: 0 0 16px rgba(201,184,130,0.5);
+          text-shadow: 0 0 16px rgba(201,184,130,0.6);
           letter-spacing: 0.24em;
         }
       `}</style>
 
-      {/* ── CIEL ÉTOILÉ DE FOND ── */}
+      {/* ── CIEL ÉTOILÉ & NÉBULEUSES VIVES ── */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="stars-sm" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 nebula-purple blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 nebula-gold blur-3xl" />
+        {/* Nébuleuse Magenta */}
+        <div
+          className="absolute blur-[80px]"
+          style={{
+            top: "10%",
+            left: "5%",
+            width: "500px",
+            height: "500px",
+            background:
+              "radial-gradient(circle, rgba(192, 38, 211, 0.25) 0%, transparent 70%)",
+          }}
+        />
+        {/* Nébuleuse Cyan */}
+        <div
+          className="absolute bottom-10 right-5 w-[600px] h-[600px] blur-[80px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
       {/* ================= SECTION 1 : HEADER ================= */}
@@ -142,18 +153,16 @@ export default function Contact() {
             <p
               className="cinzel tracking-[0.4em] text-xs uppercase font-bold"
               style={{
-                color: "rgba(201,184,130,0.85)",
-              }} /* Contraste augmenté */
+                color: "rgba(201,184,130,1)",
+              }}
             >
               ✦ &nbsp; Communication &nbsp; ✦
             </p>
-            {/* Taille de titre harmonisée avec les autres pages */}
             <h1 className="text-5xl md:text-7xl font-black cinzel leading-tight tracking-tight">
               <span style={{ color: "#ffffff" }}>Me</span> <br />
               <span
                 className="relative inline-block"
                 style={{
-                  /* CORRECTION REACT APPLIQUÉE ICI */
                   backgroundImage:
                     "linear-gradient(135deg, #c9b882 0%, #ffffff 50%, #c9b882 100%)",
                   WebkitBackgroundClip: "text",
@@ -163,7 +172,6 @@ export default function Contact() {
               >
                 Contacter
               </span>
-              {/* Ajout de l'étoile dans le titre */}
               <span
                 style={{
                   color: "#c9b882",
@@ -176,13 +184,12 @@ export default function Contact() {
             </h1>
           </div>
 
-          {/* Intro encapsulée dans une cosmic-card pour la cohérence */}
           <div className="fade-up d2 cosmic-card p-8 sm:p-14 rounded-[2.5rem] flex flex-col items-center text-center">
             <p
               className="text-lg md:text-xl leading-relaxed dm-sans font-normal max-w-3xl"
               style={{
-                color: "rgba(226,232,240,0.95)",
-              }} /* Contraste augmenté */
+                color: "rgba(255,255,255,0.95)",
+              }}
             >
               Actuellement à la recherche d'un stage en développement logiciel
               de{" "}
@@ -233,7 +240,7 @@ export default function Contact() {
                   <div className="overflow-hidden">
                     <p
                       className="uppercase text-[10px] tracking-[0.25em] mb-1 font-bold cinzel"
-                      style={{ color: "rgba(201,184,130,0.85)" }}
+                      style={{ color: "rgba(201,184,130,0.9)" }}
                     >
                       Email
                     </p>
@@ -267,7 +274,7 @@ export default function Contact() {
                   <div className="overflow-hidden">
                     <p
                       className="uppercase text-[10px] tracking-[0.25em] mb-1 font-bold cinzel"
-                      style={{ color: "rgba(201,184,130,0.85)" }}
+                      style={{ color: "rgba(201,184,130,0.9)" }}
                     >
                       LinkedIn
                     </p>
@@ -304,7 +311,7 @@ export default function Contact() {
                   <div className="overflow-hidden">
                     <p
                       className="uppercase text-[10px] tracking-[0.25em] mb-1 font-bold cinzel"
-                      style={{ color: "rgba(201,184,130,0.85)" }}
+                      style={{ color: "rgba(201,184,130,0.9)" }}
                     >
                       GitHub
                     </p>
@@ -344,7 +351,7 @@ export default function Contact() {
                 </div>
                 <p
                   className="text-[15px] leading-relaxed dm-sans font-normal"
-                  style={{ color: "rgba(226,232,240,0.85)" }}
+                  style={{ color: "rgba(255,255,255,0.9)" }}
                 >
                   Monsieur Dupradeau a supervisé mon stage de recherche et
                   développement au sein de l'équipe AGIR de l'UPJV. Son
@@ -354,11 +361,11 @@ export default function Contact() {
               </div>
 
               {/* Bouton de contact du référent */}
-              <div className="mt-8 pt-8 flex items-center justify-between gap-4 border-t border-[rgba(201,184,130,0.25)]">
+              <div className="mt-8 pt-8 flex items-center justify-between gap-4 border-t border-[rgba(201,184,130,0.4)]">
                 <div className="overflow-hidden">
                   <p
                     className="uppercase text-[10px] tracking-[0.25em] mb-2 font-bold cinzel"
-                    style={{ color: "rgba(201,184,130,0.85)" }}
+                    style={{ color: "rgba(201,184,130,0.9)" }}
                   >
                     Contact professionnel
                   </p>
@@ -385,7 +392,7 @@ export default function Contact() {
       {/* ================= CTA FINAL ================= */}
       <section
         className="py-20 text-center relative z-10 fade-up d5"
-        style={{ borderTop: "1px solid rgba(201,184,130,0.2)" }}
+        style={{ borderTop: "1px solid rgba(201,184,130,0.3)" }}
       >
         <div
           style={{
@@ -396,15 +403,14 @@ export default function Contact() {
             width: "400px",
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent, rgba(201,184,130,0.6), transparent)",
-            boxShadow: "0 0 30px 8px rgba(201,184,130,0.1)",
+              "linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent)",
             pointerEvents: "none",
           }}
         />
         <p
           className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
           style={{
-            color: "rgba(201,184,130,0.8)",
+            color: "rgba(201,184,130,1)",
             fontFamily: "'Cinzel', serif",
           }}
         >
@@ -420,7 +426,7 @@ export default function Contact() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
           Retourner à l'accueil
@@ -429,7 +435,7 @@ export default function Contact() {
               display: "inline-block",
               width: "32px",
               height: "1px",
-              background: "rgba(201,184,130,0.6)",
+              background: "rgba(201,184,130,0.8)",
             }}
           />
         </Link>

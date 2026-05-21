@@ -6,9 +6,6 @@ import { usePathname } from "next/navigation";
 
 // ============================================================
 // HEADER — Thème Astronomie (Haute Lisibilité)
-// Fond : bleu nuit semi-transparent + backdrop blur
-// Logo : effet lueur dorée subtile
-// Nav  : soulignement animé façon orbite (pseudo-élément CSS)
 // ============================================================
 
 export default function Header() {

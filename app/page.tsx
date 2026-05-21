@@ -1,12 +1,6 @@
 // ============================================================
-// PAGE ACCUEIL — Thème Astronomie / Astrologie
+// PAGE ACCUEIL — Thème Astronomie
 // Chemin : app/page.tsx
-//
-// • Ciel étoilé animé en CSS pur (pas de canvas, pas de lib)
-// • Hero plein écran avec entrée fade + translate
-// • Badge "disponible" pulsant
-// • CTA avec lueur pulsante
-// • Citation stylisée façon carte céleste
 // ============================================================
 
 import Image from "next/image";
@@ -56,7 +50,7 @@ export default function Home() {
             650px 910px #fff, 1450px 830px #fff, 290px 950px #fff,
             1010px 920px #fff, 740px 880px #fff;
           animation: starDrift 120s linear infinite;
-          opacity: 0.7;
+          opacity: 0.8;
         }
         .stars-md {
           box-shadow:
@@ -66,7 +60,7 @@ export default function Home() {
             1400px 600px 1px #fff, 500px 800px 1px #c9b882, 1050px 850px 1px #fff,
             170px 350px 1px #fff, 850px 450px 1px #e2e8f0, 1250px 750px 1px #fff;
           animation: starDrift 80s linear infinite;
-          opacity: 0.5;
+          opacity: 0.6;
         }
         .stars-lg {
           box-shadow:
@@ -75,7 +69,7 @@ export default function Home() {
             1000px 600px 2px #c9b882, 600px 900px 2px #e2e8f0,
             100px 200px 2px #c9b882, 1400px 350px 2px #e2e8f0;
           animation: starDrift 50s linear infinite;
-          opacity: 0.6;
+          opacity: 0.7;
         }
 
         @keyframes starDrift {
@@ -125,7 +119,7 @@ export default function Home() {
         }
         @keyframes ctaGlow {
           0%, 100% { box-shadow: 0 0 20px rgba(201,184,130,0.4), 0 0 40px rgba(201,184,130,0.2); }
-          50%       { box-shadow: 0 0 30px rgba(201,184,130,0.7), 0 0 60px rgba(201,184,130,0.4); }
+          50%      { box-shadow: 0 0 30px rgba(201,184,130,0.7), 0 0 60px rgba(201,184,130,0.4); }
         }
 
         /* ── Hover sur le CTA ── */
@@ -144,7 +138,7 @@ export default function Home() {
         }
         @keyframes titleStarPulse {
           0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
-          50%       { opacity: 1;   transform: scale(1.3) rotate(20deg); }
+          50%      { opacity: 1;   transform: scale(1.3) rotate(20deg); }
         }
 
         /* ── Ligne de séparation animée ── */
@@ -154,7 +148,7 @@ export default function Home() {
         }
         @keyframes dividerGlow {
           0%, 100% { opacity: 0.4; }
-          50%       { opacity: 1; }
+          50%      { opacity: 1; }
         }
 
         /* ── Nébuleuse de fond ── */
@@ -163,8 +157,8 @@ export default function Home() {
         }
         @keyframes nebulaFloat {
           0%, 100% { transform: scale(1) translate(0, 0); }
-          33%       { transform: scale(1.05) translate(10px, -10px); }
-          66%       { transform: scale(0.98) translate(-8px, 8px); }
+          33%      { transform: scale(1.05) translate(10px, -10px); }
+          66%      { transform: scale(0.98) translate(-8px, 8px); }
         }
       `}</style>
 
@@ -179,43 +173,43 @@ export default function Home() {
           <div className="stars-lg" />
         </div>
 
-        {/* ── Nébuleuses / orbes colorées de fond ── */}
+        {/* ── Nébuleuses colorées plus vives pour la visibilité ── */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Nébuleuse bleue gauche */}
+          {/* Nébuleuse Magenta / Violette (Gauche) */}
           <div
             className="nebula absolute"
             style={{
-              top: "10%",
-              left: "-5%",
-              width: "500px",
-              height: "500px",
+              top: "5%",
+              left: "-10%",
+              width: "600px",
+              height: "600px",
               background:
-                "radial-gradient(circle, rgba(30,58,138,0.35) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(192, 38, 211, 0.25) 0%, transparent 70%)",
               borderRadius: "50%",
             }}
           />
-          {/* Nébuleuse dorée droite */}
+          {/* Nébuleuse Cyan / Bleue (Droite) */}
           <div
             className="nebula absolute"
             style={{
               bottom: "5%",
-              right: "-5%",
-              width: "600px",
-              height: "600px",
+              right: "-10%",
+              width: "700px",
+              height: "700px",
               background:
-                "radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%)",
               borderRadius: "50%",
               animationDelay: "4s",
             }}
           />
-          {/* Lueur centrale dorée subtile */}
+          {/* Lueur centrale dorée plus douce */}
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
               width: "800px",
               height: "400px",
               background:
-                "radial-gradient(ellipse, rgba(201,184,130,0.05) 0%, transparent 70%)",
+                "radial-gradient(ellipse, rgba(201,184,130,0.08) 0%, transparent 70%)",
             }}
           />
         </div>
@@ -229,7 +223,7 @@ export default function Home() {
               className="ring-rotate absolute inset-0 rounded-full"
               style={{
                 background:
-                  "conic-gradient(from 0deg, transparent 0%, #c9b882 25%, transparent 50%, #3b82f6 75%, transparent 100%)",
+                  "conic-gradient(from 0deg, transparent 0%, #c9b882 25%, transparent 50%, #38bdf8 75%, transparent 100%)",
                 padding: "2px",
               }}
             >
@@ -253,7 +247,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Étoile de position (coin bas-droit) */}
+            {/* Étoile de position */}
             <div
               className="absolute bottom-2 right-2 w-5 h-5 rounded-full flex items-center justify-center"
               style={{
@@ -265,16 +259,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 2. BADGE DISPONIBILITÉ (Agrandi et plus lisible) */}
+          {/* 2. BADGE DISPONIBILITÉ */}
           <div
             className="fade-up delay-200 inline-flex items-center gap-3 px-6 py-3 rounded-full"
             style={{
-              background: "rgba(201,184,130,0.08)",
-              border: "1px solid rgba(201,184,130,0.35)",
+              background: "rgba(201,184,130,0.1)",
+              border: "1px solid rgba(201,184,130,0.5)",
               backdropFilter: "blur(8px)",
             }}
           >
-            {/* Point pulsant légèrement agrandi */}
             <span className="relative flex h-2.5 w-2.5">
               <span
                 className="pulse-ring absolute inline-flex h-full w-full rounded-full"
@@ -289,11 +282,10 @@ export default function Home() {
               className="font-bold"
               style={{
                 fontFamily: "'Cinzel', serif",
-                fontSize: "13px" /* Taille augmentée */,
+                fontSize: "13px",
                 letterSpacing: "0.15em",
-                color: "#c9b882",
-                textShadow:
-                  "0 0 10px rgba(201,184,130,0.3)" /* Lueur pour contraster */,
+                color: "#ffffff",
+                textShadow: "0 0 10px rgba(201,184,130,0.5)",
               }}
             >
               DÉVELOPPEUR FULL STACK · ORIENTÉ BACK-END
@@ -302,11 +294,10 @@ export default function Home() {
 
           {/* 3. TITRE PRINCIPAL */}
           <div className="fade-up delay-300">
-            {/* Surtître (Opacité augmentée) */}
             <p
               className="mb-3 tracking-[0.3em] uppercase text-xs font-bold"
               style={{
-                color: "rgba(201,184,130,0.85)",
+                color: "rgba(201,184,130,0.9)",
                 fontFamily: "'Cinzel', serif",
               }}
             >
@@ -317,10 +308,8 @@ export default function Home() {
               className="text-5xl sm:text-7xl md:text-8xl font-black leading-[1.05] tracking-tight"
               style={{ fontFamily: "'Cinzel', serif" }}
             >
-              {/* Ligne 1 */}
               <span style={{ color: "#ffffff" }}>Inventer</span>
               <br />
-              {/* Ligne 2 avec dégradé doré */}
               <span
                 style={{
                   backgroundImage:
@@ -332,7 +321,6 @@ export default function Home() {
               >
                 l'Avenir
               </span>
-              {/* Étoile animée */}
               <span
                 className="title-star"
                 style={{
@@ -347,36 +335,37 @@ export default function Home() {
             </h1>
           </div>
 
-          {/* 4. OBJECTIF DE STAGE (Opacité et contraste augmentés) */}
+          {/* 4. OBJECTIF DE STAGE */}
           <div
             className="fade-up delay-400 inline-block px-7 py-5 rounded-2xl max-w-lg"
             style={{
-              background: "rgba(226,232,240,0.06)",
-              border: "1px solid rgba(201,184,130,0.25)",
-              backdropFilter: "blur(8px)",
+              background: "rgba(226,232,240,0.1)",
+              border: "1px solid rgba(201,184,130,0.4)",
+              backdropFilter: "blur(12px)",
               fontFamily: "'DM Sans', sans-serif",
             }}
           >
             <p
               style={{
-                color: "rgba(226,232,240,0.95)",
+                color: "rgba(255,255,255,1)",
                 fontSize: "16px",
                 lineHeight: "1.6",
+                fontWeight: 500,
               }}
             >
               À la recherche d'un stage de{" "}
-              <span style={{ color: "#c9b882", fontWeight: 600 }}>
+              <span style={{ color: "#c9b882", fontWeight: 700 }}>
                 14 semaines
               </span>
               <br />
-              <span style={{ color: "#ffffff", fontWeight: 600 }}>
+              <span style={{ color: "#ffffff", fontWeight: 700 }}>
                 de Mars à Juin 2027
               </span>{" "}
               en développement logiciel.
             </p>
           </div>
 
-          {/* 5. BOUTON CTA avec lueur pulsante */}
+          {/* 5. BOUTON CTA */}
           <div className="fade-up delay-500 pt-2 pb-6">
             <Link
               href="/a-propos"
@@ -395,16 +384,15 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* 6. CITATION ASTRONOMIQUE (Opacité largement augmentée) */}
+          {/* 6. CITATION ASTRONOMIQUE */}
           <div className="fade-up delay-600 w-full max-w-2xl mx-auto pt-8">
-            {/* Ligne séparatrice animée */}
             <div className="divider-line h-px w-full mb-8" />
 
             <figure>
               <blockquote
                 className="text-lg md:text-xl italic leading-relaxed mb-4"
                 style={{
-                  color: "rgba(226,232,240,0.95)",
+                  color: "rgba(255,255,255,0.9)",
                   fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 400,
                 }}
@@ -414,9 +402,9 @@ export default function Home() {
               <p
                 className="text-sm not-italic mb-3"
                 style={{
-                  color: "rgba(201,184,130,0.9)",
+                  color: "rgba(201,184,130,1)",
                   fontFamily: "'DM Sans', sans-serif",
-                  fontWeight: 500,
+                  fontWeight: 600,
                 }}
               >
                 (La meilleure façon de prédire l'avenir, c'est de l'inventer.)
@@ -426,14 +414,14 @@ export default function Home() {
                   fontFamily: "'Cinzel', serif",
                   fontSize: "11px",
                   letterSpacing: "0.2em",
-                  color: "rgba(226,232,240,0.85)",
+                  color: "#ffffff",
                   fontWeight: 700,
                 }}
               >
                 — ALAN KAY &nbsp;·&nbsp;{" "}
                 <span
                   style={{
-                    color: "rgba(201,184,130,0.85)",
+                    color: "rgba(201,184,130,0.9)",
                     fontFamily: "'DM Sans', sans-serif",
                     letterSpacing: "normal",
                     fontSize: "12px",
