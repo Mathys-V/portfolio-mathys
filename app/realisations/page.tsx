@@ -1,5 +1,6 @@
 // ============================================================
-// PAGE RÉALISATIONS — Thème Astronomie (Contraste Amélioré & Layout Rééquilibré)
+// PAGE RÉALISATIONS — Thème Saisons (Complet & Layout Optimisé)
+// Chemin : app/realisations/page.tsx
 // ============================================================
 
 import Image from "next/image";
@@ -8,190 +9,302 @@ import Link from "next/link";
 export default function Realisations() {
   return (
     <div
-      className="flex flex-col overflow-hidden min-h-screen"
-      style={{ background: "#020817", color: "#e2e8f0" }}
+      className="flex flex-col overflow-x-hidden min-h-screen relative transition-colors duration-1000"
+      style={{
+        backgroundColor: "var(--bg-fallback)",
+        color: "var(--text-main)",
+      }}
     >
+      {/* ══════════════════════════════════════════════════
+          IMAGES DE FOND MULTI-SAISONS (Fondu croisé en CSS)
+      ══════════════════════════════════════════════════ */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Image
+          src="/img/themes/summer-beach.webp"
+          alt="Paysage d'été ensoleillé"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover bg-image bg-summer"
+        />
+        <Image
+          src="/img/themes/autumn-forest.webp"
+          alt="Paysage d'automne chaleureux"
+          fill
+          sizes="100vw"
+          className="object-cover bg-image bg-autumn"
+        />
+        <Image
+          src="/img/themes/winter.webp"
+          alt="Paysage d'hiver enneigé"
+          fill
+          sizes="100vw"
+          className="object-cover bg-image bg-winter"
+        />
+        <Image
+          src="/img/themes/spring.webp"
+          alt="Paysage de printemps fleuri"
+          fill
+          sizes="100vw"
+          className="object-cover bg-image bg-spring"
+        />
+        {/* Voile léger pour garantir l'unification de la luminosité */}
+        <div className="absolute inset-0 bg-white/20" />
+      </div>
+
+      {/* ══════════════════════════════════════════════════
+          STYLES GLOBAUX & VARIABLES DE THÈMES
+      ══════════════════════════════════════════════════ */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
-        /* ── Étoiles générées en CSS pur ── */
-        .stars-sm, .stars-md, .stars-lg {
-          position: absolute;
-          top: 0; left: 0;
-          width: 1px; height: 1px;
-          border-radius: 50%;
-          background: transparent;
-          pointer-events: none;
-        }
-        .stars-sm {
-          box-shadow: 120px 45px #fff, 340px 200px #fff, 580px 80px #fff, 820px 310px #fff, 950px 420px #fff, 150px 150px #fff, 1100px 60px #fff, 1300px 300px #fff, 30px 320px #fff, 900px 140px #fff, 60px 570px #fff, 760px 390px #fff, 280px 30px #fff, 1000px 270px #fff, 860px 70px #fff, 480px 700px #fff, 110px 750px #fff, 330px 760px #fff, 1080px 730px #fff, 550px 800px #fff, 410px 870px #fff, 1190px 860px #fff, 650px 910px #fff, 290px 950px #fff, 740px 880px #fff;
-          animation: starDrift 150s linear infinite;
-        }
-        @keyframes starDrift {
-          from { transform: translateY(0); }
-          to   { transform: translateY(-100vh); }
+        /* ── CONFIGURATION DES COMPOSANTS PAR SAISON ── */
+        :root, .theme-summer {
+          --bg-fallback: #f0f9ff;
+          --text-main: #0f172a;
+          --text-muted: #334155;
+          --text-accent: #0284c7;
+          --text-accent-glow: rgba(2, 132, 199, 0.4);
+          --gradient-start: #0284c7;
+          --gradient-end: #0369a1;
+          --glass-bg: rgba(255, 255, 255, 0.80);
+          --glass-border: rgba(255, 255, 255, 0.9);
         }
 
-        /* ── Animations d'entrée (Fade Up) ── */
+        .theme-autumn {
+          --bg-fallback: #fff7ed;
+          --text-main: #431407;
+          --text-muted: #7c2d12;
+          --text-accent: #c2410c;
+          --text-accent-glow: rgba(194, 65, 12, 0.4);
+          --gradient-start: #c2410c;
+          --gradient-end: #7c2d12;
+          --glass-bg: rgba(255, 255, 255, 0.80);
+          --glass-border: rgba(255, 255, 255, 0.9);
+        }
+
+        .theme-winter {
+          --bg-fallback: #f8fafc;
+          --text-main: #0f172a;
+          --text-muted: #1e3a8a;
+          --text-accent: #1d4ed8;
+          --text-accent-glow: rgba(29, 78, 216, 0.4);
+          --gradient-start: #1e40af;
+          --gradient-end: #1e3a8a;
+          --glass-bg: rgba(255, 255, 255, 0.85);
+          --glass-border: rgba(255, 255, 255, 1);
+        }
+
+        .theme-spring {
+          --bg-fallback: #fdf2f8;
+          --text-main: #4c0519;
+          --text-muted: #831843;
+          --text-accent: #db2777;
+          --text-accent-glow: rgba(219, 39, 119, 0.4);
+          --gradient-start: #db2777;
+          --gradient-end: #9d174d;
+          --glass-bg: rgba(255, 255, 255, 0.80);
+          --glass-border: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ── GESTION DYNAMIQUE DES FONDS D'ÉCRAN ── */
+        .bg-image {
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+        }
+        
+        .theme-summer .bg-summer { opacity: 1; }
+        .theme-autumn .bg-autumn { opacity: 1; }
+        .theme-winter .bg-winter { opacity: 1; }
+        .theme-spring .bg-spring { opacity: 1; }
+        
+        html:not([class*="theme-"]) .bg-summer { opacity: 1; }
+
+        /* ── GESTION DYNAMIQUE DES ICÔNES DE SAISON ── */
+        .icon-summer, .icon-autumn, .icon-winter, .icon-spring { display: none; }
+        
+        .theme-summer .icon-summer { display: inline-block; }
+        .theme-autumn .icon-autumn { display: inline-block; }
+        .theme-winter .icon-winter { display: inline-block; }
+        .theme-spring .icon-spring { display: inline-block; }
+
+        html:not([class*="theme-"]) .icon-summer { display: inline-block; }
+
+        /* ── ÉMOJI PONCTUATION ── */
+        .title-emoji {
+          display: inline-block;
+          font-size: 0.35em;
+          vertical-align: super;
+          margin-left: 0.1em;
+          opacity: 0.9;
+          transform: translateY(-0.15em);
+          filter: drop-shadow(0 0 12px var(--text-accent));
+          transition: filter 1s ease;
+        }
+
+        /* ── ANIMATIONS ET GLASSMORPHISM ── */
         .fade-up {
           opacity: 0;
           transform: translateY(24px);
-          animation: fadeUpAnim 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         .d1 { animation-delay: 0.1s; }
         .d2 { animation-delay: 0.25s; }
         .d3 { animation-delay: 0.4s; }
         .d4 { animation-delay: 0.55s; }
-        .d5 { animation-delay: 0.7s; }
 
-        @keyframes fadeUpAnim {
+        @keyframes fadeUp {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        .cinzel { font-family: 'Cinzel', serif; }
-        .dm-sans { font-family: 'DM Sans', sans-serif; }
-
-        /* ── Cartes & Éléments UI (Visibilité accrue) ── */
-        .project-card {
-          background: rgba(226, 232, 240, 0.08);
-          border: 1px solid rgba(201, 184, 130, 0.4);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          transition: all 0.4s ease;
+        .glass-panel {
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+          transition: transform 0.3s ease, box-shadow 0.3s ease, background 1s ease, border-color 1s ease;
         }
-        .project-card:hover {
-          border-color: rgba(201, 184, 130, 0.6);
-          background: rgba(226, 232, 240, 0.12);
-          box-shadow: 0 0 30px rgba(201, 184, 130, 0.2);
+        .glass-panel:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
         }
 
-        /* ── Séparateur doré animé ── */
-        .gold-sep {
-          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent);
-          animation: gSep 3s ease-in-out infinite;
-          height: 1px;
-          flex: 1;
-        }
-        @keyframes gSep {
-          0%, 100% { opacity: 0.5; }
-          50%      { opacity: 1; }
+        .glass-inner {
+          background: rgba(255, 255, 255, 0.85);
+          border: 1px solid rgba(255, 255, 255, 1);
+          box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8);
         }
 
-        /* ── CTA final ── */
+        .text-glow-light {
+          text-shadow: 0 0 20px var(--text-accent-glow);
+        }
+
         .cta-link {
           transition: all 0.3s ease;
-          color: rgba(255, 255, 255, 0.95);
+          color: var(--text-main);
           letter-spacing: 0.18em;
         }
         .cta-link:hover {
-          color: #c9b882;
-          text-shadow: 0 0 16px rgba(201,184,130,0.6);
-          letter-spacing: 0.24em;
+          color: var(--text-accent);
+          letter-spacing: 0.22em;
         }
       `}</style>
 
-      {/* ── CIEL ÉTOILÉ DE FOND ── */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="stars-sm" />
-        {/* Nébuleuse Magenta */}
-        <div
-          className="absolute blur-[80px]"
-          style={{
-            top: "10%",
-            left: "5%",
-            width: "500px",
-            height: "500px",
-            background:
-              "radial-gradient(circle, rgba(192, 38, 211, 0.25) 0%, transparent 70%)",
-          }}
-        />
-        {/* Nébuleuse Cyan */}
-        <div
-          className="absolute bottom-10 right-5 w-[600px] h-[600px] blur-[80px]"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%)",
-          }}
-        />
-      </div>
+      {/* ══════════════════════════════════════════
+          HEADER DE LA PAGE (Texte flottant)
+      ══════════════════════════════════════════ */}
+      <section className="relative pt-32 pb-16 px-6 sm:px-12 z-10 text-center">
+        <div className="max-w-4xl mx-auto space-y-8 flex flex-col items-center">
+          {/* Sur-titre dans l'encadré */}
+          <div className="fade-up d1 inline-flex glass-panel items-center gap-3 px-5 py-2 rounded-full mb-4">
+            <p
+              className="tracking-[0.3em] uppercase text-xs font-bold transition-colors duration-500"
+              style={{
+                color: "var(--text-accent)",
+                fontFamily: "'Cinzel', serif",
+              }}
+            >
+              Portfolio Technique
+            </p>
+          </div>
 
-      {/* ================= HEADER DE LA PAGE ================= */}
-      <section className="relative pt-32 pb-20 px-6 sm:px-12 z-10">
-        <div className="relative max-w-4xl mx-auto text-center space-y-8 fade-up d1">
-          <p
-            className="cinzel tracking-[0.4em] text-xs uppercase font-bold"
-            style={{ color: "rgba(201,184,130,1)" }}
-          >
-            ✦ &nbsp; Portfolio Technique &nbsp; ✦
-          </p>
-          <h1 className="text-5xl md:text-7xl font-black cinzel leading-tight tracking-tight">
-            <span style={{ color: "#ffffff" }}>Mes</span> <br />
-            <span
-              className="relative inline-block"
+          {/* Titre principal flottant */}
+          <div className="fade-up d2">
+            <h1
+              className="text-5xl md:text-7xl font-black leading-tight tracking-tight transition-colors duration-500"
+              style={{ fontFamily: "'Cinzel', serif" }}
+            >
+              <span className="text-glow-light">Mes</span> <br />
+              <span
+                className="transition-all duration-1000"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Réalisations
+              </span>
+              <span className="title-emoji">
+                <span className="icon-summer">☀️</span>
+                <span className="icon-autumn">🍂</span>
+                <span className="icon-winter">❄️</span>
+                <span className="icon-spring">🌸</span>
+              </span>
+            </h1>
+          </div>
+
+          {/* Description dans le panneau */}
+          <div className="fade-up d3 glass-panel rounded-3xl p-8 sm:p-12 text-center mt-6 w-full">
+            <p
+              className="text-lg md:text-xl leading-relaxed transition-colors duration-500 font-medium"
               style={{
-                backgroundImage:
-                  "linear-gradient(135deg, #c9b882 0%, #ffffff 50%, #c9b882 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
+                color: "var(--text-muted)",
+                fontFamily: "'DM Sans', sans-serif",
               }}
             >
-              Réalisations
-            </span>
-            <span
-              style={{
-                color: "#c9b882",
-                fontSize: "0.45em",
-                marginLeft: "0.12em",
-              }}
-            >
-              ✦
-            </span>
-          </h1>
-          <p
-            className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed dm-sans font-normal"
-            style={{ color: "rgba(255,255,255,0.9)" }}
-          >
-            Une immersion dans mes projets les plus marquants, de l'optimisation
-            algorithmique pour la recherche internationale au développement
-            collaboratif d'outils de mobilité durable.
-          </p>
-          <div className="w-24 h-px mx-auto bg-gradient-to-r from-transparent via-[#c9b882] to-transparent opacity-70" />
+              Une immersion dans mes projets les plus marquants, de
+              l'optimisation algorithmique pour la recherche internationale au
+              développement collaboratif d'outils de mobilité durable.
+            </p>
+          </div>
         </div>
       </section>
 
-      <div className="relative max-w-6xl mx-auto py-12 px-6 sm:px-12 space-y-32 z-10">
+      {/* ══════════════════════════════════════════
+          CONTENU PRINCIPAL (Les 3 Réalisations)
+      ══════════════════════════════════════════ */}
+      {/* Astuce : max-w-7xl au lieu de 6xl pour donner plus de place au texte ! */}
+      <div className="relative max-w-7xl mx-auto py-8 px-6 sm:px-12 space-y-24 z-10">
         {/* ================= SECTION 1 : PyRED ================= */}
         <section className="relative fade-up d2">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-            <div className="flex-1 space-y-8">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
+            {/* COLONNE GAUCHE : TEXTE (Plus large lg:w-7/12) */}
+            <div className="flex-1 lg:w-7/12 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl">
               <div className="space-y-4">
-                <div className="flex items-center gap-3 flex-wrap cinzel">
-                  <span className="px-4 py-1.5 border border-[#c9b882]/50 text-[#c9b882] text-[10px] font-bold uppercase tracking-widest rounded-full bg-[#c9b882]/10">
+                <div
+                  className="flex items-center gap-3 flex-wrap"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
                     Janv. - Mars 2026
                   </span>
-                  <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
+                  <span className="px-3 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
                     R&D Scientifique
                   </span>
-                  <span className="text-slate-100 text-[11px] font-bold uppercase tracking-wider">
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-wider transition-colors duration-500"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     Stage • Labo AGIR (UPJV)
                   </span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-bold cinzel leading-tight">
-                  <span className="text-[#c9b882]">
+                <h2
+                  className="text-3xl md:text-4xl font-bold leading-tight transition-colors duration-500"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
+                  <span style={{ color: "var(--text-accent)" }}>
                     PyRED : Développement Python pour la
                   </span>{" "}
                   <br />
-                  <span className="text-[#ffffff]">
-                    recherche pharmaceutique mondiale.
-                  </span>
+                  <span>recherche pharmaceutique mondiale.</span>
                 </h2>
               </div>
 
+              {/* Marge réduite entre paragraphes : space-y-4 */}
               <div
-                className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
-                style={{ color: "rgba(255,255,255,0.9)" }}
+                className="space-y-4 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "var(--text-muted)",
+                }}
               >
                 <p>
                   Le logiciel PyRED est une référence dans la génération
@@ -202,7 +315,8 @@ export default function Realisations() {
                     href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#c9b882] hover:text-white hover:underline font-bold transition-colors"
+                    className="font-bold transition-colors underline"
+                    style={{ color: "var(--text-accent)" }}
                   >
                     R.E.D. Server Development
                   </a>
@@ -237,63 +351,96 @@ export default function Realisations() {
               </div>
             </div>
 
-            {/* ── COLONNE DROITE : LIEN VERS SITE ── */}
-            <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
+            {/* COLONNE DROITE : VISUEL & INFOS BOXES (Moins large lg:w-5/12) */}
+            <div className="lg:w-5/12 flex flex-col gap-6 w-full">
               <a
                 href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60"
+                className="block relative aspect-video rounded-3xl overflow-hidden border border-white/80 shadow-md group cursor-pointer bg-white/40"
               >
                 <Image
                   src="/img/realisations/pyred-accueil.png"
                   alt="Accueil de la plateforme R.E.D. Server Development"
                   fill
-                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/20 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
 
-                <div className="absolute bottom-6 left-6 cinzel">
-                  <p className="text-[#c9b882] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
+                <div
+                  className="absolute bottom-6 left-6"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  <p
+                    className="text-[10px] tracking-[0.3em] uppercase font-bold mb-1"
+                    style={{ color: "var(--text-accent)" }}
+                  >
                     Interface Web
                   </p>
-                  <p className="text-white text-xl font-bold tracking-wide">
+                  <p className="text-slate-900 text-xl font-bold tracking-wide">
                     R.E.D. Server Development
                   </p>
                 </div>
               </a>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-6 project-card rounded-2xl">
-                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
                     🌍 Impact
                   </h4>
                   <p
-                    className="text-sm dm-sans font-medium leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.9)" }}
+                    className="text-sm font-medium leading-relaxed"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "var(--text-muted)",
+                    }}
                   >
                     Algorithme intégré au serveur mondial et co-auteur d'une
                     future publication internationale avec l'University of
                     Lethbridge au Canada.
                   </p>
                 </div>
-                <div className="p-6 project-card rounded-2xl">
-                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
                     ✅ Validation
                   </h4>
                   <p
-                    className="text-sm dm-sans font-medium leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.9)" }}
+                    className="text-sm font-medium leading-relaxed"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "var(--text-muted)",
+                    }}
                   >
-                    La solution est désormais pleinement intégrée au code source
+                    a solution est désormais pleinement intégrée au code source
                     de PyRED, garantissant la viabilité chimique des fragments
                     générés de manière autonome.
                   </p>
                 </div>
               </div>
 
-              <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
-                <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
+              <div
+                className="p-6 glass-panel rounded-2xl border-l-4"
+                style={{ borderLeftColor: "var(--text-accent)" }}
+              >
+                <h4
+                  className="font-bold mb-4 flex items-center gap-2 text-sm tracking-widest"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
                   🧠 Compétences mobilisées
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -305,7 +452,7 @@ export default function Realisations() {
                   ].map((sk) => (
                     <span
                       key={sk}
-                      className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-100"
+                      className="px-3 py-1.5 glass-inner rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-800"
                     >
                       {sk}
                     </span>
@@ -317,49 +464,64 @@ export default function Realisations() {
         </section>
 
         {/* ================= SÉPARATEUR ================= */}
-        <div className="relative flex justify-center items-center py-8 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
-          <div className="gold-sep" />
-          <span
-            className="mx-6 text-xl"
+        <div className="relative flex justify-center items-center py-2 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
+          <div
+            className="transition-colors duration-500"
             style={{
-              color: "#c9b882",
-              textShadow: "0 0 12px rgba(201,184,130,0.6)",
+              height: "1px",
+              flex: 1,
+              background:
+                "linear-gradient(90deg, transparent, var(--text-accent), transparent)",
+              opacity: 0.4,
             }}
-          >
-            ✦
-          </span>
-          <div className="gold-sep" />
+          />
         </div>
 
         {/* ================= SECTION 2 : MONCOVOITJV ================= */}
         <section className="relative fade-up d4">
-          <div className="flex flex-col lg:flex-row-reverse gap-12 lg:gap-16 items-start">
-            <div className="flex-1 space-y-8">
+          <div className="flex flex-col lg:flex-row-reverse gap-10 lg:gap-12 items-start">
+            {/* COLONNE GAUCHE (inversée) : TEXTE */}
+            <div className="flex-1 lg:w-7/12 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl">
               <div className="space-y-4">
-                <div className="flex items-center justify-start gap-3 flex-wrap cinzel">
-                  <span className="px-4 py-1.5 border border-[#c9b882]/50 text-[#c9b882] text-[10px] font-bold uppercase tracking-widest rounded-full bg-[#c9b882]/10">
+                <div
+                  className="flex items-center justify-start gap-3 flex-wrap"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
                     Décembre 2025
                   </span>
-                  <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
+                  <span className="px-3 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
                     SAE • Développement Full Stack
                   </span>
-                  <span className="text-slate-100 text-[11px] font-bold uppercase tracking-wider">
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-wider transition-colors duration-500"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     Équipe W • IUT d'Amiens
                   </span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-bold cinzel leading-tight">
-                  <span className="text-[#c9b882]">
+                <h2
+                  className="text-3xl md:text-4xl font-bold leading-tight transition-colors duration-500"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
+                  <span style={{ color: "var(--text-accent)" }}>
                     monCovoitJV : Répondre aux défis de la
                   </span>{" "}
                   <br />
-                  <span className="text-[#ffffff]">mobilité inter-campus.</span>
+                  <span>mobilité inter-campus.</span>
                 </h2>
               </div>
 
               <div
-                className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
-                style={{ color: "rgba(255,255,255,0.9)" }}
+                className="space-y-4 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "var(--text-muted)",
+                }}
               >
                 <p>
                   Dans le cadre de la SAE (Situation d'Apprentissage Évaluée)
@@ -391,40 +553,55 @@ export default function Realisations() {
               </div>
             </div>
 
-            {/* ── COLONNE VISUELS ET CARTES (Gauche) ── */}
-            <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
+            {/* COLONNE VISUELS ET CARTES (Droite, inversée) */}
+            <div className="lg:w-5/12 flex flex-col gap-6 w-full">
               <a
                 href="https://github.com/Mathys-V/sae-covoiturage"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_30px_rgba(201,184,130,0.15)] group cursor-pointer"
+                className="block relative aspect-video rounded-3xl overflow-hidden border border-white/80 shadow-md group cursor-pointer bg-white/40"
               >
                 <Image
                   src="/img/realisations/moncovoitJV.png"
                   alt="Plateforme monCovoitJV"
                   fill
-                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/20 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
 
-                <div className="absolute bottom-6 left-6 cinzel">
-                  <p className="text-[#c9b882] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
+                <div
+                  className="absolute bottom-6 left-6"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  <p
+                    className="text-[10px] tracking-[0.3em] uppercase font-bold mb-1"
+                    style={{ color: "var(--text-accent)" }}
+                  >
                     Interface Web
                   </p>
-                  <p className="text-white text-xl font-bold tracking-wide">
+                  <p className="text-slate-900 text-xl font-bold tracking-wide">
                     Page d'Accueil
                   </p>
                 </div>
               </a>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-6 project-card rounded-2xl">
-                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
                     🛠️ Stack Technique
                   </h4>
                   <p
-                    className="text-sm dm-sans leading-relaxed font-medium"
-                    style={{ color: "rgba(255,255,255,0.9)" }}
+                    className="text-sm leading-relaxed font-medium"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "var(--text-muted)",
+                    }}
                   >
                     Architecture MVC (PHP), PDO, MySQL. Gestion de projet via
                     Trello et{" "}
@@ -432,50 +609,70 @@ export default function Realisations() {
                       href="https://github.com/Mathys-V/sae-covoiturage"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#c9b882] hover:text-white underline font-bold transition-colors"
+                      className="font-bold underline transition-colors"
+                      style={{ color: "var(--text-accent)" }}
                     >
                       Git
                     </a>
                     .
                   </p>
                 </div>
-                <div className="p-6 project-card rounded-2xl">
-                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
                     📄 Documents
                   </h4>
-                  <div className="flex flex-col gap-3 mt-2 font-medium">
+                  <div className="flex flex-col gap-3 mt-2 font-bold text-xs">
                     <a
                       href="https://github.com/Mathys-V/sae-covoiturage"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                      className="hover:underline flex items-center gap-2 transition-colors"
+                      style={{ color: "var(--text-muted)" }}
                     >
-                      <span className="text-[#c9b882]">◈</span> Code sur GitHub
+                      <span style={{ color: "var(--text-accent)" }}>•</span>{" "}
+                      Code sur GitHub
                     </a>
                     <a
                       href="/docs/Documentation-Technique-Equipe-W.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                      className="hover:underline flex items-center gap-2 transition-colors"
+                      style={{ color: "var(--text-muted)" }}
                     >
-                      <span className="text-[#c9b882]">◈</span> Documentation
-                      technique (PDF)
+                      <span style={{ color: "var(--text-accent)" }}>•</span>{" "}
+                      Documentation technique
                     </a>
                     <a
                       href="/docs/Guide-utilisateur-Equipe-W.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                      className="hover:underline flex items-center gap-2 transition-colors"
+                      style={{ color: "var(--text-muted)" }}
                     >
-                      <span className="text-[#c9b882]">◈</span> Guide
-                      utilisateur (PDF)
+                      <span style={{ color: "var(--text-accent)" }}>•</span>{" "}
+                      Guide utilisateur
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
-                <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
+              <div
+                className="p-6 glass-panel rounded-2xl border-l-4"
+                style={{ borderLeftColor: "var(--text-accent)" }}
+              >
+                <h4
+                  className="font-bold mb-4 flex items-center gap-2 text-sm tracking-widest"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
                   🧠 Compétences mobilisées
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -490,7 +687,7 @@ export default function Realisations() {
                   ].map((sk) => (
                     <span
                       key={sk}
-                      className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-100"
+                      className="px-3 py-1.5 glass-inner rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-800"
                     >
                       {sk}
                     </span>
@@ -502,51 +699,64 @@ export default function Realisations() {
         </section>
 
         {/* ================= SÉPARATEUR ================= */}
-        <div className="relative flex justify-center items-center py-8 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
-          <div className="gold-sep" />
-          <span
-            className="mx-6 text-xl"
+        <div className="relative flex justify-center items-center py-2 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
+          <div
+            className="transition-colors duration-500"
             style={{
-              color: "#c9b882",
-              textShadow: "0 0 12px rgba(201,184,130,0.6)",
+              height: "1px",
+              flex: 1,
+              background:
+                "linear-gradient(90deg, transparent, var(--text-accent), transparent)",
+              opacity: 0.4,
             }}
-          >
-            ✦
-          </span>
-          <div className="gold-sep" />
+          />
         </div>
 
-        {/* ================= SECTION 3 : SAE 2.01 (NOUVEAU PROJET) ================= */}
+        {/* ================= SECTION 3 : SAE 2.01 BUS CALAIS ================= */}
         <section className="relative fade-up d2">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-            <div className="flex-1 space-y-8">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
+            {/* COLONNE GAUCHE : TEXTE */}
+            <div className="flex-1 lg:w-7/12 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl">
               <div className="space-y-4">
-                <div className="flex items-center gap-3 flex-wrap cinzel">
-                  <span className="px-4 py-1.5 border border-[#c9b882]/50 text-[#c9b882] text-[10px] font-bold uppercase tracking-widest rounded-full bg-[#c9b882]/10">
+                <div
+                  className="flex items-center gap-3 flex-wrap"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
                     Mai 2025
                   </span>
-                  <span className="px-3 py-1.5 border border-white/20 text-slate-100 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/10">
+                  <span className="px-3 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
                     SAE 2.01 • C# / WinForms
                   </span>
-                  <span className="text-slate-100 text-[11px] font-bold uppercase tracking-wider">
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-wider transition-colors duration-500"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     Équipe E4 • IUT d'Amiens
                   </span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-bold cinzel leading-tight">
-                  <span className="text-[#c9b882]">
+                <h2
+                  className="text-3xl md:text-4xl font-bold leading-tight transition-colors duration-500"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
+                  <span style={{ color: "var(--text-accent)" }}>
                     Application de Gestion de Transport :
                   </span>{" "}
                   <br />
-                  <span className="text-[#ffffff]">
-                    Conception et Modélisation Orientée Objet.
-                  </span>
+                  <span>Conception et Modélisation Orientée Objet.</span>
                 </h2>
               </div>
 
               <div
-                className="space-y-6 dm-sans leading-relaxed text-lg font-normal"
-                style={{ color: "rgba(255,255,255,0.9)" }}
+                className="space-y-4 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "var(--text-muted)",
+                }}
               >
                 <p>
                   Dans le cadre de la SAE 2.01 clôturant ma première année de
@@ -577,81 +787,116 @@ export default function Realisations() {
               </div>
             </div>
 
-            <div className="lg:w-[45%] flex flex-col gap-8 relative z-10">
+            {/* COLONNE DROITE : VISUEL & INFOS BOXES */}
+            <div className="lg:w-5/12 flex flex-col gap-6 w-full">
               <a
                 href="https://github.com/Mathys-V/SAE_E4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block relative aspect-video rounded-3xl overflow-hidden border border-[#c9b882]/40 shadow-[0_0_50px_rgba(59,130,246,0.15)] group cursor-pointer bg-[#020817]/60"
+                className="block relative aspect-video rounded-3xl overflow-hidden border border-white/80 shadow-md group cursor-pointer bg-white/40"
               >
                 <Image
                   src="/img/realisations/bus-calais.jpg"
                   alt="Carte du réseau de bus de Calais servant de base à l'application de transport"
                   fill
-                  className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/20 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
 
-                <div className="absolute bottom-6 left-6 cinzel">
-                  <p className="text-[#c9b882] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
+                <div
+                  className="absolute bottom-6 left-6"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  <p
+                    className="text-[10px] tracking-[0.3em] uppercase font-bold mb-1"
+                    style={{ color: "var(--text-accent)" }}
+                  >
                     Réseau de Transport
                   </p>
-                  <p className="text-white text-xl font-bold tracking-wide">
+                  <p className="text-slate-900 text-xl font-bold tracking-wide">
                     Bus de Calais
                   </p>
                 </div>
               </a>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-6 project-card rounded-2xl">
-                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
                     ⚙️ Stack Technique
                   </h4>
                   <p
-                    className="text-sm dm-sans font-medium leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.9)" }}
+                    className="text-sm font-medium leading-relaxed"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "var(--text-muted)",
+                    }}
                   >
                     C# (.NET), Windows Forms, MySQL. Implémentation de
-                    structures de graphes et requêtes SQL complexes.
+                    structures de graphes.
                   </p>
                 </div>
-                <div className="p-6 project-card rounded-2xl">
-                  <h4 className="cinzel font-bold text-[#c9b882] mb-3 flex items-center gap-2 text-sm tracking-wider">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
                     📄 Documents
                   </h4>
-                  <div className="flex flex-col gap-3 mt-2 font-medium">
+                  <div className="flex flex-col gap-3 mt-2 font-bold text-xs">
                     <a
                       href="https://github.com/Mathys-V/SAE_E4"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                      className="hover:underline flex items-center gap-2 transition-colors"
+                      style={{ color: "var(--text-muted)" }}
                     >
-                      <span className="text-[#c9b882]">◈</span> Code sur GitHub
+                      <span style={{ color: "var(--text-accent)" }}>•</span>{" "}
+                      Code sur GitHub
                     </a>
                     <a
                       href="/docs/SAE-IHM-ARBRE-DE-TACHES.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                      className="hover:underline flex items-center gap-2 transition-colors"
+                      style={{ color: "var(--text-muted)" }}
                     >
-                      <span className="text-[#c9b882]">◈</span> Arbre des tâches
-                      (PDF)
+                      <span style={{ color: "var(--text-accent)" }}>•</span>{" "}
+                      Arbre des tâches
                     </a>
                     <a
                       href="/docs/SAE-IHM-MAQUETTE.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs hover:text-[#c9b882] flex items-center gap-2 text-slate-100 transition-colors"
+                      className="hover:underline flex items-center gap-2 transition-colors"
+                      style={{ color: "var(--text-muted)" }}
                     >
-                      <span className="text-[#c9b882]">◈</span> Maquette UI
-                      (PDF)
+                      <span style={{ color: "var(--text-accent)" }}>•</span>{" "}
+                      Maquette UI
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 project-card rounded-2xl border-l-2 border-l-[#c9b882]">
-                <h4 className="cinzel font-bold text-slate-100 mb-4 flex items-center gap-2 text-sm tracking-widest">
+              <div
+                className="p-6 glass-panel rounded-2xl border-l-4"
+                style={{ borderLeftColor: "var(--text-accent)" }}
+              >
+                <h4
+                  className="font-bold mb-4 flex items-center gap-2 text-sm tracking-widest"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
                   🧠 Compétences mobilisées
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -665,7 +910,7 @@ export default function Realisations() {
                   ].map((sk) => (
                     <span
                       key={sk}
-                      className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-100"
+                      className="px-3 py-1.5 glass-inner rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-800"
                     >
                       {sk}
                     </span>
@@ -677,56 +922,48 @@ export default function Realisations() {
         </section>
       </div>
 
-      {/* ================= CTA FINAL ================= */}
-      <section
-        className="py-20 text-center relative z-10 fade-up d5"
-        style={{ borderTop: "1px solid rgba(201,184,130,0.3)" }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "400px",
-            height: "1px",
-            background:
-              "linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent)",
-            pointerEvents: "none",
-          }}
-        />
-        <p
-          className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
-          style={{
-            color: "rgba(201,184,130,1)",
-            fontFamily: "'Cinzel', serif",
-          }}
-        >
-          ✦ &nbsp; Section Suivante &nbsp; ✦
-        </p>
-        <Link
-          href="/competences"
-          className="cta-link inline-flex items-center gap-4 font-bold"
-          style={{ fontFamily: "'Cinzel', serif", fontSize: "14px" }}
-        >
-          <span
+      {/* ══════════════════════════════════════════
+          CTA FINAL
+      ══════════════════════════════════════════ */}
+      <section className="py-16 text-center relative z-10">
+        <div className="fade-up d4 glass-panel max-w-2xl mx-auto py-10 px-6 rounded-3xl relative">
+          <p
+            className="text-xs tracking-[0.3em] uppercase mb-6 font-bold transition-colors duration-500"
             style={{
-              display: "inline-block",
-              width: "32px",
-              height: "1px",
-              background: "rgba(201,184,130,0.8)",
+              color: "var(--text-accent)",
+              fontFamily: "'Cinzel', serif",
             }}
-          />
-          Consulter mes compétences et acquis techniques
-          <span
-            style={{
-              display: "inline-block",
-              width: "32px",
-              height: "1px",
-              background: "rgba(201,184,130,0.8)",
-            }}
-          />
-        </Link>
+          >
+            Section Suivante
+          </p>
+          <Link
+            href="/competences"
+            className="cta-link inline-flex items-center gap-4 font-bold"
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "14px" }}
+          >
+            <span
+              className="transition-colors duration-500"
+              style={{
+                display: "inline-block",
+                width: "24px",
+                height: "2px",
+                background: "var(--text-accent)",
+                borderRadius: "2px",
+              }}
+            />
+            Consulter mes compétences
+            <span
+              className="transition-colors duration-500"
+              style={{
+                display: "inline-block",
+                width: "24px",
+                height: "2px",
+                background: "var(--text-accent)",
+                borderRadius: "2px",
+              }}
+            />
+          </Link>
+        </div>
       </section>
     </div>
   );

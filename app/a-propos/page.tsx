@@ -1,211 +1,258 @@
 // ============================================================
-// PAGE À PROPOS — Thème Astronomie (Contraste Amélioré & Layout Fix)
+// PAGE À PROPOS — Thème Saisons (Glassmorphism Hautement Lisible)
 // ============================================================
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
   return (
     <div
-      className="flex flex-col overflow-x-hidden min-h-screen"
-      style={{ background: "#020817", color: "#e2e8f0" }}
+      className="flex flex-col overflow-x-hidden min-h-screen relative transition-colors duration-1000"
+      style={{
+        backgroundColor: "var(--bg-fallback)",
+        color: "var(--text-main)",
+      }}
     >
+      {/* ══════════════════════════════════════════════════
+          IMAGES DE FOND MULTI-SAISONS (Fondu croisé en CSS)
+      ══════════════════════════════════════════════════ */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Image
+          src="/img/themes/summer-beach.webp"
+          alt="Paysage d'été ensoleillé"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover bg-image bg-summer"
+        />
+        <Image
+          src="/img/themes/autumn-forest.webp"
+          alt="Paysage d'automne chaleureux"
+          fill
+          sizes="100vw"
+          className="object-cover bg-image bg-autumn"
+        />
+        <Image
+          src="/img/themes/winter.webp"
+          alt="Paysage d'hiver enneigé"
+          fill
+          sizes="100vw"
+          className="object-cover bg-image bg-winter"
+        />
+        <Image
+          src="/img/themes/spring.webp"
+          alt="Paysage de printemps fleuri"
+          fill
+          sizes="100vw"
+          className="object-cover bg-image bg-spring"
+        />
+        {/* Voile léger pour garantir l'unification de la luminosité */}
+        <div className="absolute inset-0 bg-white/20" />
+      </div>
+
+      {/* ══════════════════════════════════════════════════
+          STYLES GLOBAUX & VARIABLES DE THÈMES
+      ══════════════════════════════════════════════════ */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
-        /* ── Étoiles animées ── */
-        .ab-stars-sm, .ab-stars-md {
-          position: fixed;
-          top: 0; left: 0;
-          width: 1px; height: 1px;
-          border-radius: 50%;
-          background: transparent;
-          pointer-events: none;
-          z-index: 0;
-        }
-        .ab-stars-sm {
-          box-shadow:
-            80px 120px #fff, 320px 80px #fff, 560px 200px #fff,
-            780px 50px #fff, 1050px 310px #fff, 200px 480px #fff,
-            640px 400px #fff, 420px 560px #fff, 900px 150px #fff,
-            1200px 90px #fff, 1350px 450px #fff, 70px 650px #fff,
-            490px 720px #fff, 830px 680px #fff, 1100px 600px #fff,
-            260px 780px #fff, 710px 820px #fff, 1280px 730px #fff,
-            140px 900px #fff, 580px 940px #fff, 980px 880px #fff,
-            1420px 200px #fff, 350px 300px #fff, 870px 370px #fff,
-            1160px 480px #fff, 30px 410px #fff, 1460px 540px #fff;
-          opacity: 0.6;
-          animation: starDrift 150s linear infinite;
-        }
-        .ab-stars-md {
-          box-shadow:
-            180px 220px 1px #c9b882, 520px 130px 1px #fff,
-            880px 280px 1px #e2e8f0, 1240px 180px 1px #c9b882,
-            360px 520px 1px #fff, 740px 620px 1px #c9b882,
-            1080px 700px 1px #e2e8f0, 100px 750px 1px #fff,
-            1380px 650px 1px #c9b882, 620px 830px 1px #e2e8f0;
-          opacity: 0.5;
-          animation: starDrift 100s linear infinite;
+        /* ── CONFIGURATION DES COMPOSANTS PAR SAISON ── */
+        :root, .theme-summer {
+          --bg-fallback: #f0f9ff;
+          --text-main: #0f172a;
+          --text-muted: #334155;
+          --text-accent: #0284c7;
+          --gradient-start: #0284c7;
+          --gradient-end: #0369a1;
+          /* Verre épaissi (80% d'opacité) */
+          --glass-bg: rgba(255, 255, 255, 0.80);
+          --glass-border: rgba(255, 255, 255, 0.9);
         }
 
-        @keyframes starDrift {
-          from { transform: translateY(0); }
-          to   { transform: translateY(-100vh); }
+        .theme-autumn {
+          --bg-fallback: #fff7ed;
+          --text-main: #431407;
+          --text-muted: #7c2d12;
+          --text-accent: #c2410c;
+          --gradient-start: #c2410c;
+          --gradient-end: #7c2d12;
+          /* Verre épaissi (80% d'opacité) */
+          --glass-bg: rgba(255, 255, 255, 0.80);
+          --glass-border: rgba(255, 255, 255, 0.9);
         }
 
-        /* ── Animations d'entrée ── */
+        .theme-winter {
+          --bg-fallback: #f8fafc;
+          --text-main: #0f172a;
+          --text-muted: #1e3a8a;
+          --text-accent: #1d4ed8;
+          --gradient-start: #1e40af;
+          --gradient-end: #1e3a8a;
+          /* Hiver un poil plus opaque car fond neigeux très clair (85%) */
+          --glass-bg: rgba(255, 255, 255, 0.85);
+          --glass-border: rgba(255, 255, 255, 1);
+        }
+
+        .theme-spring {
+          --bg-fallback: #fdf2f8;
+          --text-main: #4c0519;
+          --text-muted: #831843;
+          --text-accent: #db2777;
+          --gradient-start: #db2777;
+          --gradient-end: #9d174d;
+          /* Verre épaissi (80% d'opacité) */
+          --glass-bg: rgba(255, 255, 255, 0.80);
+          --glass-border: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ── GESTION DYNAMIQUE DES FONDS D'ÉCRAN ── */
+        .bg-image {
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+        }
+        
+        .theme-summer .bg-summer { opacity: 1; }
+        .theme-autumn .bg-autumn { opacity: 1; }
+        .theme-winter .bg-winter { opacity: 1; }
+        .theme-spring .bg-spring { opacity: 1; }
+        
+        html:not([class*="theme-"]) .bg-summer { opacity: 1; }
+
+        /* ── GESTION DYNAMIQUE DES ICÔNES DE SAISON ── */
+        .icon-summer, .icon-autumn, .icon-winter, .icon-spring { display: none; }
+        
+        .theme-summer .icon-summer { display: inline-block; }
+        .theme-autumn .icon-autumn { display: inline-block; }
+        .theme-winter .icon-winter { display: inline-block; }
+        .theme-spring .icon-spring { display: inline-block; }
+
+        html:not([class*="theme-"]) .icon-summer { display: inline-block; }
+
+        /* ── ÉMOJI PONCTUATION ── */
+        .title-emoji {
+          display: inline-block;
+          font-size: 0.35em;
+          vertical-align: super;
+          margin-left: 0.1em;
+          opacity: 0.9;
+          transform: translateY(-0.15em);
+          filter: drop-shadow(0 0 12px var(--text-accent));
+          transition: filter 1s ease;
+        }
+
+        /* ── ANIMATIONS ET GLASSMORPHISM ── */
         .fade-up {
           opacity: 0;
-          transform: translateY(20px);
-          animation: fuAb 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          transform: translateY(24px);
+          animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         .d1 { animation-delay: 0.1s; }
-        .d2 { animation-delay: 0.25s; }
-        .d3 { animation-delay: 0.4s; }
-        @keyframes fuAb {
+        .d2 { animation-delay: 0.2s; }
+        .d3 { animation-delay: 0.3s; }
+        .d4 { animation-delay: 0.4s; }
+
+        @keyframes fadeUp {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Carte cosmique ── */
-        .cosmic-card {
-          background: rgba(226, 232, 240, 0.08);
-          border: 1px solid rgba(201, 184, 130, 0.4);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          transition: all 0.3s ease;
+        .glass-panel {
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          /* Blur augmenté pour lisser complètement l'arrière-plan */
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+          transition: transform 0.3s ease, box-shadow 0.3s ease, background 1s ease, border-color 1s ease;
         }
-        .cosmic-card:hover {
-          background: rgba(226, 232, 240, 0.12);
-          border-color: rgba(201, 184, 130, 0.6);
+        .glass-panel:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,184,130,0.2);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
         }
 
-        .example-block {
-          background: rgba(201, 184, 130, 0.12);
-          border: 1px solid rgba(201, 184, 130, 0.3);
-          border-radius: 1rem;
-          padding: 1.25rem;
-        }
-
-        .dark-card {
-          background: rgba(226,232,240,0.08);
-          border: 1px solid rgba(201,184,130,0.4);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-        }
-        .dark-card-inner {
-          background: rgba(201,184,130,0.2);
-          border: 1px solid rgba(201,184,130,0.3);
+        .glass-inner {
+          /* Quasi-opaque pour les encarts secondaires */
+          background: rgba(255, 255, 255, 0.85);
+          border: 1px solid rgba(255, 255, 255, 1);
+          box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8);
         }
 
         .icon-badge {
-          background: rgba(201,184,130,0.2);
-          border: 1px solid rgba(201,184,130,0.4);
+          background: rgba(255, 255, 255, 0.95);
+          border: 1px solid rgba(255, 255, 255, 1);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
+        /* ── TIMELINE ── */
         .tl-line {
           position: absolute;
           left: 24px;
           top: 0; bottom: 0;
           width: 2px;
-          background: linear-gradient(180deg, transparent, rgba(201,184,130,0.6), transparent);
+          background: linear-gradient(180deg, transparent, var(--text-accent), transparent);
+          opacity: 0.4;
           z-index: 0;
+          transition: background 1s ease;
         }
         @media (min-width: 768px) {
           .tl-line { left: 50%; transform: translateX(-50%); }
         }
-        .tl-node-gold {
-          background: linear-gradient(135deg, #c9b882, #a89060);
-          box-shadow: 0 0 14px rgba(201,184,130,0.8);
-          color: #020817;
-        }
+
         .tl-node {
-          background: rgba(226,232,240,0.15);
-          border: 1px solid rgba(201,184,130,0.5);
-          color: rgba(226,232,240,0.95);
+          background: rgba(255, 255, 255, 0.95);
+          border: 2px solid var(--text-accent);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+          transition: border-color 1s ease;
         }
 
-        .gold-sep {
-          background: linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent);
-          height: 1px;
-          flex: 1;
-        }
         .sec-line {
-          background: linear-gradient(90deg, rgba(201,184,130,0.8), transparent);
+          background: linear-gradient(90deg, var(--text-accent), transparent);
           height: 1px;
           flex: 1;
+          opacity: 0.3;
+          transition: background 1s ease;
         }
+
         .cta-link {
           transition: all 0.3s ease;
-          color: rgba(255,255,255,0.95);
+          color: var(--text-main);
           letter-spacing: 0.18em;
         }
         .cta-link:hover {
-          color: #c9b882;
-          text-shadow: 0 0 16px rgba(201,184,130,0.6);
+          color: var(--text-accent);
+          letter-spacing: 0.22em;
         }
       `}</style>
-
-      {/* ── Fond étoilé et Nébuleuses vives ── */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="ab-stars-sm" />
-        <div className="ab-stars-md" />
-        {/* Nébuleuse Magenta */}
-        <div
-          style={{
-            position: "absolute",
-            top: "5%",
-            right: "-10%",
-            width: "600px",
-            height: "600px",
-            background:
-              "radial-gradient(circle, rgba(192, 38, 211, 0.3) 0%, transparent 70%)",
-            borderRadius: "50%",
-            filter: "blur(60px)",
-          }}
-        />
-        {/* Nébuleuse Cyan */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "5%",
-            left: "-10%",
-            width: "700px",
-            height: "700px",
-            background:
-              "radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%)",
-            borderRadius: "50%",
-            filter: "blur(60px)",
-          }}
-        />
-      </div>
 
       {/* ══════════════════════════════════════════
           SECTION 1 — INTRODUCTION
       ══════════════════════════════════════════ */}
-      <section className="relative pt-28 pb-16 px-6 sm:px-12 z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-10">
-          <p
-            className="fade-up d1 tracking-[0.3em] uppercase text-xs font-bold"
-            style={{
-              color: "rgba(201,184,130,1)",
-              fontFamily: "'Cinzel', serif",
-            }}
-          >
-            ✦ &nbsp; Introduction &nbsp; ✦
-          </p>
+      <section className="relative pt-32 pb-16 px-6 sm:px-12 z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="fade-up d1 inline-flex glass-panel items-center gap-3 px-5 py-2 rounded-full mb-4">
+            <p
+              className="tracking-[0.3em] uppercase text-xs font-bold transition-colors duration-500"
+              style={{
+                color: "var(--text-accent)",
+                fontFamily: "'Cinzel', serif",
+              }}
+            >
+              Introduction
+            </p>
+          </div>
 
           <div className="fade-up d2">
             <h1
-              className="text-5xl md:text-7xl font-black leading-tight tracking-tight"
+              className="text-5xl md:text-7xl font-black leading-tight tracking-tight transition-colors duration-500"
               style={{ fontFamily: "'Cinzel', serif" }}
             >
-              <span style={{ color: "#ffffff" }}>À propos</span> <br />
+              À propos
+              <br />
               <span
+                className="transition-all duration-1000"
                 style={{
                   backgroundImage:
-                    "linear-gradient(135deg, #c9b882 0%, #ffffff 50%, #c9b882 100%)",
+                    "linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -213,25 +260,21 @@ export default function About() {
               >
                 de moi
               </span>
-              <span
-                style={{
-                  color: "#c9b882",
-                  fontSize: "0.45em",
-                  marginLeft: "0.12em",
-                }}
-              >
-                ✦
+              <span className="title-emoji">
+                <span className="icon-summer">☀️</span>
+                <span className="icon-autumn">🍂</span>
+                <span className="icon-winter">❄️</span>
+                <span className="icon-spring">🌸</span>
               </span>
             </h1>
           </div>
 
-          <div className="fade-up d3 cosmic-card rounded-3xl p-8 sm:p-10 text-center">
+          <div className="fade-up d3 glass-panel rounded-3xl p-8 sm:p-12 text-center mt-6">
             <p
-              className="text-lg md:text-xl leading-relaxed"
+              className="text-lg md:text-xl leading-relaxed transition-colors duration-500 font-medium"
               style={{
-                color: "rgba(255,255,255,0.95)",
+                color: "var(--text-muted)",
                 fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 400,
               }}
             >
               Actuellement étudiant en 2ème année de BUT Informatique à l'IUT
@@ -250,16 +293,21 @@ export default function About() {
       ══════════════════════════════════════════ */}
       <section className="py-16 px-6 sm:px-12 relative z-10">
         <div className="max-w-6xl mx-auto space-y-20">
-          {/* Titre */}
-          <div className="text-center max-w-2xl mx-auto">
+          {/* Titre ADN */}
+          <div className="text-center max-w-2xl mx-auto fade-up d1 glass-panel p-10 rounded-3xl mb-12">
             <h2
-              className="text-3xl md:text-4xl font-black tracking-tight mb-4"
-              style={{ fontFamily: "'Cinzel', serif", color: "#ffffff" }}
+              className="text-3xl md:text-4xl font-black tracking-tight mb-5 transition-colors duration-500"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                color: "var(--text-main)",
+              }}
             >
               Mon ADN{" "}
               <span
+                className="transition-all duration-1000"
                 style={{
-                  backgroundImage: "linear-gradient(135deg, #c9b882, #ffffff)",
+                  backgroundImage:
+                    "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -269,9 +317,9 @@ export default function About() {
               </span>
             </h2>
             <p
-              className="text-lg"
+              className="text-lg font-medium transition-colors duration-500"
               style={{
-                color: "rgba(255,255,255,0.9)",
+                color: "var(--text-muted)",
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
@@ -281,37 +329,36 @@ export default function About() {
           </div>
 
           {/* ── Valeurs Techniques ── */}
-          <div className="space-y-10">
-            <div className="flex items-center gap-4">
-              <div className="icon-badge p-2 rounded-xl text-xl flex-shrink-0">
+          <div className="space-y-10 fade-up d2">
+            <div className="flex items-center gap-4 glass-panel p-4 rounded-full max-w-md">
+              <div className="icon-badge w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0">
                 💼
               </div>
               <h3
-                className="font-bold"
+                className="font-bold uppercase transition-colors duration-500 flex-1"
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  color: "#ffffff",
+                  color: "var(--text-main)",
                   fontSize: "14px",
                   letterSpacing: "0.2em",
                 }}
               >
                 MES VALEURS TECHNIQUES
               </h3>
-              <div className="sec-line" />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               {/* Rigueur */}
-              <div className="cosmic-card rounded-3xl p-8 flex flex-col justify-start">
+              <div className="glass-panel rounded-3xl p-8 flex flex-col justify-start">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl icon-badge flex-shrink-0">
                     🔍
                   </div>
                   <h4
-                    className="font-bold uppercase tracking-widest"
+                    className="font-bold uppercase tracking-widest transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "16px",
                     }}
                   >
@@ -319,9 +366,9 @@ export default function About() {
                   </h4>
                 </div>
                 <p
-                  className="leading-relaxed mb-8 flex-1"
+                  className="leading-relaxed mb-8 flex-1 font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -330,17 +377,20 @@ export default function About() {
                   m'attache à comprendre l'architecture globale d'un projet
                   avant de modifier la moindre instruction.
                 </p>
-                <div className="dark-card-inner p-5 rounded-2xl">
+                <div className="glass-inner p-6 rounded-2xl">
                   <p
-                    className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2"
-                    style={{ color: "#c9b882", fontFamily: "'Cinzel', serif" }}
+                    className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2 transition-colors duration-500"
+                    style={{
+                      color: "var(--text-accent)",
+                      fontFamily: "'Cinzel', serif",
+                    }}
                   >
-                    <span>🎯</span> Exemple Concret
+                    <span className="text-sm">🎯</span> Exemple Concret
                   </p>
                   <p
-                    className="text-sm leading-relaxed"
+                    className="text-sm leading-relaxed font-medium transition-colors duration-500"
                     style={{
-                      color: "rgba(255,255,255,0.9)",
+                      color: "var(--text-muted)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -349,23 +399,22 @@ export default function About() {
                     logiciel scientifique de grande envergure. Pour faire
                     évoluer ce programme complexe, j'ai d'abord minutieusement
                     cartographié sa logique algorithmique, ce qui m'a permis d'y
-                    intégrer ma solution avec rigueur et dans le plus pur
-                    respect de l'outil existant.
+                    intégrer ma solution avec rigueur.
                   </p>
                 </div>
               </div>
 
               {/* Communication */}
-              <div className="cosmic-card rounded-3xl p-8 flex flex-col justify-start">
+              <div className="glass-panel rounded-3xl p-8 flex flex-col justify-start">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl icon-badge flex-shrink-0">
                     🤝
                   </div>
                   <h4
-                    className="font-bold uppercase tracking-widest"
+                    className="font-bold uppercase tracking-widest transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "16px",
                     }}
                   >
@@ -373,9 +422,9 @@ export default function About() {
                   </h4>
                 </div>
                 <p
-                  className="leading-relaxed mb-8 flex-1"
+                  className="leading-relaxed mb-8 flex-1 font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -384,27 +433,28 @@ export default function About() {
                   m'assurer que le code répond exactement à la réalité du
                   terrain et aux besoins des utilisateurs.
                 </p>
-                <div className="dark-card-inner p-5 rounded-2xl">
+                <div className="glass-inner p-6 rounded-2xl">
                   <p
-                    className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2"
-                    style={{ color: "#c9b882", fontFamily: "'Cinzel', serif" }}
+                    className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2 transition-colors duration-500"
+                    style={{
+                      color: "var(--text-accent)",
+                      fontFamily: "'Cinzel', serif",
+                    }}
                   >
-                    <span>🎯</span> Exemple Concret
+                    <span className="text-sm">🎯</span> Exemple Concret
                   </p>
                   <p
-                    className="text-sm leading-relaxed"
+                    className="text-sm leading-relaxed font-medium transition-colors duration-500"
                     style={{
-                      color: "rgba(255,255,255,0.9)",
+                      color: "var(--text-muted)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
                     Au sein du Laboratoire AGIR, j'ai travaillé en étroite
-                    collaboration avec mon tuteur, chercheur en chimie
-                    organique. Mon défi quotidien a été d'écouter et d'assimiler
-                    des concepts scientifiques complexes afin de comprendre
-                    comment ils étaient déjà traduits dans le code source de
-                    PyRED. Cette communication constante m'a permis d'intervenir
-                    sur l'algorithme avec justesse.
+                    collaboration avec mon tuteur, chercheur. Mon défi a été
+                    d'assimiler des concepts scientifiques complexes afin de
+                    comprendre comment ils étaient traduits dans le code. Cette
+                    communication m'a permis d'intervenir avec justesse.
                   </p>
                 </div>
               </div>
@@ -412,55 +462,41 @@ export default function About() {
           </div>
 
           {/* ── Personnalité ── */}
-          <div className="space-y-10 pt-4">
-            <div className="flex items-center gap-4">
-              <div className="icon-badge p-2 rounded-xl text-xl flex-shrink-0">
+          <div className="space-y-10 pt-4 fade-up d3">
+            <div className="flex items-center gap-4 glass-panel p-4 rounded-full max-w-md">
+              <div className="icon-badge w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0">
                 👤
               </div>
               <h3
-                className="font-bold uppercase tracking-widest"
+                className="font-bold uppercase tracking-widest transition-colors duration-500 flex-1"
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  color: "#ffffff",
+                  color: "var(--text-main)",
                   fontSize: "14px",
                 }}
               >
                 MA PERSONNALITÉ
               </h3>
-              <div className="sec-line" />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               {/* Piège de l'autonomie — pleine largeur */}
-              <div className="dark-card md:col-span-2 rounded-3xl p-8 relative overflow-hidden flex flex-col md:flex-row gap-8 items-center">
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    width: "300px",
-                    height: "300px",
-                    background:
-                      "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
-                    transform: "translate(30%, -30%)",
-                    pointerEvents: "none",
-                  }}
-                />
-                <div className="relative z-10 flex-1">
+              <div className="glass-panel md:col-span-2 rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex-1">
                   <h4
-                    className="text-xl font-bold mb-4 flex items-center gap-3 uppercase tracking-widest"
+                    className="text-xl font-bold mb-4 flex items-center gap-3 uppercase tracking-widest transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "18px",
                     }}
                   >
                     <span className="text-2xl">💡</span> Le piège de l'autonomie
                   </h4>
                   <p
-                    className="leading-relaxed"
+                    className="leading-relaxed font-medium transition-colors duration-500"
                     style={{
-                      color: "rgba(255,255,255,0.9)",
+                      color: "var(--text-muted)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -470,17 +506,20 @@ export default function About() {
                     moyens.
                   </p>
                 </div>
-                <div className="relative z-10 w-full md:w-1/2 dark-card-inner p-6 rounded-2xl">
+                <div className="w-full md:w-1/2 glass-inner p-6 rounded-2xl">
                   <p
-                    className="text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2"
-                    style={{ color: "#c9b882", fontFamily: "'Cinzel', serif" }}
+                    className="text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2 transition-colors duration-500"
+                    style={{
+                      color: "var(--text-accent)",
+                      fontFamily: "'Cinzel', serif",
+                    }}
                   >
-                    <span>📈</span> La leçon apprise
+                    <span className="text-sm">📈</span> La leçon apprise
                   </p>
                   <p
-                    className="text-sm leading-relaxed"
+                    className="text-sm leading-relaxed font-medium transition-colors duration-500"
                     style={{
-                      color: "rgba(255,255,255,0.9)",
+                      color: "var(--text-muted)",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -493,16 +532,16 @@ export default function About() {
               </div>
 
               {/* Mes Valeurs */}
-              <div className="cosmic-card rounded-3xl p-8 flex flex-col justify-start">
+              <div className="glass-panel rounded-3xl p-8 flex flex-col justify-start">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl icon-badge flex-shrink-0">
                     🧭
                   </div>
                   <h4
-                    className="font-bold uppercase tracking-widest"
+                    className="font-bold uppercase tracking-widest transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "16px",
                     }}
                   >
@@ -510,9 +549,9 @@ export default function About() {
                   </h4>
                 </div>
                 <p
-                  className="leading-relaxed"
+                  className="leading-relaxed font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -521,24 +560,23 @@ export default function About() {
                   d'apprendre m'a poussé à me former seul à Python au
                   laboratoire AGIR pour être immédiatement opérationnel.
                   Aujourd'hui, je vois le code comme un moyen de résoudre de
-                  vrais problèmes avec pragmatisme. Je m'efforce de produire des
-                  solutions réfléchies et utiles aux autres, en cherchant
-                  toujours le juste équilibre entre l'efficacité des outils
-                  modernes et l'optimisation de nos ressources.
+                  vrais problèmes avec pragmatisme, en cherchant toujours le
+                  juste équilibre entre l'efficacité technique et l'optimisation
+                  des ressources.
                 </p>
               </div>
 
               {/* Entre deux lignes de code */}
-              <div className="cosmic-card rounded-3xl p-8 flex flex-col justify-start">
+              <div className="glass-panel rounded-3xl p-8 flex flex-col justify-start">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl icon-badge flex-shrink-0">
                     🎧
                   </div>
                   <h4
-                    className="font-bold uppercase tracking-widest"
+                    className="font-bold uppercase tracking-widest transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "16px",
                     }}
                   >
@@ -546,22 +584,18 @@ export default function About() {
                   </h4>
                 </div>
                 <p
-                  className="leading-relaxed"
+                  className="leading-relaxed font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
                   Mon temps libre est rythmé par la culture de l'imaginaire. Je
                   suis un grand lecteur de Mangas et de Light Novels, très
-                  souvent accompagné de musique Rock ou J-Pop. C'est d'ailleurs
-                  la lecture de l'œuvre <i>Re:Zero</i> qui m'a transmis mon
-                  affection pour l'astronomie. Bien que mes connaissances
-                  restent celles d'un amateur curieux, cet attrait pour les
-                  étoiles m'inspire profondément. Plonger dans ces univers
-                  narratifs m'offre une déconnexion totale, me permettant de
-                  revenir sur mes projets avec un regard neuf et une créativité
-                  rechargée.
+                  souvent accompagné de musique Rock ou J-Pop. Plonger dans ces
+                  univers narratifs profonds m'offre une déconnexion totale, me
+                  permettant de revenir sur mes projets informatiques avec un
+                  regard neuf et une créativité rechargée.
                 </p>
               </div>
             </div>
@@ -569,46 +603,48 @@ export default function About() {
         </div>
       </section>
 
-      {/* ================= SÉPARATEUR  ================= */}
-      <div className="relative flex justify-center items-center py-12 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
-        <div className="gold-sep" />
-        <span
-          className="mx-6 text-xl"
+      {/* ================= SÉPARATEUR ================= */}
+      <div className="relative flex justify-center items-center py-12 max-w-4xl mx-auto px-6 w-full z-10 fade-up d4">
+        <div
+          className="transition-colors duration-500"
           style={{
-            color: "#c9b882",
-            textShadow: "0 0 12px rgba(201,184,130,0.6)",
+            height: "1px",
+            flex: 1,
+            background:
+              "linear-gradient(90deg, transparent, var(--text-accent), transparent)",
+            opacity: 0.4,
           }}
-        >
-          ✦
-        </span>
-        <div className="gold-sep" />
+        />
       </div>
 
       {/* ══════════════════════════════════════════
           SECTION 3 — PARCOURS (TIMELINE)
       ══════════════════════════════════════════ */}
-      <section className="pb-24 px-6 sm:px-12 relative z-10">
+      <section className="pb-24 px-6 sm:px-12 relative z-10 fade-up d4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 glass-panel p-10 rounded-3xl">
             <p
-              className="tracking-[0.3em] uppercase text-xs mb-4 font-bold"
+              className="tracking-[0.3em] uppercase text-xs mb-4 font-bold transition-colors duration-500"
               style={{
-                color: "rgba(201,184,130,1)",
+                color: "var(--text-accent)",
                 fontFamily: "'Cinzel', serif",
               }}
             >
-              ✦ &nbsp; Évolution &nbsp; ✦
+              Évolution
             </p>
             <h2
-              className="text-3xl font-black tracking-tight"
-              style={{ fontFamily: "'Cinzel', serif", color: "#ffffff" }}
+              className="text-3xl font-black tracking-tight transition-colors duration-500"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                color: "var(--text-main)",
+              }}
             >
               Mon Parcours
             </h2>
             <p
-              className="mt-2 text-lg"
+              className="mt-2 text-lg font-medium transition-colors duration-500"
               style={{
-                color: "rgba(255,255,255,0.9)",
+                color: "var(--text-muted)",
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
@@ -622,28 +658,28 @@ export default function About() {
 
             {/* ── Stage Python ── */}
             <div className="relative flex flex-col md:flex-row items-center group">
-              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node-gold items-center justify-center text-xl shadow-lg shadow-[#c9b882]/20">
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node items-center justify-center text-xl">
                 🚀
               </div>
-              <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node-gold flex items-center justify-center text-xl shadow-lg shadow-[#c9b882]/20">
+              <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 🚀
               </div>
-              <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+              <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
-                    className="font-bold"
+                    className="font-bold transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "15px",
                     }}
                   >
                     Stage Développeur Python
                   </div>
                   <time
-                    className="text-xs font-bold uppercase"
+                    className="text-xs font-bold uppercase transition-colors duration-500"
                     style={{
-                      color: "#c9b882",
+                      color: "var(--text-accent)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -652,18 +688,18 @@ export default function About() {
                   </time>
                 </div>
                 <div
-                  className="text-sm mb-3 italic font-medium"
+                  className="text-sm mb-3 font-bold transition-colors duration-500"
                   style={{
-                    color: "rgba(201,184,130,0.9)",
+                    color: "var(--text-main)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
                   Laboratoire AGIR (Amiens)
                 </div>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -683,22 +719,22 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 🚗
               </div>
-              <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+              <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
-                    className="font-bold"
+                    className="font-bold transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "15px",
                     }}
                   >
                     Projet : monCovoitJV
                   </div>
                   <time
-                    className="text-xs font-bold uppercase"
+                    className="text-xs font-bold uppercase transition-colors duration-500"
                     style={{
-                      color: "rgba(201,184,130,0.9)",
+                      color: "var(--text-accent)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -707,18 +743,18 @@ export default function About() {
                   </time>
                 </div>
                 <div
-                  className="text-sm mb-3 font-medium"
+                  className="text-sm mb-3 font-bold transition-colors duration-500"
                   style={{
-                    color: "rgba(201,184,130,0.9)",
+                    color: "var(--text-main)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
                   Développement Full Stack — IUT d'Amiens
                 </div>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -737,22 +773,22 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 🚌
               </div>
-              <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+              <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
-                    className="font-bold"
+                    className="font-bold transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "15px",
                     }}
                   >
                     SAE 2.01 : Gestion de Transport
                   </div>
                   <time
-                    className="text-xs font-bold uppercase"
+                    className="text-xs font-bold uppercase transition-colors duration-500"
                     style={{
-                      color: "rgba(201,184,130,0.9)",
+                      color: "var(--text-accent)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -761,18 +797,18 @@ export default function About() {
                   </time>
                 </div>
                 <div
-                  className="text-sm mb-3 font-medium"
+                  className="text-sm mb-3 font-bold transition-colors duration-500"
                   style={{
-                    color: "rgba(201,184,130,0.9)",
+                    color: "var(--text-main)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
                   Application C# / WinForms — IUT d'Amiens
                 </div>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -792,22 +828,22 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 🎓
               </div>
-              <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+              <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
-                    className="font-bold"
+                    className="font-bold transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "15px",
                     }}
                   >
                     BUT Informatique (RACA)
                   </div>
                   <time
-                    className="text-xs font-bold uppercase"
+                    className="text-xs font-bold uppercase transition-colors duration-500"
                     style={{
-                      color: "rgba(201,184,130,0.9)",
+                      color: "var(--text-accent)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -816,18 +852,18 @@ export default function About() {
                   </time>
                 </div>
                 <div
-                  className="text-sm mb-3 font-medium"
+                  className="text-sm mb-3 font-bold transition-colors duration-500"
                   style={{
-                    color: "rgba(201,184,130,0.9)",
+                    color: "var(--text-main)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
                   IUT d'Amiens - UPJV
                 </div>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -845,22 +881,22 @@ export default function About() {
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
                 📜
               </div>
-              <div className="w-full md:w-[45%] cosmic-card ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+              <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                   <div
-                    className="font-bold"
+                    className="font-bold transition-colors duration-500"
                     style={{
                       fontFamily: "'Cinzel', serif",
-                      color: "#ffffff",
+                      color: "var(--text-main)",
                       fontSize: "15px",
                     }}
                   >
                     Baccalauréat Général
                   </div>
                   <time
-                    className="text-xs font-bold uppercase"
+                    className="text-xs font-bold uppercase transition-colors duration-500"
                     style={{
-                      color: "rgba(201,184,130,0.9)",
+                      color: "var(--text-accent)",
                       fontFamily: "'Cinzel', serif",
                       letterSpacing: "0.1em",
                     }}
@@ -869,18 +905,18 @@ export default function About() {
                   </time>
                 </div>
                 <div
-                  className="text-sm mb-3 font-medium"
+                  className="text-sm mb-3 font-bold transition-colors duration-500"
                   style={{
-                    color: "rgba(201,184,130,0.9)",
+                    color: "var(--text-main)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
                   Mention Bien — Spé Maths & NSI
                 </div>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed font-medium transition-colors duration-500"
                   style={{
-                    color: "rgba(255,255,255,0.9)",
+                    color: "var(--text-muted)",
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
@@ -895,55 +931,45 @@ export default function About() {
       {/* ══════════════════════════════════════════
           CTA FINAL
       ══════════════════════════════════════════ */}
-      <section
-        className="py-20 text-center relative z-10"
-        style={{ borderTop: "1px solid rgba(201,184,130,0.3)" }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "400px",
-            height: "1px",
-            background:
-              "linear-gradient(90deg, transparent, rgba(201,184,130,0.8), transparent)",
-            pointerEvents: "none",
-          }}
-        />
-        <p
-          className="text-xs tracking-[0.3em] uppercase mb-6 font-bold"
-          style={{
-            color: "rgba(201,184,130,1)",
-            fontFamily: "'Cinzel', serif",
-          }}
-        >
-          ✦ &nbsp; Section Suivante &nbsp; ✦
-        </p>
-        <Link
-          href="/realisations"
-          className="cta-link inline-flex items-center gap-4 font-bold"
-          style={{ fontFamily: "'Cinzel', serif", fontSize: "14px" }}
-        >
-          <span
+      <section className="py-16 text-center relative z-10">
+        <div className="fade-up d4 glass-panel max-w-2xl mx-auto py-10 px-6 rounded-3xl relative">
+          <p
+            className="text-xs tracking-[0.3em] uppercase mb-6 font-bold transition-colors duration-500"
             style={{
-              display: "inline-block",
-              width: "32px",
-              height: "1px",
-              background: "rgba(201,184,130,0.8)",
+              color: "var(--text-accent)",
+              fontFamily: "'Cinzel', serif",
             }}
-          />
-          Découvrir mes réalisations techniques
-          <span
-            style={{
-              display: "inline-block",
-              width: "32px",
-              height: "1px",
-              background: "rgba(201,184,130,0.8)",
-            }}
-          />
-        </Link>
+          >
+            Section Suivante
+          </p>
+          <Link
+            href="/realisations"
+            className="cta-link inline-flex items-center gap-4 font-bold"
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "14px" }}
+          >
+            <span
+              className="transition-colors duration-500"
+              style={{
+                display: "inline-block",
+                width: "24px",
+                height: "2px",
+                background: "var(--text-accent)",
+                borderRadius: "2px",
+              }}
+            />
+            Découvrir mes réalisations
+            <span
+              className="transition-colors duration-500"
+              style={{
+                display: "inline-block",
+                width: "24px",
+                height: "2px",
+                background: "var(--text-accent)",
+                borderRadius: "2px",
+              }}
+            />
+          </Link>
+        </div>
       </section>
     </div>
   );

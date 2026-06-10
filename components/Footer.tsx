@@ -1,5 +1,7 @@
+"use client";
+
 // ============================================================
-// FOOTER — Thème Astronomie
+// FOOTER — Thème Saisons (Glassmorphism & Minimaliste)
 // ============================================================
 
 export default function Footer() {
@@ -7,191 +9,65 @@ export default function Footer() {
 
   return (
     <footer
-      className="w-full mt-auto relative overflow-hidden"
+      className="w-full mt-auto relative overflow-hidden transition-all duration-700 ease-in-out"
       style={{
-        background: "linear-gradient(180deg, #03091a 0%, #020817 100%)",
-        borderTop: "1px solid rgba(201, 184, 130, 0.4)",
-        boxShadow: "0 -4px 20px rgba(0,0,0,0.4)",
+        background: "var(--nav-bg, rgba(255, 255, 255, 0.25))",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderTop: "1px solid var(--nav-border, rgba(255, 255, 255, 0.6))",
+        boxShadow: "0 -8px 32px rgba(0, 0, 0, 0.03)",
       }}
     >
       {/* ── Styles pour les animations du footer ── */}
       <style>{`
-        /* Hover glow sur les liens sociaux */
+        /* Hover sur les liens sociaux adaptatif à la saison */
         .social-link {
           position: relative;
           transition: all 0.3s ease;
-          color: rgba(226, 232, 240, 0.9);
+          color: var(--text-muted, #334155);
         }
         .social-link:hover {
-          color: #c9b882;
-          text-shadow: 0 0 12px rgba(201, 184, 130, 0.7), 0 0 24px rgba(201, 184, 130, 0.4);
-        }
-
-        /* Animation de scintillement des étoiles de la constellation */
-        .star-twinkle {
-          animation: twinkle 3s ease-in-out infinite;
-        }
-        .star-twinkle:nth-child(2) { animation-delay: 0.8s; }
-        .star-twinkle:nth-child(3) { animation-delay: 1.6s; }
-        .star-twinkle:nth-child(4) { animation-delay: 2.4s; }
-        .star-twinkle:nth-child(5) { animation-delay: 0.4s; }
-
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.6; r: 2; }
-          50%      { opacity: 1;   r: 3; }
-        }
-
-        /* Lueur centrale de la constellation */
-        .constellation-glow {
-          filter: drop-shadow(0 0 8px rgba(201, 184, 130, 0.6));
+          color: var(--text-accent, #0ea5e9);
+          transform: translateY(-2px);
+          filter: drop-shadow(0 0 8px var(--text-accent, rgba(14, 165, 233, 0.4)));
         }
       `}</style>
 
-      {/* ── Constellation décorative SVG : Les Pléiades ── */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-md h-20 pointer-events-none">
-        <svg
-          viewBox="0 0 400 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full constellation-glow"
-          aria-hidden="true"
-        >
-          {/* Liaisons */}
-          <line
-            x1="170"
-            y1="28"
-            x2="205"
-            y2="20"
-            stroke="rgba(201,184,130,0.3)"
-            strokeWidth="0.5"
-          />
-          <line
-            x1="205"
-            y1="20"
-            x2="235"
-            y2="35"
-            stroke="rgba(201,184,130,0.3)"
-            strokeWidth="0.5"
-          />
-          <line
-            x1="235"
-            y1="35"
-            x2="215"
-            y2="55"
-            stroke="rgba(201,184,130,0.3)"
-            strokeWidth="0.5"
-          />
-          <line
-            x1="215"
-            y1="55"
-            x2="180"
-            y2="52"
-            stroke="rgba(201,184,130,0.3)"
-            strokeWidth="0.5"
-          />
-          <line
-            x1="180"
-            y1="52"
-            x2="170"
-            y2="28"
-            stroke="rgba(201,184,130,0.3)"
-            strokeWidth="0.5"
-          />
-          <line
-            x1="205"
-            y1="20"
-            x2="255"
-            y2="18"
-            stroke="rgba(201,184,130,0.2)"
-            strokeWidth="0.5"
-          />
-
-          {/* Étoiles principales */}
-          <circle
-            className="star-twinkle"
-            cx="170"
-            cy="28"
-            r="2.2"
-            fill="#e2e8f0"
-          />
-          <circle
-            className="star-twinkle"
-            cx="205"
-            cy="20"
-            r="3"
-            fill="#c9b882"
-          />
-          <circle
-            className="star-twinkle"
-            cx="235"
-            cy="35"
-            r="2.5"
-            fill="#e2e8f0"
-          />
-          <circle
-            className="star-twinkle"
-            cx="215"
-            cy="55"
-            r="2.2"
-            fill="#c9b882"
-          />
-          <circle
-            className="star-twinkle"
-            cx="180"
-            cy="52"
-            r="2"
-            fill="#e2e8f0"
-          />
-          <circle
-            className="star-twinkle"
-            cx="255"
-            cy="18"
-            r="1.8"
-            fill="#c9b882"
-          />
-
-          {/* Petites étoiles secondaires */}
-          <circle cx="150" cy="42" r="1" fill="#e2e8f0" opacity="0.6" />
-          <circle cx="245" cy="60" r="1" fill="#e2e8f0" opacity="0.5" />
-          <circle cx="275" cy="40" r="1" fill="#c9b882" opacity="0.6" />
-        </svg>
-      </div>
-
       {/* ── Contenu principal du footer ── */}
-      <div className="max-w-6xl mx-auto px-6 pt-16 pb-10">
-        {/* Citation */}
+      <div className="max-w-6xl mx-auto px-6 pt-12 pb-10">
+        {/* Citation adaptative */}
         <div className="text-center mb-10">
           <p
-            className="text-xs tracking-[0.3em] uppercase mb-2 font-bold"
+            className="text-xs tracking-[0.3em] uppercase mb-2 font-bold transition-colors duration-500"
             style={{
-              color: "rgba(201,184,130,0.9)",
+              color: "var(--text-accent, #0284c7)",
               fontFamily: "'Cinzel', serif",
             }}
           >
-            ✦ &nbsp; The Pleiades Above Us &nbsp; ✦
+            Au fil des saisons
           </p>
 
           <p
-            className="text-xs font-medium"
+            className="text-sm font-medium transition-colors duration-500"
             style={{
-              color: "rgba(226,232,240,0.85)",
+              color: "var(--text-muted, #334155)",
               fontFamily: "'DM Sans', sans-serif",
               letterSpacing: "0.05em",
             }}
           >
-            Comme les Pléiades dans la nuit, chaque étoile brille davantage
-            ensemble.
+            Le code, comme la nature, évolue et se perfectionne à chaque cycle.
           </p>
         </div>
 
-        {/* Séparateur doré */}
+        {/* Séparateur coloré selon la saison */}
         <div
-          className="mx-auto mb-10"
+          className="mx-auto mb-10 transition-colors duration-500"
           style={{
             width: "120px",
-            height: "1px",
+            height: "2px",
             background:
-              "linear-gradient(90deg, transparent, rgba(201,184,130,0.9), transparent)",
+              "linear-gradient(90deg, transparent, var(--text-accent, #0ea5e9), transparent)",
+            opacity: 0.5,
           }}
         />
 
@@ -199,9 +75,9 @@ export default function Footer() {
           {/* Bloc de Gauche : Copyright */}
           <div className="md:w-1/3 flex justify-center md:justify-start">
             <p
-              className="text-xs tracking-widest font-bold text-center md:text-left"
+              className="text-xs tracking-widest font-bold text-center md:text-left transition-colors duration-500"
               style={{
-                color: "rgba(226,232,240,0.8)",
+                color: "var(--text-main, #0f172a)",
                 fontFamily: "'Cinzel', serif",
                 fontSize: "10px",
                 letterSpacing: "0.15em",
@@ -240,8 +116,15 @@ export default function Footer() {
               </span>
             </a>
 
-            <span style={{ color: "rgba(201,184,130,0.7)", fontSize: "8px" }}>
-              ✦
+            <span
+              className="transition-colors duration-500"
+              style={{
+                color: "var(--text-accent, #0ea5e9)",
+                fontSize: "12px",
+                opacity: 0.6,
+              }}
+            >
+              •
             </span>
 
             <a
@@ -281,14 +164,23 @@ export default function Footer() {
           {/* Bloc de Droite : Mention */}
           <div className="md:w-1/3 flex justify-center md:justify-end">
             <p
-              className="text-xs font-medium text-center md:text-right"
+              className="text-xs font-medium text-center md:text-right transition-colors duration-500"
               style={{
-                color: "rgba(226,232,240,0.75)",
+                color: "var(--text-muted, #334155)",
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "11px",
               }}
             >
-              Crafted with <span style={{ color: "#c9b882" }}>✦</span> & Next.js
+              Crafted with{" "}
+              <span
+                style={{
+                  color: "var(--text-accent, #0ea5e9)",
+                  fontWeight: "bold",
+                }}
+              >
+                passion
+              </span>{" "}
+              & Next.js
             </p>
           </div>
         </div>

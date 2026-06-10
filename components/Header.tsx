@@ -1,16 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // ============================================================
-// HEADER — Thème Astronomie (Haute Lisibilité)
+// HEADER — Thème Saisons (Glassmorphism, Mémoire & Auto-Détection)
 // ============================================================
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  // On initialise avec l'été pour éviter les erreurs d'hydratation côté serveur
+  const [activeTheme, setActiveTheme] = useState("theme-summer");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -23,234 +26,280 @@ export default function Header() {
     { href: "/contact", label: "CONTACT" },
   ];
 
+  const seasons = [
+    { id: "theme-summer", icon: "☀️", title: "Été" },
+    { id: "theme-autumn", icon: "🍂", title: "Automne" },
+    { id: "theme-winter", icon: "❄️", title: "Hiver" },
+    { id: "theme-spring", icon: "🌸", title: "Printemps" },
+  ];
+
+  // Fonction pour déterminer la saison actuelle en fonction du mois
+  const getDefaultTheme = () => {
+    const month = new Date().getMonth(); // Retourne un chiffre de 0 (Jan) à 11 (Déc)
+
+    // Décembre (11), Janvier (0), Février (1)
+    if (month === 11 || month === 0 || month === 1) return "theme-winter";
+    // Mars (2), Avril (3), Mai (4)
+    if (month >= 2 && month <= 4) return "theme-spring";
+    // Juin (5), Juillet (6), Août (7)
+    if (month >= 5 && month <= 7) return "theme-summer";
+    // Septembre (8), Octobre (9), Novembre (10)
+    if (month >= 8 && month <= 10) return "theme-autumn";
+
+    return "theme-summer"; // Sécurité
+  };
+
+  // 1. Récupération du thème au chargement (Mémoire > Auto-détection)
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme) {
+      // Si l'utilisateur a déjà fait un choix, on le respecte
+      setActiveTheme(savedTheme);
+    } else {
+      // Sinon, on met le thème de la saison actuelle !
+      setActiveTheme(getDefaultTheme());
+    }
+  }, []);
+
+  // 2. Application du thème + Sauvegarde à chaque changement
+  useEffect(() => {
+    document.documentElement.classList.remove(
+      "theme-summer",
+      "theme-autumn",
+      "theme-winter",
+      "theme-spring",
+    );
+    document.documentElement.classList.add(activeTheme);
+
+    // On sauvegarde le choix pour la prochaine visite
+    localStorage.setItem("portfolio-theme", activeTheme);
+  }, [activeTheme]);
+
+  // Détecter le scroll pour l'effet transparent -> glassmorphism
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      {/* ── Styles injectés pour les animations non-couvertes par Tailwind ── */}
       <style>{`
-        /* Orbite animée sous les liens de nav (Expansion depuis le centre) */
+        /* ── CONFIGURATION DES TEINTES DE LA NAV PAR SAISON ── */
+        :root, .theme-summer {
+          --nav-bg: rgba(186, 230, 253, 0.35);
+          --nav-border: rgba(255, 255, 255, 0.6);
+          --text-accent: #0284c7;
+        }
+
+        .theme-autumn {
+          --nav-bg: rgba(254, 215, 170, 0.35);
+          --nav-border: rgba(251, 146, 60, 0.4);
+          --text-accent: #c2410c;
+        }
+
+        .theme-winter {
+          --nav-bg: rgba(241, 245, 249, 0.4);
+          --nav-border: rgba(255, 255, 255, 0.8);
+          --text-accent: #1d4ed8;
+        }
+
+        .theme-spring {
+          --nav-bg: rgba(252, 231, 243, 0.35);
+          --nav-border: rgba(244, 114, 182, 0.4);
+          --text-accent: #db2777;
+        }
+
         .nav-link::after {
           content: '';
           position: absolute;
           bottom: -4px;
           left: 0;
           width: 100%;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, #c9b882, transparent);
+          height: 2px;
+          background: var(--text-accent);
           transform: scaleX(0);
           transform-origin: center;
           transition: transform 0.4s ease;
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
+        .nav-link:hover::after, .nav-link.active::after {
           transform: scaleX(1);
         }
 
-        /* Point lumineux (étoile) qui apparaît au centre */
-        .nav-link::before {
-          content: '✦';
-          position: absolute;
-          bottom: -11px;
-          left: calc(50% - 4.5px);
-          font-size: 9px;
-          color: #c9b882;
-          opacity: 0;
-          transform: scale(0.5);
-          transition: opacity 0.3s ease, transform 0.4s ease;
+        .season-btn {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .season-btn.active {
+          background: rgba(255, 255, 255, 0.9);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          transform: scale(1.15);
         }
 
-        .nav-link:hover::before,
-        .nav-link.active::before {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        /* Lueur dorée sur le logo au hover */
-        .logo-glow:hover {
-          text-shadow:
-            0 0 20px rgba(201, 184, 130, 0.6),
-            0 0 40px rgba(201, 184, 130, 0.3);
-        }
-
-        /* Animation d'ouverture du menu mobile */
         .mobile-menu-enter {
           animation: menuOpen 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
         @keyframes menuOpen {
-          from {
-            opacity: 0;
-            transform: scale(0.9) translateY(-8px);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
+          from { opacity: 0; transform: scale(0.9) translateY(-8px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
         }
       `}</style>
 
       <header
-        className="sticky top-0 z-50 w-full"
+        className="fixed top-0 left-0 z-50 w-full transition-all duration-500 ease-in-out"
         style={{
-          background: "rgba(2, 8, 23, 0.85)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(201, 184, 130, 0.15)",
+          background: isScrolled ? "var(--nav-bg)" : "transparent",
+          backdropFilter: isScrolled ? "blur(20px)" : "blur(0px)",
+          WebkitBackdropFilter: isScrolled ? "blur(20px)" : "blur(0px)",
+          borderBottom: isScrolled
+            ? "1px solid var(--nav-border)"
+            : "1px solid transparent",
+          boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.05)" : "none",
         }}
       >
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between relative">
-          {/* ── Logo ── */}
+        <div
+          className={`max-w-7xl mx-auto px-4 sm:px-6 transition-all duration-500 flex items-center justify-between relative ${isScrolled ? "h-20 pb-0" : "h-32 pb-8"}`}
+        >
+          {/* Logo */}
           <Link
             href="/"
             onClick={closeMenu}
-            className="logo-glow transition-all duration-300 flex items-center gap-2"
+            className="flex items-center gap-1 group"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            {/* Petite étoile décorative */}
-            <span style={{ color: "#c9b882", fontSize: "10px" }}>✦</span>
-
-            <span
-              className="text-xl font-bold tracking-widest uppercase"
-              style={{
-                color: "#ffffff",
-                letterSpacing: "0.15em",
-              }}
-            >
-              Mathys Vanheulle
+            <span className="text-lg sm:text-xl font-black tracking-widest uppercase transition-colors duration-500 text-slate-900">
+              Mathys
             </span>
-
-            {/* Point doré final */}
             <span
-              style={{
-                color: "#c9b882",
-                fontSize: "24px",
-                lineHeight: 1,
-              }}
+              className="text-lg sm:text-xl font-bold tracking-widest uppercase transition-colors duration-500"
+              style={{ color: "var(--text-accent)" }}
             >
-              .
+              Vanheulle
             </span>
           </Link>
 
-          {/* ── Navigation Bureau ── */}
-          <nav className="hidden md:flex gap-10 font-bold tracking-widest">
+          {/* Navigation Bureau */}
+          <nav className="hidden lg:flex items-center gap-8 font-bold tracking-widest">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
-
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`nav-link relative transition-colors duration-300 ${
-                    isActive ? "active" : ""
-                  }`}
+                  className={`nav-link relative transition-colors duration-300 ${isActive ? "active" : ""}`}
                   style={{
-                    color: isActive ? "#c9b882" : "rgba(226, 232, 240, 0.85)",
+                    color: isActive ? "var(--text-accent)" : "#1e293b",
                     fontFamily: "'Cinzel', serif",
                     fontSize: "11.5px",
                     letterSpacing: "0.16em",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) {
-                      (e.target as HTMLElement).style.color = "#ffffff";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) {
-                      (e.target as HTMLElement).style.color =
-                        "rgba(226, 232, 240, 0.85)";
-                    }
                   }}
                 >
                   {link.label}
                 </Link>
               );
             })}
+
+            {/* Sélecteur de Saisons */}
+            <div
+              className={`flex items-center gap-1 transition-all duration-500 rounded-full p-1.5 ml-4 ${isScrolled ? "bg-white/40 border border-white/60 shadow-inner backdrop-blur-md" : "bg-transparent"}`}
+            >
+              {seasons.map((season) => (
+                <button
+                  key={season.id}
+                  onClick={() => setActiveTheme(season.id)}
+                  className={`season-btn w-8 h-8 rounded-full flex items-center justify-center text-sm ${
+                    activeTheme === season.id
+                      ? "active grayscale-0"
+                      : "grayscale opacity-50 hover:opacity-100 hover:grayscale-0"
+                  }`}
+                >
+                  {season.icon}
+                </button>
+              ))}
+            </div>
           </nav>
 
-          {/* ── Bouton Hamburger Mobile (Symétrie mathématique) ── */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 focus:outline-none flex items-center justify-center relative z-50"
-            aria-label="Toggle Menu"
-          >
-            <div className="w-6 h-5 relative">
-              <span
-                className={`absolute left-0 w-full h-0.5 transition-all duration-300 ease-out rounded-full ${
-                  isOpen ? "top-2 rotate-45" : "top-0"
-                }`}
-                style={{ background: "#c9b882" }}
-              />
-              <span
-                className={`absolute left-0 top-2 w-full h-0.5 transition-all duration-300 ease-out rounded-full ${
-                  isOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
-                }`}
-                style={{ background: "#c9b882" }}
-              />
-              <span
-                className={`absolute left-0 w-full h-0.5 transition-all duration-300 ease-out rounded-full ${
-                  isOpen ? "top-2 -rotate-45" : "top-4"
-                }`}
-                style={{ background: "#c9b882" }}
-              />
+          {/* Mobile UI */}
+          <div className="flex items-center gap-4 lg:hidden">
+            <div
+              className={`flex items-center transition-all duration-500 rounded-full p-1 ${isScrolled ? "bg-white/40 border border-white/60 backdrop-blur-md" : "bg-transparent"}`}
+            >
+              {seasons.map((season) => (
+                <button
+                  key={season.id}
+                  onClick={() => setActiveTheme(season.id)}
+                  className={`season-btn w-7 h-7 rounded-full flex items-center justify-center text-xs ${
+                    activeTheme === season.id
+                      ? "active grayscale-0"
+                      : "grayscale opacity-50"
+                  }`}
+                >
+                  {season.icon}
+                </button>
+              ))}
             </div>
-          </button>
 
-          {/* ── Menu Mobile ── */}
+            <button onClick={toggleMenu} className="p-2 focus:outline-none">
+              <div className="w-6 h-5 relative">
+                <span
+                  className={`absolute left-0 w-full h-0.5 transition-all duration-300 rounded-full ${isOpen ? "top-2 rotate-45" : "top-0"}`}
+                  style={{ background: "#0f172a" }}
+                />
+                <span
+                  className={`absolute left-0 top-2 w-full h-0.5 transition-all duration-300 rounded-full ${isOpen ? "opacity-0" : "opacity-100"}`}
+                  style={{ background: "#0f172a" }}
+                />
+                <span
+                  className={`absolute left-0 w-full h-0.5 transition-all duration-300 rounded-full ${isOpen ? "top-2 -rotate-45" : "top-4"}`}
+                  style={{ background: "#0f172a" }}
+                />
+              </div>
+            </button>
+          </div>
+
+          {/* Menu Mobile Déroulant */}
           {isOpen && (
             <div
-              className="mobile-menu-enter absolute top-full right-6 mt-3 w-64 rounded-2xl p-8 z-50 md:hidden"
+              className="mobile-menu-enter absolute top-full right-4 mt-3 w-64 rounded-3xl p-6 z-50 lg:hidden shadow-2xl"
               style={{
-                background: "rgba(2, 8, 23, 0.97)",
-                border: "1px solid rgba(201, 184, 130, 0.2)",
-                boxShadow:
-                  "0 20px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(201,184,130,0.1)",
+                background: "rgba(255, 255, 255, 0.9)",
+                backdropFilter: "blur(30px)",
+                WebkitBackdropFilter: "blur(30px)",
+                border: "1px solid var(--nav-border)",
               }}
             >
-              {/* Étoiles décoratives dans le menu */}
-              <div
-                className="absolute top-3 right-4 text-xs"
-                style={{
-                  color: "#c9b882",
-                  opacity: 0.6,
-                }}
-              >
-                ✦ ✧ ✦
-              </div>
-
-              <nav className="flex flex-col gap-6">
-                {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
-
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMenu}
-                      className="flex items-center gap-3 transition-all duration-300 group hover:text-[#ffffff]"
+              <nav className="flex flex-col gap-5">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMenu}
+                    className="flex items-center gap-3 font-bold"
+                    style={{
+                      color:
+                        pathname === link.href
+                          ? "var(--text-accent)"
+                          : "#1e293b",
+                      fontFamily: "'Cinzel', serif",
+                      fontSize: "13px",
+                      letterSpacing: "0.15em",
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
                       style={{
-                        color: isActive
-                          ? "#c9b882"
-                          : "rgba(226, 232, 240, 0.85)",
-                        fontFamily: "'Cinzel', serif",
-                        fontSize: "12px",
-                        letterSpacing: "0.18em",
+                        background:
+                          pathname === link.href
+                            ? "var(--text-accent)"
+                            : "transparent",
                       }}
-                    >
-                      {/* Tiret doré animé */}
-                      <span
-                        className="transition-all duration-300 group-hover:w-4"
-                        style={{
-                          display: "inline-block",
-                          width: isActive ? "16px" : "8px",
-                          height: "1px",
-                          background: "#c9b882",
-                          flexShrink: 0,
-                        }}
-                      />
-                      {link.label}
-                    </Link>
-                  );
-                })}
+                    />
+                    {link.label}
+                  </Link>
+                ))}
               </nav>
             </div>
           )}
