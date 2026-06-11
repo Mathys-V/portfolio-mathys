@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // ============================================================
-// HEADER — Thème Saisons (Glassmorphism, Mémoire & Auto-Détection)
+// HEADER — Thème Saisons (Menu Mobile Optimisé)
 // ============================================================
 
 export default function Header() {
@@ -53,10 +53,8 @@ export default function Header() {
   useEffect(() => {
     const savedTheme = localStorage.getItem("portfolio-theme");
     if (savedTheme) {
-      // Si l'utilisateur a déjà fait un choix, on le respecte
       setActiveTheme(savedTheme);
     } else {
-      // Sinon, on met le thème de la saison actuelle !
       setActiveTheme(getDefaultTheme());
     }
   }, []);
@@ -71,7 +69,6 @@ export default function Header() {
     );
     document.documentElement.classList.add(activeTheme);
 
-    // On sauvegarde le choix pour la prochaine visite
     localStorage.setItem("portfolio-theme", activeTheme);
   }, [activeTheme]);
 
@@ -202,7 +199,7 @@ export default function Header() {
               );
             })}
 
-            {/* Sélecteur de Saisons */}
+            {/* Sélecteur de Saisons (BUREAU UNIQUEMENT) */}
             <div
               className={`flex items-center gap-1 transition-all duration-500 rounded-full p-1.5 ml-4 ${isScrolled ? "bg-white/40 border border-white/60 shadow-inner backdrop-blur-md" : "bg-transparent"}`}
             >
@@ -215,6 +212,7 @@ export default function Header() {
                       ? "active grayscale-0"
                       : "grayscale opacity-50 hover:opacity-100 hover:grayscale-0"
                   }`}
+                  title={season.title}
                 >
                   {season.icon}
                 </button>
@@ -222,26 +220,8 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* Mobile UI */}
+          {/* Mobile UI (Juste le burger) */}
           <div className="flex items-center gap-4 lg:hidden">
-            <div
-              className={`flex items-center transition-all duration-500 rounded-full p-1 ${isScrolled ? "bg-white/40 border border-white/60 backdrop-blur-md" : "bg-transparent"}`}
-            >
-              {seasons.map((season) => (
-                <button
-                  key={season.id}
-                  onClick={() => setActiveTheme(season.id)}
-                  className={`season-btn w-7 h-7 rounded-full flex items-center justify-center text-xs ${
-                    activeTheme === season.id
-                      ? "active grayscale-0"
-                      : "grayscale opacity-50"
-                  }`}
-                >
-                  {season.icon}
-                </button>
-              ))}
-            </div>
-
             <button onClick={toggleMenu} className="p-2 focus:outline-none">
               <div className="w-6 h-5 relative">
                 <span
@@ -300,6 +280,39 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
+
+                {/* Séparateur pour les saisons dans le menu mobile */}
+                <div className="w-full h-px bg-slate-200 my-2" />
+
+                {/* Sélecteur de Saisons (MOBILE UNIQUEMENT) */}
+                <div className="flex flex-col gap-3">
+                  <p
+                    className="text-[10px] uppercase font-bold tracking-widest text-slate-500"
+                    style={{ fontFamily: "'Cinzel', serif" }}
+                  >
+                    Thème
+                  </p>
+                  <div className="flex items-center justify-between bg-slate-100/50 rounded-full p-1.5 border border-slate-200/50">
+                    {seasons.map((season) => (
+                      <button
+                        key={season.id}
+                        onClick={() => {
+                          setActiveTheme(season.id);
+                          // Optionnel : fermer le menu après le choix de la saison
+                          // closeMenu();
+                        }}
+                        className={`season-btn w-9 h-9 rounded-full flex items-center justify-center text-sm ${
+                          activeTheme === season.id
+                            ? "active grayscale-0"
+                            : "grayscale opacity-50"
+                        }`}
+                        title={season.title}
+                      >
+                        {season.icon}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </nav>
             </div>
           )}
