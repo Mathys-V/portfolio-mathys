@@ -159,6 +159,46 @@ export default function Footer() {
                 GITHUB
               </span>
             </a>
+
+            <span
+              className="transition-colors duration-500"
+              style={{
+                color: "var(--text-accent, #0ea5e9)",
+                fontSize: "12px",
+                opacity: 0.6,
+              }}
+            >
+              •
+            </span>
+
+            <a
+              href="mailto:mathys.vanheulle@gmail.com"
+              className="social-link flex items-center gap-2 font-bold"
+              aria-label="Email"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 6l10 7 10-7" />
+              </svg>
+              <span
+                style={{
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "10px",
+                  letterSpacing: "0.2em",
+                }}
+              >
+                EMAIL
+              </span>
+            </a>
           </div>
 
           {/* Bloc de Droite : Mention */}

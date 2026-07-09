@@ -257,12 +257,11 @@ export default function Realisations() {
       {/* ══════════════════════════════════════════
           CONTENU PRINCIPAL (Les 3 Réalisations)
       ══════════════════════════════════════════ */}
-      {/* Astuce : max-w-7xl au lieu de 6xl pour donner plus de place au texte ! */}
       <div className="relative max-w-7xl mx-auto py-8 px-6 sm:px-12 space-y-24 z-10">
         {/* ================= SECTION 1 : PyRED ================= */}
         <section className="relative fade-up d2">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
-            {/* COLONNE GAUCHE : TEXTE (Plus large lg:w-7/12) */}
+            {/* COLONNE GAUCHE : TEXTE */}
             <div className="flex-1 lg:w-7/12 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl">
               <div className="space-y-4">
                 <div
@@ -298,7 +297,6 @@ export default function Realisations() {
                 </h2>
               </div>
 
-              {/* Marge réduite entre paragraphes : space-y-4 */}
               <div
                 className="space-y-4 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
                 style={{
@@ -320,50 +318,36 @@ export default function Realisations() {
                   >
                     R.E.D. Server Development
                   </a>
-                  . Cependant, l'outil n'était pas initialement conçu pour
-                  traiter les <strong>analogues chimiques de l'ADN</strong> tels
-                  que les NH-phosphates. Ma mission a donc consisté à concevoir
-                  une extension spécifique afin de permettre la modélisation
-                  autonome de ces nouvelles topologies moléculaires complexes.
+                  . Ma mission au sein du laboratoire a consisté à étendre ses
+                  capacités pour traiter de nouvelles topologies complexes,
+                  telles que les <strong>analogues chimiques de l'ADN</strong>{" "}
+                  (NH-phosphates).
                 </p>
                 <p>
-                  Pour répondre à ce besoin scientifique, j'ai concentré mon
-                  travail sur{" "}
-                  <strong>l'extension des fonctionnalités existantes</strong> du
-                  logiciel. J'ai développé un module capable de{" "}
-                  <strong>vérifier automatiquement</strong> les structures
-                  moléculaires générées. Si celui-ci détecte une erreur de
-                  construction ou un défaut dans la structure, le code
-                  intervient immédiatement pour{" "}
-                  <strong>corriger la molécule</strong> et garantir sa{" "}
-                  <strong>cohérence chimique</strong>.
-                </p>
-                <p>
-                  Ce travail, réalisé sous Linux avec Python, a permis d'
-                  <strong>automatiser cette étape de contrôle</strong>.
-                  Concrètement, cela permet aux chercheurs d'
-                  <strong>éviter des corrections manuelles </strong>
-                  longues et fastidieuses, leur offrant ainsi un{" "}
-                  <strong>gain de temps précieux</strong> qu'ils peuvent
-                  désormais consacrer entièrement à l'analyse de leurs résultats
-                  de recherche.
+                  Développé en <strong>Python</strong> sous Linux, mon module
+                  vérifie et corrige automatiquement les structures moléculaires
+                  générées afin de garantir leur cohérence chimique. Cette
+                  automatisation évite aux chercheurs des corrections manuelles
+                  fastidieuses, leur offrant un{" "}
+                  <strong>gain de temps précieux</strong> pour l'analyse de
+                  leurs résultats de recherche.
                 </p>
               </div>
             </div>
 
-            {/* COLONNE DROITE : VISUEL & INFOS BOXES (Moins large lg:w-5/12) */}
+            {/* COLONNE DROITE : VISUEL & INFOS BOXES */}
             <div className="lg:w-5/12 flex flex-col gap-6 w-full">
               <a
                 href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block relative aspect-video rounded-3xl overflow-hidden border border-white/80 shadow-md group cursor-pointer bg-white/40"
+                className="block relative aspect-video rounded-3xl overflow-hidden border border-white/80 shadow-md group cursor-pointer bg-white/40 flex items-center justify-center p-6"
               >
                 <Image
-                  src="/img/realisations/pyred-accueil.png"
-                  alt="Accueil de la plateforme R.E.D. Server Development"
+                  src="/img/realisations/PyRED-logo.png"
+                  alt="Logo PyRED"
                   fill
-                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105"
+                  className="object-contain p-8 transition-transform duration-300 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
 
@@ -375,7 +359,7 @@ export default function Realisations() {
                     className="text-[10px] tracking-[0.3em] uppercase font-bold mb-1"
                     style={{ color: "var(--text-accent)" }}
                   >
-                    Interface Web
+                    Logo PyRED
                   </p>
                   <p className="text-slate-900 text-xl font-bold tracking-wide">
                     R.E.D. Server Development
@@ -402,8 +386,7 @@ export default function Realisations() {
                     }}
                   >
                     Algorithme intégré au serveur mondial et co-auteur d'une
-                    future publication internationale avec l'University of
-                    Lethbridge au Canada.
+                    future publication internationale.
                   </p>
                 </div>
                 <div className="p-6 glass-panel rounded-2xl">
@@ -423,9 +406,8 @@ export default function Realisations() {
                       color: "var(--text-muted)",
                     }}
                   >
-                    a solution est désormais pleinement intégrée au code source
-                    de PyRED, garantissant la viabilité chimique des fragments
-                    générés de manière autonome.
+                    La solution est désormais pleinement intégrée au code source
+                    de PyRED.
                   </p>
                 </div>
               </div>
@@ -524,31 +506,21 @@ export default function Realisations() {
                 }}
               >
                 <p>
-                  Dans le cadre de la SAE (Situation d'Apprentissage Évaluée)
-                  3.01, mon équipe et moi-même avons développé{" "}
-                  <strong>monCovoitJV</strong>, une plateforme web dédiée au
-                  covoiturage pour les étudiants et le personnel de l'UPJV.
-                  L'enjeu était de proposer une alternative concrète pour
-                  réduire l'empreinte carbone liée aux déplacements entre les
-                  différents campus de l'université.
+                  Dans le cadre de notre projet de 2ème année, notre équipe de
+                  six développeurs a conçu <strong>monCovoitJV</strong>, une
+                  plateforme web de covoiturage destinée aux étudiants et
+                  personnels de l'UPJV. L'enjeu principal était d'offrir une
+                  alternative concrète pour réduire l'empreinte carbone liée aux
+                  déplacements inter-campus.
                 </p>
                 <p>
-                  Développé en <strong>PHP (architecture MVC)</strong> avec une
-                  base de données MySQL, le projet a mobilisé une équipe de six
-                  personnes. L'une des plus grandes complexités techniques a été
-                  la mise en place du{" "}
-                  <strong>système de messagerie interne</strong>, permettant une
-                  coordination fluide entre conducteurs et passagers en temps
-                  réel.
-                </p>
-                <p>
-                  L'adoption d'une <strong>méthodologie agile</strong> (sprint
-                  reviews hebdomadaires) et une organisation rigoureuse via{" "}
-                  <i>Trello</i> nous ont permis d'optimiser notre cycle de
-                  développement. Nous avons ainsi pu livrer un produit complet
-                  et abouti, incluant un guide utilisateur détaillé ainsi qu'une
-                  documentation technique exhaustive pour l'administration et la
-                  modération du site.
+                  Développée en <strong>PHP (architecture MVC)</strong> avec
+                  MySQL, l'application intègre un{" "}
+                  <strong>système de messagerie en temps réel </strong>
+                  pour fluidifier la coordination. L'adoption d'une méthodologie
+                  Agile (sprints, Trello) nous a permis d'optimiser le
+                  développement et de livrer un produit abouti, accompagné d'une
+                  documentation technique et d'un guide utilisateur exhaustifs.
                 </p>
               </div>
             </div>
@@ -759,30 +731,22 @@ export default function Realisations() {
                 }}
               >
                 <p>
-                  Dans le cadre de la SAE 2.01 clôturant ma première année de
-                  BUT, j'ai participé au développement d'une application de
-                  gestion de transport en commun basée sur le réseau de bus de
-                  Calais. Réalisé en équipe de six personnes, ce projet visait à
-                  fournir une solution complète : consultation des horaires,
-                  carte interactive, recherche d'itinéraires et administration
-                  du réseau.
+                  Pour clôturer ma première année de BUT, j'ai participé au
+                  développement d'une application complète de gestion de
+                  transport en commun basée sur le réseau de bus de Calais. De
+                  la conception des maquettes UI/UX sur Balsamiq à
+                  l'implémentation finale, l'objectif était de regrouper la
+                  consultation des horaires, l'administration du réseau et une
+                  carte interactive.
                 </p>
                 <p>
-                  Développée en <strong>C# via Windows Forms</strong>, cette
-                  application repose sur une conception stricte orientée objet
-                  (POO) avec une séparation entre l'interface, la logique
-                  système et la base de données MySQL. L'approche a été
-                  méthodique, débutant par la conception d'un arbre de tâches et
-                  d'une maquette UI/UX sur Balsamiq.
-                </p>
-                <p>
-                  Le développement s'est organisé en sous-groupes de deux ou
-                  trois personnes, coordonné via Trello. En étroite
-                  collaboration avec mes coéquipiers, j'ai notamment
-                  co-développé le module de connexion sécurisé, la carte
-                  interactive, ainsi que le moteur de recherche d'itinéraires
-                  intégrant l'algorithme de Dijkstra pour l'optimisation des
-                  trajets.
+                  Développée en <strong>C# via Windows Forms</strong> et MySQL,
+                  l'application repose sur une stricte modélisation orientée
+                  objet (POO). En équipe de six, je me suis particulièrement
+                  investi dans le module de connexion sécurisé, la carte, ainsi
+                  que le moteur de recherche d'itinéraires intégrant{" "}
+                  <strong>l'algorithme de Dijkstra</strong> pour l'optimisation
+                  des trajets.
                 </p>
               </div>
             </div>

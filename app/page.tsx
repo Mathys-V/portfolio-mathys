@@ -271,7 +271,7 @@ export default function Home() {
                 className="text-6xl sm:text-7xl md:text-8xl font-black leading-[1.05] tracking-tight transition-colors duration-500"
                 style={{ fontFamily: "'Cinzel', serif" }}
               >
-                <span className="text-glow-light">Inventer</span>
+                <span className="text-glow-light">Mathys</span>
                 <br />
                 <span
                   className="transition-all duration-1000"
@@ -284,7 +284,7 @@ export default function Home() {
                     textShadow: "none",
                   }}
                 >
-                  l'Avenir
+                  Vanheulle
                 </span>
                 <span className="title-emoji">
                   <span className="icon-summer">☀️</span>

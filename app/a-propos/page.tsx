@@ -277,12 +277,11 @@ export default function About() {
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
-              Actuellement étudiant en 2ème année de BUT Informatique à l'IUT
-              d'Amiens, mon approche du développement est avant tout concrète et
-              analytique. Je suis convaincu que derrière chaque ligne de code se
-              cache une opportunité de résoudre un problème réel, qu'il s'agisse
-              d'optimiser le quotidien d'une entreprise, de faciliter la
-              collaboration d'une équipe ou de concrétiser un projet ambitieux.
+              Je suis actuellement en 3ème année de BUT Informatique à l'IUT
+              d'Amiens. Ce qui m'intéresse dans le développement, ce n'est pas
+              la ligne de code en elle-même, mais le problème qu'elle résout —
+              que ce soit accélérer le quotidien d'une entreprise, simplifier la
+              collaboration d'une équipe, ou donner vie à un projet ambitieux.
             </p>
           </div>
         </div>
@@ -372,10 +371,11 @@ export default function About() {
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
-                  J'aborde le code avec une méthode scientifique : analyser
-                  l'existant, formuler une hypothèse, tester et valider. Je
-                  m'attache à comprendre l'architecture globale d'un projet
-                  avant de modifier la moindre instruction.
+                  Avant de modifier une ligne de code, je veux comprendre
+                  pourquoi elle a été écrite ainsi. C'est un réflexe que j'ai dû
+                  muscler rapidement : arriver sur un logiciel scientifique que
+                  je ne maîtrisais pas du tout m'a appris que foncer sans
+                  cartographier la logique existante mène droit dans le mur.
                 </p>
                 <div className="glass-inner p-6 rounded-2xl">
                   <p
@@ -394,12 +394,11 @@ export default function About() {
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
-                    Au sein du Laboratoire AGIR, j'ai eu l'opportunité de
-                    travailler sur l'architecture historique de PyRED, un
-                    logiciel scientifique de grande envergure. Pour faire
-                    évoluer ce programme complexe, j'ai d'abord minutieusement
-                    cartographié sa logique algorithmique, ce qui m'a permis d'y
-                    intégrer ma solution avec rigueur.
+                    Au Laboratoire AGIR, le logiciel PyRED représente des années
+                    de développement scientifique cumulées. Plutôt que
+                    d'intervenir à l'aveugle, j'ai pris le temps de retracer son
+                    architecture et sa logique algorithmique avant d'y intégrer
+                    la moindre fonctionnalité.
                   </p>
                 </div>
               </div>
@@ -428,10 +427,10 @@ export default function About() {
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
-                  Le développement ne se fait pas en vase clos. J'accorde une
-                  importance majeure au dialogue avec les experts métiers pour
-                  m'assurer que le code répond exactement à la réalité du
-                  terrain et aux besoins des utilisateurs.
+                  Un code qui tourne ne veut rien dire s'il ne répond pas au bon
+                  problème. Je préfère poser une question qui semble évidente
+                  plutôt que de développer sur une hypothèse fausse — ça évite
+                  de refaire le travail deux fois.
                 </p>
                 <div className="glass-inner p-6 rounded-2xl">
                   <p
@@ -450,11 +449,10 @@ export default function About() {
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
-                    Au sein du Laboratoire AGIR, j'ai travaillé en étroite
-                    collaboration avec mon tuteur, chercheur. Mon défi a été
-                    d'assimiler des concepts scientifiques complexes afin de
-                    comprendre comment ils étaient traduits dans le code. Cette
-                    communication m'a permis d'intervenir avec justesse.
+                    Mon tuteur au Laboratoire AGIR était chercheur, pas
+                    développeur. Comprendre ses besoins impliquait d'abord de
+                    comprendre les concepts scientifiques qu'il manipulait, pour
+                    pouvoir ensuite les traduire fidèlement en code.
                   </p>
                 </div>
               </div>
@@ -491,7 +489,8 @@ export default function About() {
                       fontSize: "18px",
                     }}
                   >
-                    <span className="text-2xl">💡</span> Le piège de l'autonomie
+                    <span className="text-2xl">💡</span> Apprendre à demander de
+                    l'aide
                   </h4>
                   <p
                     className="leading-relaxed font-medium transition-colors duration-500"
@@ -500,10 +499,10 @@ export default function About() {
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
-                    J'ai longtemps cru que réussir seul était la preuve absolue
-                    de compétence. J'avais donc tendance à m'isoler pour tenter
-                    de résoudre un bug ou une problématique par mes propres
-                    moyens.
+                    J'ai longtemps confondu "être compétent" avec "s'en sortir
+                    seul". Résultat : je m'enfermais parfois des heures sur un
+                    bug plutôt que d'aller demander de l'aide, par peur que ça
+                    passe pour un manque de niveau.
                   </p>
                 </div>
                 <div className="w-full md:w-1/2 glass-inner p-6 rounded-2xl">
@@ -514,7 +513,7 @@ export default function About() {
                       fontFamily: "'Cinzel', serif",
                     }}
                   >
-                    <span className="text-sm">📈</span> La leçon apprise
+                    <span className="text-sm">📈</span> Ce que j'en retiens
                   </p>
                   <p
                     className="text-sm leading-relaxed font-medium transition-colors duration-500"
@@ -523,10 +522,10 @@ export default function About() {
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
-                    J'ai réalisé qu'un dialogue technique continu et le fait de
-                    réfléchir à plusieurs permettaient d'avancer beaucoup plus
-                    efficacement. Aujourd'hui, je sais que la communication fait
-                    gagner un temps précieux à toute l'équipe.
+                    Un échange rapide avec un collègue ou un tuteur débloque
+                    souvent une situation en quelques minutes, là où j'aurais pu
+                    y passer des heures seul. Je pose mes questions beaucoup
+                    plus tôt aujourd'hui, et j'y gagne clairement en efficacité.
                   </p>
                 </div>
               </div>
@@ -555,14 +554,17 @@ export default function About() {
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
-                  Mon approche du développement repose sur une forte
-                  adaptabilité et un réel sens de l'empathie. Ma soif
-                  d'apprendre m'a poussé à me former seul à Python au
-                  laboratoire AGIR pour être immédiatement opérationnel.
-                  Aujourd'hui, je vois le code comme un moyen de résoudre de
-                  vrais problèmes avec pragmatisme, en cherchant toujours le
-                  juste équilibre entre l'efficacité technique et l'optimisation
-                  des ressources.
+                  Mon approche du développement repose sur une forte capacité
+                  d'adaptation et un pragmatisme orienté vers la résolution de
+                  problèmes réels. Si je possédais déjà des bases en Python, mon
+                  arrivée au laboratoire AGIR a été l'occasion d'approfondir mes
+                  compétences de manière autonome, tout en contribuant
+                  activement au projet. Cette expérience a renforcé ma
+                  conviction que le code doit avant tout être efficace tout en
+                  restant accessible : je cherche constamment cet équilibre
+                  entre performance technique et clarté pour garantir la
+                  pérennité et la maintenance de mes réalisations par les autres
+                  développeurs.
                 </p>
               </div>
 
