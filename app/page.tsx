@@ -354,33 +354,8 @@ export default function Home() {
           {/* Séparateur */}
           <div className="w-full max-w-5xl h-px bg-white/40 my-20" />
 
-          {/* Photo de Profil + Citation */}
+          {/* Citation */}
           <div className="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-12 relative z-0">
-            {/* Photo */}
-            <div className="relative w-44 h-44 md:w-52 md:h-52 flex-shrink-0 fade-up delay-500">
-              <div
-                className="ring-rotate absolute inset-0 rounded-full"
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, transparent 0%, var(--pulse-color) 25%, transparent 50%, #fcd34d 75%, transparent 100%)",
-                  padding: "3px",
-                }}
-              >
-                <div className="w-full h-full rounded-full bg-white/60 backdrop-blur-md" />
-              </div>
-
-              <div className="absolute inset-2 rounded-full overflow-hidden border-2 border-white shadow-lg">
-                <Image
-                  src="/img/accueil/profile.jpg"
-                  alt="Mathys Vanheulle"
-                  fill
-                  sizes="(max-width: 768px) 176px, 208px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-
             {/* Bloc Citation (Verre épais) */}
             <div className="flex-1 max-w-2xl relative fade-up delay-600">
               <figure className="glass-panel p-8 rounded-3xl transition-all duration-1000">
