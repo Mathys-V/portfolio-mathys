@@ -249,7 +249,7 @@ export default function Home() {
                 letterSpacing: "0.15em",
               }}
             >
-              DÉVELOPPEUR FULL STACK · ORIENTÉ BACK-END
+              DÉVELOPPEUR FULL STACK
             </span>
           </div>
 
@@ -334,19 +334,25 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Stack technique (Badges en verre épais) */}
+            {/* Photo de profil */}
+            {/* Conteneur pour l'apparition sur la page (fade-up + délai) */}
             <div className="fade-up delay-500 mt-12">
-              <div className="flex flex-wrap justify-center gap-3">
-                {["PHP", "Python", "C#", "Java", "MySQL", "Next.js"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="glass-panel px-4 py-2 rounded-full text-sm font-bold transition-all duration-500"
-                    >
-                      {tech}
-                    </span>
-                  ),
-                )}
+              {/* Conteneur pour la photo et le hover (réaction instantanée) */}
+              <div
+                className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-[3px] border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]"
+                style={{
+                  transform: "translateZ(0)",
+                }}
+              >
+                <Image
+                  src="/img/accueil/PhotoCV.jpg"
+                  alt="Photo de profil Mathys Vanheulle"
+                  fill
+                  priority
+                  quality={85}
+                  sizes="(max-width: 768px) 160px, 192px"
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>

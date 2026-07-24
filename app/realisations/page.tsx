@@ -347,6 +347,7 @@ export default function Realisations() {
                   src="/img/realisations/PyRED-logo.png"
                   alt="Logo PyRED"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-contain p-8 transition-transform duration-300 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
@@ -537,6 +538,7 @@ export default function Realisations() {
                   src="/img/realisations/moncovoitJV.png"
                   alt="Plateforme monCovoitJV"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
@@ -763,6 +765,7 @@ export default function Realisations() {
                   src="/img/realisations/bus-calais.jpg"
                   alt="Carte du réseau de bus de Calais servant de base à l'application de transport"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
