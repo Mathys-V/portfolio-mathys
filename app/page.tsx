@@ -18,7 +18,10 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════
           IMAGES DE FOND MULTI-SAISONS (En 'fixed' pour le Footer)
       ══════════════════════════════════════════════════ */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div
+        className="fixed top-0 left-0 w-full h-[100dvh] z-0 pointer-events-none overflow-hidden"
+        style={{ transform: "translateZ(0)", willChange: "transform" }}
+      >
         <Image
           src="/img/themes/summer-beach.webp"
           alt="Paysage d'été ensoleillé"
