@@ -426,6 +426,19 @@ export default function Realisations() {
             </div>
           </div>
         </section>
+        {/* ================= SÉPARATEUR ================= */}
+        <div className="relative flex justify-center items-center py-2 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
+          <div
+            className="transition-colors duration-500"
+            style={{
+              height: "1px",
+              flex: 1,
+              background:
+                "linear-gradient(90deg, transparent, var(--text-accent), transparent)",
+              opacity: 0.4,
+            }}
+          />
+        </div>
 
         {/* ================= SECTION 2 : PyRED ================= */}
         <section className="relative fade-up d2 space-y-8">
