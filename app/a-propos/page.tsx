@@ -650,21 +650,74 @@ export default function About() {
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
-              Une progression constante vers le développement logiciel.
+              Mon parcours à travers mes réalisations et apprentissages.
             </p>
           </div>
 
           <div className="relative space-y-12 py-4">
             {/* Ligne verticale */}
             <div className="tl-line" />
+            {/* ── Projet MaPizzaBoutique ── */}
+            <div className="relative flex flex-col md:flex-row items-center group">
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node items-center justify-center text-xl">
+                🍕
+              </div>
+              <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
+                🍕
+              </div>
+              <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+                <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                  <div
+                    className="font-bold transition-colors duration-500"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-main)",
+                      fontSize: "15px",
+                    }}
+                  >
+                    MaPizzaBoutique : E-Commerce
+                  </div>
+                  <time
+                    className="text-xs font-bold uppercase transition-colors duration-500"
+                    style={{
+                      color: "var(--text-accent)",
+                      fontFamily: "'Cinzel', serif",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    Mai 2026
+                  </time>
+                </div>
+                <div
+                  className="text-sm mb-3 font-bold transition-colors duration-500"
+                  style={{
+                    color: "var(--text-main)",
+                    fontFamily: "'DM Sans', sans-serif",
+                  }}
+                >
+                  Plateforme Web PHP MVC — IUT d'Amiens
+                </div>
+                <p
+                  className="text-sm leading-relaxed font-medium transition-colors duration-500"
+                  style={{
+                    color: "var(--text-muted)",
+                    fontFamily: "'DM Sans', sans-serif",
+                  }}
+                >
+                  Développement d'un site e-commerce sécurisé avec architecture
+                  MVC stricte, intégration de paiements (Up2Pay), API REST et
+                  tests E2E (Testim).
+                </p>
+              </div>
+            </div>
 
             {/* ── Stage Python ── */}
             <div className="relative flex flex-col md:flex-row items-center group">
               <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node items-center justify-center text-xl">
-                🚀
+                🧬
               </div>
               <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
-                🚀
+                🧬
               </div>
               <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
                 <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">

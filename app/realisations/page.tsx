@@ -238,7 +238,7 @@ export default function Realisations() {
           </div>
 
           {/* Description dans le panneau */}
-          <div className="fade-up d3 glass-panel rounded-3xl p-8 sm:p-12 text-center mt-6 w-full">
+          <div className="fade-up d3 glass-panel rounded-2xl py-4 px-6 sm:px-10 text-center mt-6 w-fit mx-auto">
             <p
               className="text-lg md:text-xl leading-relaxed transition-colors duration-500 font-medium"
               style={{
@@ -246,69 +246,236 @@ export default function Realisations() {
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
-              Une immersion dans mes projets les plus marquants, de
-              l'optimisation algorithmique pour la recherche internationale au
-              développement collaboratif d'outils de mobilité durable.
+              Découvrez l'ensemble de mes réalisations et projets techniques.
             </p>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
-          CONTENU PRINCIPAL (Les 3 Réalisations)
+          CONTENU PRINCIPAL (Les Réalisations)
       ══════════════════════════════════════════ */}
       <div className="relative max-w-7xl mx-auto py-8 px-6 sm:px-12 space-y-24 z-10">
-        {/* ================= SECTION 1 : PyRED ================= */}
-        <section className="relative fade-up d2">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
+        {/* ================= SECTION 1 : MAPIZZABOUTIQUE ================= */}
+        <section className="relative fade-up d4 space-y-8">
+          {/* CARTE TITRE & SOUS-TITRE */}
+          <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
+            <h2
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-colors duration-500 max-w-4xl"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                color: "var(--text-main)",
+              }}
+            >
+              <span style={{ color: "var(--text-accent)" }}>
+                MaPizzaBoutique :{" "}
+              </span>
+              E-commerce
+            </h2>
+
+            <div
+              className="flex items-center justify-center gap-3 flex-wrap mt-2"
+              style={{ fontFamily: "'Cinzel', serif" }}
+            >
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Mai 2026
+              </span>
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Projet : E-Commerce
+              </span>
+              <span
+                className="text-xs font-bold uppercase tracking-wider transition-colors duration-500 ml-2"
+                style={{ color: "var(--text-muted)" }}
+              >
+                IUT d'Amiens
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
             {/* COLONNE GAUCHE : TEXTE */}
-            <div className="flex-1 lg:w-7/12 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl">
-              <div className="space-y-4">
-                <div
-                  className="flex items-center gap-3 flex-wrap"
-                  style={{ fontFamily: "'Cinzel', serif" }}
-                >
-                  <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
-                    Janv. - Mars 2026
-                  </span>
-                  <span className="px-3 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
-                    R&D Scientifique
-                  </span>
-                  <span
-                    className="text-[11px] font-bold uppercase tracking-wider transition-colors duration-500"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    Stage • Labo AGIR (UPJV)
-                  </span>
-                </div>
-
-                <h2
-                  className="text-3xl md:text-4xl font-bold leading-tight transition-colors duration-500"
-                  style={{
-                    fontFamily: "'Cinzel', serif",
-                    color: "var(--text-main)",
-                  }}
-                >
-                  <span style={{ color: "var(--text-accent)" }}>
-                    PyRED : Développement Python pour la
-                  </span>{" "}
-                  <br />
-                  <span>recherche pharmaceutique mondiale.</span>
-                </h2>
-              </div>
-
+            <div className="flex-1 lg:w-1/2 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl h-full">
               <div
-                className="space-y-4 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                className="space-y-6 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   color: "var(--text-muted)",
                 }}
               >
                 <p>
-                  Le logiciel PyRED est une référence dans la génération
-                  automatique de champs de forces pour la modélisation
-                  moléculaire, accessible aux chercheurs du monde entier via le
-                  serveur{" "}
+                  Réalisée dans le cadre d'un projet universitaire, cette
+                  plateforme web e-commerce en PHP natif repose sur une{" "}
+                  <strong>architecture MVC stricte</strong> (séparant le
+                  front-office du backoffice). Elle intègre une gestion de base
+                  de données rigoureuse :{" "}
+                  <strong>modélisation et requêtage sécurisé via PDO</strong>{" "}
+                  (requêtes préparées) pour contrer les injections SQL, assurant
+                  ainsi un historique fiable des transactions financières.
+                </p>
+                <p>
+                  Le cœur technique du projet réside dans{" "}
+                  <strong>l'intégration bancaire sécurisée</strong> (Up2Pay) via
+                  la gestion d'un webhook asynchrone (IPN - Server-to-Server).
+                  Le développement a également porté sur l'implémentation d'une{" "}
+                  <strong>API REST</strong> documentée et protégée par token,
+                  ainsi que sur l'automatisation des parcours utilisateurs
+                  critiques via des tests de bout en bout (E2E) avec{" "}
+                  <strong>Testim</strong>.
+                </p>
+              </div>
+            </div>
+
+            {/* COLONNE DROITE : VISUEL & INFOS BOXES */}
+            <div className="flex-1 lg:w-1/2 flex flex-col gap-6 w-full">
+              <div className="block relative aspect-video rounded-3xl overflow-hidden border border-white/80 shadow-md group bg-white/40">
+                <Image
+                  src="/img/realisations/mapizzaboutique.png"
+                  alt="Aperçu de l'interface MaPizzaBoutique"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-60" />
+
+                <div
+                  className="absolute bottom-6 left-6"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  <p className="text-slate-900 text-xl font-bold tracking-wide">
+                    MaPizzaBoutique
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
+                    ⚙️ Stack Technique
+                  </h4>
+                  <p
+                    className="text-sm font-medium leading-relaxed"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    PHP 8 (MVC), requêtes SQL préparées (PDO), MySQL, API REST
+                    (JSON), Bootstrap 5.
+                  </p>
+                </div>
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
+                    📄 Documents
+                  </h4>
+                  <div className="flex flex-col gap-3 mt-2 font-bold text-xs">
+                    <span
+                      className="flex items-center gap-2 transition-colors"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      <span style={{ color: "var(--text-accent)" }}>•</span>{" "}
+                      Aucun document
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="p-6 glass-panel rounded-2xl border-l-4"
+                style={{ borderLeftColor: "var(--text-accent)" }}
+              >
+                <h4
+                  className="font-bold mb-4 flex items-center gap-2 text-sm tracking-widest"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
+                  🧠 Compétences mobilisées
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "PHP (MVC)",
+                    "Sécurité Web (IPN)",
+                    "API REST",
+                    "MySQL / PDO",
+                    "Postman",
+                    "Testim (E2E)",
+                    "Bootstrap",
+                  ].map((sk) => (
+                    <span
+                      key={sk}
+                      className="px-3 py-1.5 glass-inner rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-800"
+                    >
+                      {sk}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= SECTION 2 : PyRED ================= */}
+        <section className="relative fade-up d2 space-y-8">
+          {/* CARTE TITRE & SOUS-TITRE */}
+          <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
+            <h2
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-colors duration-500 max-w-4xl"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                color: "var(--text-main)",
+              }}
+            >
+              <span style={{ color: "var(--text-accent)" }}>PyRED : </span>
+              Développement Python scientifique
+            </h2>
+
+            <div
+              className="flex items-center justify-center gap-3 flex-wrap mt-2"
+              style={{ fontFamily: "'Cinzel', serif" }}
+            >
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Janv. - Mars 2026
+              </span>
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Projet : PyRED (R&D)
+              </span>
+              <span
+                className="text-xs font-bold uppercase tracking-wider transition-colors duration-500 ml-2"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Stage • Labo AGIR (UPJV)
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+            {/* COLONNE GAUCHE : TEXTE */}
+            <div className="flex-1 lg:w-1/2 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl h-full">
+              <div
+                className="space-y-6 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "var(--text-muted)",
+                }}
+              >
+                <p>
+                  Le logiciel PyRED est une référence scientifique dans la
+                  génération automatique de champs de forces pour la
+                  modélisation moléculaire, accessible aux chercheurs du monde
+                  entier via le serveur{" "}
                   <a
                     href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
                     target="_blank"
@@ -319,14 +486,14 @@ export default function Realisations() {
                     R.E.D. Server Development
                   </a>
                   . Ma mission au sein du laboratoire a consisté à étendre ses
-                  capacités pour traiter de nouvelles topologies complexes,
+                  capacités pour traiter de nouvelles topologies moléculaires,
                   telles que les <strong>analogues chimiques de l'ADN</strong>{" "}
                   (NH-phosphates).
                 </p>
                 <p>
-                  Développé en <strong>Python</strong> sous Linux, mon module
-                  vérifie et corrige automatiquement les structures moléculaires
-                  générées afin de garantir leur cohérence chimique. Cette
+                  Développé en <strong>Python</strong> sous Linux, mon ajout
+                  permet désormais au programme de détecter et corriger tout
+                  seul les erreurs dans les nouvelles molécules. Cette
                   automatisation évite aux chercheurs des corrections manuelles
                   fastidieuses, leur offrant un{" "}
                   <strong>gain de temps précieux</strong> pour l'analyse de
@@ -336,7 +503,7 @@ export default function Realisations() {
             </div>
 
             {/* COLONNE DROITE : VISUEL & INFOS BOXES */}
-            <div className="lg:w-5/12 flex flex-col gap-6 w-full">
+            <div className="flex-1 lg:w-1/2 flex flex-col gap-6 w-full">
               <a
                 href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/"
                 target="_blank"
@@ -356,12 +523,6 @@ export default function Realisations() {
                   className="absolute bottom-6 left-6"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
-                  <p
-                    className="text-[10px] tracking-[0.3em] uppercase font-bold mb-1"
-                    style={{ color: "var(--text-accent)" }}
-                  >
-                    Logo PyRED
-                  </p>
                   <p className="text-slate-900 text-xl font-bold tracking-wide">
                     R.E.D. Server Development
                   </p>
@@ -460,47 +621,45 @@ export default function Realisations() {
           />
         </div>
 
-        {/* ================= SECTION 2 : MONCOVOITJV ================= */}
-        <section className="relative fade-up d4">
-          <div className="flex flex-col lg:flex-row-reverse gap-10 lg:gap-12 items-start">
-            {/* COLONNE GAUCHE (inversée) : TEXTE */}
-            <div className="flex-1 lg:w-7/12 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl">
-              <div className="space-y-4">
-                <div
-                  className="flex items-center justify-start gap-3 flex-wrap"
-                  style={{ fontFamily: "'Cinzel', serif" }}
-                >
-                  <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
-                    Décembre 2025
-                  </span>
-                  <span className="px-3 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
-                    SAE • Développement Full Stack
-                  </span>
-                  <span
-                    className="text-[11px] font-bold uppercase tracking-wider transition-colors duration-500"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    Équipe W • IUT d'Amiens
-                  </span>
-                </div>
+        {/* ================= SECTION 3 : MONCOVOITJV ================= */}
+        <section className="relative fade-up d4 space-y-8">
+          {/* CARTE TITRE & SOUS-TITRE */}
+          <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
+            <h2
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-colors duration-500 max-w-4xl"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                color: "var(--text-main)",
+              }}
+            >
+              <span style={{ color: "var(--text-accent)" }}>monCovoitJV :</span>{" "}
+              Plateforme web de covoiturage
+            </h2>
 
-                <h2
-                  className="text-3xl md:text-4xl font-bold leading-tight transition-colors duration-500"
-                  style={{
-                    fontFamily: "'Cinzel', serif",
-                    color: "var(--text-main)",
-                  }}
-                >
-                  <span style={{ color: "var(--text-accent)" }}>
-                    monCovoitJV : Répondre aux défis de la
-                  </span>{" "}
-                  <br />
-                  <span>mobilité inter-campus.</span>
-                </h2>
-              </div>
+            <div
+              className="flex items-center justify-center gap-3 flex-wrap mt-2"
+              style={{ fontFamily: "'Cinzel', serif" }}
+            >
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Décembre 2025
+              </span>
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Projet : monCovoitJV
+              </span>
+              <span
+                className="text-xs font-bold uppercase tracking-wider transition-colors duration-500 ml-2"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Équipe W • IUT d'Amiens
+              </span>
+            </div>
+          </div>
 
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+            {/* COLONNE GAUCHE : TEXTE */}
+            <div className="flex-1 lg:w-1/2 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl h-full">
               <div
-                className="space-y-4 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                className="space-y-6 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   color: "var(--text-muted)",
@@ -515,19 +674,26 @@ export default function Realisations() {
                   déplacements inter-campus.
                 </p>
                 <p>
-                  Développée en <strong>PHP (architecture MVC)</strong> avec
-                  MySQL, l'application intègre un{" "}
-                  <strong>système de messagerie en temps réel </strong>
-                  pour fluidifier la coordination. L'adoption d'une méthodologie
-                  Agile (sprints, Trello) nous a permis d'optimiser le
-                  développement et de livrer un produit abouti, accompagné d'une
-                  documentation technique et d'un guide utilisateur exhaustifs.
+                  Permettant de <strong>créer et réserver des trajets</strong>,
+                  l'application a été développée en{" "}
+                  <strong>PHP (architecture MVC)</strong> avec MySQL et intègre
+                  un <strong>système de messagerie en temps réel</strong> pour
+                  fluidifier la coordination. Pour offrir une expérience
+                  complète, elle embarque également une{" "}
+                  <strong>carte interactive</strong> pour la recherche visuelle
+                  de trajets, un <strong>système d'avis et de notation</strong>,
+                  l'<strong>autocomplétion des adresses</strong>, ainsi qu'un
+                  espace d'administration dédié à la modération. L'adoption
+                  d'une méthodologie Agile (sprints, Trello) nous a permis
+                  d'optimiser le développement et de livrer un produit abouti,
+                  accompagné d'une documentation technique et d'un guide
+                  utilisateur exhaustifs.
                 </p>
               </div>
             </div>
 
-            {/* COLONNE VISUELS ET CARTES (Droite, inversée) */}
-            <div className="lg:w-5/12 flex flex-col gap-6 w-full">
+            {/* COLONNE DROITE : VISUEL & INFOS BOXES */}
+            <div className="flex-1 lg:w-1/2 flex flex-col gap-6 w-full">
               <a
                 href="https://github.com/Mathys-V/sae-covoiturage"
                 target="_blank"
@@ -547,14 +713,8 @@ export default function Realisations() {
                   className="absolute bottom-6 left-6"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
-                  <p
-                    className="text-[10px] tracking-[0.3em] uppercase font-bold mb-1"
-                    style={{ color: "var(--text-accent)" }}
-                  >
-                    Interface Web
-                  </p>
                   <p className="text-slate-900 text-xl font-bold tracking-wide">
-                    Page d'Accueil
+                    MonCovoitJV
                   </p>
                 </div>
               </a>
@@ -686,47 +846,45 @@ export default function Realisations() {
           />
         </div>
 
-        {/* ================= SECTION 3 : SAE 2.01 BUS CALAIS ================= */}
-        <section className="relative fade-up d2">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
+        {/* ================= SECTION 4 : BUS CALAIS ================= */}
+        <section className="relative fade-up d4 space-y-8">
+          {/* CARTE TITRE & SOUS-TITRE */}
+          <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
+            <h2
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-colors duration-500 max-w-4xl"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                color: "var(--text-main)",
+              }}
+            >
+              <span style={{ color: "var(--text-accent)" }}>Bus Calais : </span>{" "}
+              Gestion de réseau en C#
+            </h2>
+
+            <div
+              className="flex items-center justify-center gap-3 flex-wrap mt-2"
+              style={{ fontFamily: "'Cinzel', serif" }}
+            >
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Mai 2025
+              </span>
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Projet : Gestion de Transport Bus
+              </span>
+              <span
+                className="text-xs font-bold uppercase tracking-wider transition-colors duration-500 ml-2"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Équipe E4 • IUT d'Amiens
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
             {/* COLONNE GAUCHE : TEXTE */}
-            <div className="flex-1 lg:w-7/12 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl">
-              <div className="space-y-4">
-                <div
-                  className="flex items-center gap-3 flex-wrap"
-                  style={{ fontFamily: "'Cinzel', serif" }}
-                >
-                  <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
-                    Mai 2025
-                  </span>
-                  <span className="px-3 py-1.5 border border-slate-300 text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full bg-white/60">
-                    SAE 2.01 • C# / WinForms
-                  </span>
-                  <span
-                    className="text-[11px] font-bold uppercase tracking-wider transition-colors duration-500"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    Équipe E4 • IUT d'Amiens
-                  </span>
-                </div>
-
-                <h2
-                  className="text-3xl md:text-4xl font-bold leading-tight transition-colors duration-500"
-                  style={{
-                    fontFamily: "'Cinzel', serif",
-                    color: "var(--text-main)",
-                  }}
-                >
-                  <span style={{ color: "var(--text-accent)" }}>
-                    Application de Gestion de Transport :
-                  </span>{" "}
-                  <br />
-                  <span>Conception et Modélisation Orientée Objet.</span>
-                </h2>
-              </div>
-
+            <div className="flex-1 lg:w-1/2 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl h-full">
               <div
-                className="space-y-4 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                className="space-y-6 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   color: "var(--text-muted)",
@@ -736,10 +894,10 @@ export default function Realisations() {
                   Pour clôturer ma première année de BUT, j'ai participé au
                   développement d'une application complète de gestion de
                   transport en commun basée sur le réseau de bus de Calais. De
-                  la conception des maquettes UI/UX sur Balsamiq à
-                  l'implémentation finale, l'objectif était de regrouper la
-                  consultation des horaires, l'administration du réseau et une
-                  carte interactive.
+                  la <strong>conception des maquettes UI/UX</strong> sur
+                  Balsamiq à l'implémentation finale, l'objectif était de
+                  regrouper la consultation des horaires, l'administration du
+                  réseau et une carte interactive.
                 </p>
                 <p>
                   Développée en <strong>C# via Windows Forms</strong> et MySQL,
@@ -754,7 +912,7 @@ export default function Realisations() {
             </div>
 
             {/* COLONNE DROITE : VISUEL & INFOS BOXES */}
-            <div className="lg:w-5/12 flex flex-col gap-6 w-full">
+            <div className="flex-1 lg:w-1/2 flex flex-col gap-6 w-full">
               <a
                 href="https://github.com/Mathys-V/SAE_E4"
                 target="_blank"
@@ -774,12 +932,6 @@ export default function Realisations() {
                   className="absolute bottom-6 left-6"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
-                  <p
-                    className="text-[10px] tracking-[0.3em] uppercase font-bold mb-1"
-                    style={{ color: "var(--text-accent)" }}
-                  >
-                    Réseau de Transport
-                  </p>
                   <p className="text-slate-900 text-xl font-bold tracking-wide">
                     Bus de Calais
                   </p>

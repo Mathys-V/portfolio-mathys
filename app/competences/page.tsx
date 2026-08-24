@@ -247,22 +247,20 @@ export default function Competences() {
                   rigueur algorithmique
                 </strong>
                 , du code scientifique complexe de PyRED jusqu'à la création
-                d'architectures web robustes (MVC, API REST).
-              </p>
-              <p>
-                Au-delà de la technique, j'ai cultivé mon{" "}
+                d'architectures web robustes (MVC, API REST). Au-delà de la
+                technique, j'ai cultivé mon{" "}
                 <strong style={{ color: "var(--text-main)" }}>
                   adaptation
                 </strong>{" "}
-                par l'auto-formation (Python) et affiné ma{" "}
+                par l'auto-formation et affiné ma{" "}
                 <strong
                   className="font-bold transition-colors duration-500"
                   style={{ color: "var(--text-accent)" }}
                 >
                   communication interdisciplinaire
                 </strong>
-                , indispensable pour traduire les besoins des chercheurs et
-                collaborer efficacement en méthode Agile.
+                , indispensable pour traduire les besoins des différents
+                interlocuteurs et collaborer efficacement en méthode Agile.
               </p>
             </div>
           </div>
@@ -383,7 +381,7 @@ export default function Competences() {
               className="dm-sans font-medium text-lg transition-colors duration-500"
               style={{ color: "var(--text-muted)" }}
             >
-              Panorama de mes expertises techniques classées par domaine.
+              Mes expertises techniques par domaine.
             </p>
           </div>
 
@@ -588,6 +586,7 @@ export default function Competences() {
                     "Visual Studio",
                     "Android Studio",
                     "Postman",
+                    "Testim",
                   ].map((tool) => (
                     <span
                       key={tool}

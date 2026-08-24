@@ -436,8 +436,20 @@ export default function Contact() {
                   className="text-[15px] leading-relaxed font-medium dm-sans transition-colors duration-500"
                   style={{ color: "var(--text-muted)" }}
                 >
-                  Monsieur Dupradeau a supervisé mon stage de développement au
-                  sein de l'équipe AGIR de l'UPJV.
+                  Monsieur F.-Y. Dupradeau a supervisé mon stage au sein du
+                  laboratoire <strong>AGIR de l'UPJV</strong>. Nous travaillons
+                  actuellement à 3 avec E. Ferreira-Baudin sur la version 3.0 de
+                  PyRED{" "}
+                  <a
+                    href="https://upjv.q4md-forcefieldtools.org/REDServer-Development/overview.php"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline font-semibold"
+                    style={{ color: "var(--text-accent)" }}
+                  >
+                    (Lien vers PyRED)
+                  </a>
+                  .
                 </p>
               </div>
 
