@@ -231,12 +231,6 @@ export default function Contact() {
               >
                 Contacter
               </span>
-              <span className="title-emoji">
-                <span className="icon-summer">☀️</span>
-                <span className="icon-autumn">🍂</span>
-                <span className="icon-winter">❄️</span>
-                <span className="icon-spring">🌸</span>
-              </span>
             </h1>
           </div>
 
