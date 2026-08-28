@@ -59,7 +59,7 @@ export default function Competences() {
         :root, .theme-summer {
           --bg-fallback: #f0f9ff;
           --text-main: #0f172a;
-          --text-muted: #334155;
+          --text-muted: #000000;
           --text-accent: #0284c7;
           --text-accent-glow: rgba(2, 132, 199, 0.4);
           --gradient-start: #0284c7;
@@ -71,7 +71,7 @@ export default function Competences() {
         .theme-autumn {
           --bg-fallback: #fff7ed;
           --text-main: #431407;
-          --text-muted: #7c2d12;
+          --text-muted: #000000;
           --text-accent: #c2410c;
           --text-accent-glow: rgba(194, 65, 12, 0.4);
           --gradient-start: #c2410c;
@@ -83,7 +83,7 @@ export default function Competences() {
         .theme-winter {
           --bg-fallback: #f8fafc;
           --text-main: #0f172a;
-          --text-muted: #1e3a8a;
+          --text-muted: #000000;
           --text-accent: #1d4ed8;
           --text-accent-glow: rgba(29, 78, 216, 0.4);
           --gradient-start: #1e40af;
@@ -95,7 +95,7 @@ export default function Competences() {
         .theme-spring {
           --bg-fallback: #fdf2f8;
           --text-main: #4c0519;
-          --text-muted: #831843;
+          --text-muted: #000000;
           --text-accent: #db2777;
           --text-accent-glow: rgba(219, 39, 119, 0.4);
           --gradient-start: #db2777;
@@ -241,8 +241,10 @@ export default function Competences() {
                   rigueur algorithmique
                 </strong>
                 , du code scientifique complexe de PyRED jusqu'à la création
-                d'architectures web robustes (MVC, API REST). Au-delà de la
-                technique, j'ai cultivé mon{" "}
+                d'architectures web robustes (MVC, API REST).
+              </p>
+              <p>
+                Au-delà de la technique, j'ai cultivé mon{" "}
                 <strong style={{ color: "var(--text-main)" }}>
                   adaptation
                 </strong>{" "}

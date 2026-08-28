@@ -65,7 +65,7 @@ export default function Home() {
         :root, .theme-summer {
           --bg-fallback: #f0f9ff;
           --text-main: #0f172a;
-          --text-muted: #1e293b;
+          --text-muted: #000000;
           --text-quote: #334155;
           --text-accent: #0284c7;
           --text-accent-glow: rgba(255, 255, 255, 0.8);
@@ -81,7 +81,7 @@ export default function Home() {
         .theme-autumn {
           --bg-fallback: #fff7ed;
           --text-main: #431407;
-          --text-muted: #7c2d12;
+          --text-muted: #000000;
           --text-quote: #9a3412;
           --text-accent: #c2410c;
           --text-accent-glow: rgba(255, 247, 237, 0.8);
@@ -97,7 +97,7 @@ export default function Home() {
         .theme-winter {
           --bg-fallback: #f8fafc;
           --text-main: #0f172a;
-          --text-muted: #1e3a8a;
+          --text-muted: #000000;
           --text-quote: #334155;
           --text-accent: #1d4ed8;
           --text-accent-glow: rgba(255, 255, 255, 0.9);
@@ -113,7 +113,7 @@ export default function Home() {
         .theme-spring {
           --bg-fallback: #fdf2f8;
           --text-main: #4c0519;
-          --text-muted: #831843;
+          --text-muted: #000000;
           --text-quote: #9d174d;
           --text-accent: #db2777;
           --text-accent-glow: rgba(253, 242, 248, 0.8);

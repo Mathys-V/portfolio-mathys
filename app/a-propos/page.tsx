@@ -61,7 +61,7 @@ export default function About() {
         :root, .theme-summer {
           --bg-fallback: #f0f9ff;
           --text-main: #0f172a;
-          --text-muted: #334155;
+          --text-muted: #000000;
           --text-accent: #0284c7;
           --gradient-start: #0284c7;
           --gradient-end: #0369a1;
@@ -73,7 +73,7 @@ export default function About() {
         .theme-autumn {
           --bg-fallback: #fff7ed;
           --text-main: #431407;
-          --text-muted: #7c2d12;
+          --text-muted: #000000;
           --text-accent: #c2410c;
           --gradient-start: #c2410c;
           --gradient-end: #7c2d12;
@@ -85,7 +85,7 @@ export default function About() {
         .theme-winter {
           --bg-fallback: #f8fafc;
           --text-main: #0f172a;
-          --text-muted: #1e3a8a;
+          --text-muted: #000000;
           --text-accent: #1d4ed8;
           --gradient-start: #1e40af;
           --gradient-end: #1e3a8a;
@@ -97,7 +97,7 @@ export default function About() {
         .theme-spring {
           --bg-fallback: #fdf2f8;
           --text-main: #4c0519;
-          --text-muted: #831843;
+          --text-muted: #000000;
           --text-accent: #db2777;
           --gradient-start: #db2777;
           --gradient-end: #9d174d;
@@ -272,10 +272,10 @@ export default function About() {
               }}
             >
               Je suis actuellement en 3ème année de BUT Informatique à l'IUT
-              d'Amiens. Ce qui m'intéresse dans le développement, ce n'est pas
-              la ligne de code en elle-même, mais le problème qu'elle résout —
-              que ce soit accélérer le quotidien d'une entreprise, simplifier la
-              collaboration d'une équipe, ou donner vie à un projet ambitieux.
+              d'Amiens. Ce qui m'anime dans le développement, c'est avant tout
+              la solution que le code permet d'apporter — que ce soit accélérer
+              le quotidien d'une entreprise, simplifier la collaboration d'une
+              équipe, ou donner vie à un projet ambitieux.
             </p>
           </div>
         </div>
@@ -367,9 +367,10 @@ export default function About() {
                 >
                   Avant de modifier une ligne de code, je veux comprendre
                   pourquoi elle a été écrite ainsi. C'est un réflexe que j'ai dû
-                  muscler rapidement : arriver sur un logiciel scientifique que
-                  je ne maîtrisais pas du tout m'a appris que foncer sans
-                  cartographier la logique existante mène droit dans le mur.
+                  développer rapidement : arriver sur un logiciel scientifique
+                  que je ne maîtrisais pas du tout m'a appris que plonger dans
+                  un gros projet sans prendre le temps de lire l'existant, c’est
+                  souvent le meilleur moyen de devoir tout refaire.
                 </p>
                 <div className="glass-inner p-6 rounded-2xl">
                   <p
@@ -390,9 +391,9 @@ export default function About() {
                   >
                     Au Laboratoire AGIR, le logiciel PyRED représente des années
                     de développement scientifique cumulées. Plutôt que
-                    d'intervenir à l'aveugle, j'ai pris le temps de retracer son
-                    architecture et sa logique algorithmique avant d'y intégrer
-                    la moindre fonctionnalité.
+                    d'intervenir à l'aveugle, j'ai pris le temps de comprendre
+                    son architecture et sa logique algorithmique avant d'y
+                    intégrer la moindre fonctionnalité.
                   </p>
                 </div>
               </div>
@@ -421,10 +422,10 @@ export default function About() {
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
-                  Un code qui tourne ne veut rien dire s'il ne répond pas au bon
+                  Un code parfait ne sert à rien s'il ne répond pas au bon
                   problème. Je préfère poser une question qui semble évidente
-                  plutôt que de développer sur une hypothèse fausse — ça évite
-                  de refaire le travail deux fois.
+                  plutôt que de développer sur une hypothèse fausse. L'échange
+                  est pour moi la meilleure façon d'éviter les malentendus.
                 </p>
                 <div className="glass-inner p-6 rounded-2xl">
                   <p
@@ -443,10 +444,11 @@ export default function About() {
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
-                    Mon tuteur au Laboratoire AGIR était chercheur, pas
-                    développeur. Comprendre ses besoins impliquait d'abord de
-                    comprendre les concepts scientifiques qu'il manipulait, pour
-                    pouvoir ensuite les traduire fidèlement en code.
+                    Lors de mon stage au Laboratoire AGIR, mon tuteur était un
+                    chercheur, pas un développeur. Comprendre ses besoins
+                    impliquait d'abord de comprendre les concepts scientifiques
+                    qu'il manipulait, pour pouvoir ensuite les traduire
+                    fidèlement en code.
                   </p>
                 </div>
               </div>
@@ -493,10 +495,10 @@ export default function About() {
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
-                    J'ai longtemps confondu "être compétent" avec "s'en sortir
-                    seul". Résultat : je m'enfermais parfois des heures sur un
-                    bug plutôt que d'aller demander de l'aide, par peur que ça
-                    passe pour un manque de niveau.
+                    Au début, je pensais qu'être bon, c'était trouver toutes les
+                    solutions tout seul. Résultat : je m'enfermais parfois des
+                    heures sur un bug plutôt que d'aller demander de l'aide, par
+                    peur de déranger ou que ça passe pour un manque de niveau.
                   </p>
                 </div>
                 <div className="w-full md:w-1/2 glass-inner p-6 rounded-2xl">
@@ -516,10 +518,10 @@ export default function About() {
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
-                    Un échange rapide avec un collègue ou un tuteur débloque
-                    souvent une situation en quelques minutes, là où j'aurais pu
-                    y passer des heures seul. Je pose mes questions beaucoup
-                    plus tôt aujourd'hui, et j'y gagne clairement en efficacité.
+                    Un échange avec un collègue ou un tuteur débloque souvent
+                    une situation en quelques minutes, là où j'aurais pu y
+                    passer des heures seul. Je n'hésite plus à poser mes
+                    questions rapidement, et j'y gagne clairement en efficacité.
                   </p>
                 </div>
               </div>
@@ -548,17 +550,13 @@ export default function About() {
                     fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
-                  Mon approche du développement repose sur une forte capacité
-                  d'adaptation et un pragmatisme orienté vers la résolution de
-                  problèmes réels. Si je possédais déjà des bases en Python, mon
-                  arrivée au laboratoire AGIR a été l'occasion d'approfondir mes
-                  compétences de manière autonome, tout en contribuant
-                  activement au projet. Cette expérience a renforcé ma
-                  conviction que le code doit avant tout être efficace tout en
-                  restant accessible : je cherche constamment cet équilibre
-                  entre performance technique et clarté pour garantir la
-                  pérennité et la maintenance de mes réalisations par les autres
-                  développeurs.
+                  Mon approche du développement est pragmatique : résoudre des
+                  problèmes réels avec des solutions durables. Mon expérience au
+                  Laboratoire AGIR m'a prouvé l'importance de l'adaptation et de
+                  l'autonomie. Aujourd'hui, je suis convaincu qu'un bon code
+                  doit être à la fois performant et compréhensible. Je cherche
+                  constamment cet équilibre pour garantir que mon travail puisse
+                  être facilement repris et maintenu par d'autres développeurs.
                 </p>
               </div>
 
@@ -589,8 +587,8 @@ export default function About() {
                   Mon temps libre est rythmé par la culture de l'imaginaire. Je
                   suis un grand lecteur de Mangas et de Light Novels, très
                   souvent accompagné de musique Rock ou J-Pop. Plonger dans ces
-                  univers narratifs profonds m'offre une déconnexion totale, me
-                  permettant de revenir sur mes projets informatiques avec un
+                  univers narratifs profonds m'offre une déconnexion totale, ce
+                  qui me permet de revenir sur mes projets informatiques avec un
                   regard neuf et une créativité rechargée.
                 </p>
               </div>
