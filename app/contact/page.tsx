@@ -241,11 +241,17 @@ export default function Contact() {
             >
               Actuellement à la recherche d'un stage en développement logiciel
               de{" "}
+              <span
+                className="font-bold transition-colors duration-500"
+                style={{ color: "var(--text-accent)" }}
+              >
+                14 semaines
+              </span>{" "}
               <strong
                 className="font-bold transition-colors duration-500"
                 style={{ color: "var(--text-main)" }}
               >
-                14 semaines de Mars à Juin 2027
+                du 1<sup>er</sup> Mars au 4 Juin 2027
               </strong>
               , je suis ouvert à toute proposition ou échange sur mes projets.
               N'hésitez pas à me solliciter via mes réseaux professionnels ou

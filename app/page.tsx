@@ -308,8 +308,10 @@ export default function Home() {
                   14 semaines
                 </span>
                 <br />
-                <span className="font-bold">de Mars à Juin 2027</span> en
-                développement logiciel.
+                <span className="font-bold">
+                  du 1<sup>er</sup> Mars au 4 Juin 2027
+                </span>{" "}
+                en développement logiciel.
               </p>
             </div>
 
