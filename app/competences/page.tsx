@@ -456,6 +456,9 @@ export default function Competences() {
                 {[
                   "MySQL",
                   "Oracle",
+                  "PostgreSQL",
+                  "MongoDB",
+                  "Redis",
                   "JSON",
                   "API REST",
                   "Architecture MVC",

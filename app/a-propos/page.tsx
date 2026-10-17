@@ -649,6 +649,59 @@ export default function About() {
           <div className="relative space-y-12 py-4">
             {/* Ligne verticale */}
             <div className="tl-line" />
+            {/* ── PyRED : Migration Python 3.12 ── */}
+            <div className="relative flex flex-col md:flex-row items-center group">
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node items-center justify-center text-xl">
+                🧬
+              </div>
+              <div className="md:hidden absolute left-0 w-12 h-12 rounded-full z-10 tl-node flex items-center justify-center text-xl">
+                🧬
+              </div>
+              <div className="w-full md:w-[45%] glass-panel ml-16 md:ml-0 md:group-odd:mr-auto md:group-even:ml-auto p-6 rounded-3xl relative z-20">
+                <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                  <div
+                    className="font-bold transition-colors duration-500"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-main)",
+                      fontSize: "15px",
+                    }}
+                  >
+                    PyRED : Migration Python 3.12
+                  </div>
+                  <time
+                    className="text-xs font-bold uppercase transition-colors duration-500"
+                    style={{
+                      color: "var(--text-accent)",
+                      fontFamily: "'Cinzel', serif",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    Juil. - Août 2026
+                  </time>
+                </div>
+                <div
+                  className="text-sm mb-3 font-bold transition-colors duration-500"
+                  style={{
+                    color: "var(--text-main)",
+                    fontFamily: "'DM Sans', sans-serif",
+                  }}
+                >
+                  Collaboration R&D — Labo AGIR (UPJV)
+                </div>
+                <p
+                  className="text-sm leading-relaxed font-medium transition-colors duration-500"
+                  style={{
+                    color: "var(--text-muted)",
+                    fontFamily: "'DM Sans', sans-serif",
+                  }}
+                >
+                  Collaboration scientifique à distance en binôme pour la
+                  migration complète du logiciel de recherche PyRED de Python
+                  2.7 vers 3.12.
+                </p>
+              </div>
+            </div>
             {/* ── Projet MaPizzaBoutique ── */}
             <div className="relative flex flex-col md:flex-row items-center group">
               <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-10 tl-node items-center justify-center text-xl">

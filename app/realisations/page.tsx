@@ -250,7 +250,166 @@ export default function Realisations() {
           CONTENU PRINCIPAL (Les Réalisations)
       ══════════════════════════════════════════ */}
       <div className="relative max-w-7xl mx-auto py-8 px-6 sm:px-12 space-y-24 z-10">
-        {/* ================= SECTION 1 : MAPIZZABOUTIQUE ================= */}
+        {/* ================= SECTION : PYRED (MIGRATION PYTHON 3.12) ================= */}
+        <section className="relative fade-up d2 space-y-8">
+          {/* CARTE TITRE & SOUS-TITRE */}
+          <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
+            <h2
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-colors duration-500 max-w-4xl"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                color: "var(--text-main)",
+              }}
+            >
+              <span style={{ color: "var(--text-accent)" }}>PyRED : </span>
+              Migration Python 3.12
+            </h2>
+
+            <div
+              className="flex items-center justify-center gap-3 flex-wrap mt-2"
+              style={{ fontFamily: "'Cinzel', serif" }}
+            >
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Juil. - Août 2026
+              </span>
+              <span className="px-4 py-1.5 border border-slate-300 text-slate-800 text-[11px] font-bold uppercase tracking-widest rounded-full bg-white/60">
+                Projet : PyRED (R&D)
+              </span>
+              <span
+                className="text-xs font-bold uppercase tracking-wider transition-colors duration-500 ml-2"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Collaboration à distance • Labo AGIR (UPJV)
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+            {/* COLONNE GAUCHE : TEXTE */}
+            <div className="flex-1 lg:w-1/2 space-y-6 glass-panel p-6 sm:p-8 rounded-3xl h-full">
+              <div
+                className="space-y-6 leading-relaxed text-base sm:text-lg font-medium transition-colors duration-500"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "var(--text-muted)",
+                }}
+              >
+                <p>
+                  Dans la continuité de mon stage, j'ai poursuivi la
+                  collaboration scientifique à distance avec François-Yves
+                  Dupradeau (enseignant-chercheur) pour moderniser le logiciel
+                  de recherche <strong>PyRED</strong>.
+                </p>
+                <p>
+                  En binôme avec mon coéquipier de stage, nous nous sommes
+                  répartis les tâches pour mener à bien la{" "}
+                  <strong>
+                    migration complète du logiciel de Python 2.7 vers Python
+                    3.12
+                  </strong>
+                  . Ce travail de fond a nécessité de réécrire et d'adapter une
+                  grande partie du code pour assurer sa compatibilité avec les
+                  versions récentes, garantissant ainsi la pérennité de cet
+                  outil de modélisation moléculaire.
+                </p>
+              </div>
+            </div>
+
+            {/* COLONNE DROITE : INFOS BOXES & COMPÉTENCES (Sans image) */}
+            <div className="flex-1 lg:w-1/2 flex flex-col gap-6 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
+                    🤝 Organisation
+                  </h4>
+                  <p
+                    className="text-sm font-medium leading-relaxed"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    Travail en binôme avec répartition des tâches et
+                    collaboration à distance.
+                  </p>
+                </div>
+                <div className="p-6 glass-panel rounded-2xl">
+                  <h4
+                    className="font-bold mb-3 flex items-center gap-2 text-sm tracking-wider"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      color: "var(--text-accent)",
+                    }}
+                  >
+                    🎯 Objectif
+                  </h4>
+                  <p
+                    className="text-sm font-medium leading-relaxed"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    Passage d'un code obsolète (Python 2.7) aux standards
+                    modernes (Python 3.12).
+                  </p>
+                </div>
+              </div>
+
+              <div
+                className="p-6 glass-panel rounded-2xl border-l-4"
+                style={{ borderLeftColor: "var(--text-accent)" }}
+              >
+                <h4
+                  className="font-bold mb-4 flex items-center gap-2 text-sm tracking-widest"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    color: "var(--text-main)",
+                  }}
+                >
+                  🧠 Compétences mobilisées
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Python 3.12",
+                    "Migration de Code",
+                    "Collaboration à distance",
+                    "Recherche & Développement",
+                  ].map((sk) => (
+                    <span
+                      key={sk}
+                      className="px-3 py-1.5 glass-inner rounded-lg text-[11px] uppercase font-bold tracking-wider text-slate-800"
+                    >
+                      {sk}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= SÉPARATEUR ================= */}
+        <div className="relative flex justify-center items-center py-2 max-w-4xl mx-auto px-6 w-full z-10 fade-up d3">
+          <div
+            className="transition-colors duration-500"
+            style={{
+              height: "1px",
+              flex: 1,
+              background:
+                "linear-gradient(90deg, transparent, var(--text-accent), transparent)",
+              opacity: 0.4,
+            }}
+          />
+        </div>
+
+        {/* ================= SECTION : MAPIZZABOUTIQUE ================= */}
         <section className="relative fade-up d4 space-y-8">
           {/* CARTE TITRE & SOUS-TITRE */}
           <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
@@ -434,7 +593,7 @@ export default function Realisations() {
           />
         </div>
 
-        {/* ================= SECTION 2 : PyRED ================= */}
+        {/* ================= SECTION : Stage PyRED ================= */}
         <section className="relative fade-up d2 space-y-8">
           {/* CARTE TITRE & SOUS-TITRE */}
           <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
@@ -628,7 +787,7 @@ export default function Realisations() {
           />
         </div>
 
-        {/* ================= SECTION 3 : MONCOVOITJV ================= */}
+        {/* ================= SECTION : MONCOVOITJV ================= */}
         <section className="relative fade-up d4 space-y-8">
           {/* CARTE TITRE & SOUS-TITRE */}
           <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
@@ -853,7 +1012,7 @@ export default function Realisations() {
           />
         </div>
 
-        {/* ================= SECTION 4 : BUS CALAIS ================= */}
+        {/* ================= SECTION : SAE BUS CALAIS ================= */}
         <section className="relative fade-up d4 space-y-8">
           {/* CARTE TITRE & SOUS-TITRE */}
           <div className="glass-panel py-6 px-6 sm:px-10 rounded-2xl w-fit mx-auto flex flex-col items-center text-center gap-4">
