@@ -8,11 +8,20 @@ import { usePathname } from "next/navigation";
 // HEADER — Thème Saisons (Menu Mobile Optimisé)
 // ============================================================
 
+const VALID_THEMES = [
+  "theme-summer",
+  "theme-autumn",
+  "theme-winter",
+  "theme-spring",
+] as const;
+
+type Theme = (typeof VALID_THEMES)[number];
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   // On initialise avec l'été pour éviter les erreurs d'hydratation côté serveur
-  const [activeTheme, setActiveTheme] = useState("theme-summer");
+  const [activeTheme, setActiveTheme] = useState<Theme>("theme-summer");
   const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -26,7 +35,7 @@ export default function Header() {
     { href: "/contact", label: "CONTACT" },
   ];
 
-  const seasons = [
+  const seasons: { id: Theme; icon: string; title: string }[] = [
     { id: "theme-summer", icon: "☀️", title: "Été" },
     { id: "theme-autumn", icon: "🍂", title: "Automne" },
     { id: "theme-winter", icon: "❄️", title: "Hiver" },
@@ -34,7 +43,7 @@ export default function Header() {
   ];
 
   // Fonction pour déterminer la saison actuelle en fonction du mois
-  const getDefaultTheme = () => {
+  const getDefaultTheme = (): Theme => {
     const month = new Date().getMonth(); // Retourne un chiffre de 0 (Jan) à 11 (Déc)
 
     // Décembre (11), Janvier (0), Février (1)
@@ -52,24 +61,23 @@ export default function Header() {
   // 1. Récupération du thème au chargement (Mémoire > Auto-détection)
   useEffect(() => {
     const savedTheme = localStorage.getItem("portfolio-theme");
-    if (savedTheme) {
-      setActiveTheme(savedTheme);
-    } else {
-      setActiveTheme(getDefaultTheme());
-    }
+    const targetTheme =
+      savedTheme && (VALID_THEMES as readonly string[]).includes(savedTheme)
+        ? (savedTheme as Theme)
+        : getDefaultTheme();
+
+    queueMicrotask(() => {
+      setActiveTheme(targetTheme);
+    });
   }, []);
 
   // 2. Application du thème + Sauvegarde à chaque changement
   useEffect(() => {
-    document.documentElement.classList.remove(
-      "theme-summer",
-      "theme-autumn",
-      "theme-winter",
-      "theme-spring",
-    );
-    document.documentElement.classList.add(activeTheme);
-
-    localStorage.setItem("portfolio-theme", activeTheme);
+    document.documentElement.classList.remove(...VALID_THEMES);
+    if ((VALID_THEMES as readonly string[]).includes(activeTheme)) {
+      document.documentElement.classList.add(activeTheme);
+      localStorage.setItem("portfolio-theme", activeTheme);
+    }
   }, [activeTheme]);
 
   // Détecter le scroll pour l'effet transparent -> glassmorphism
